@@ -1,0 +1,343 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>International | Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --bg: #FAF7F4;
+      --surface: #FFFFFF;
+      --text: #1B1918;
+      --muted: #68625E;
+      --accent: #C85A32;
+      --border: #E8E1DA;
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Plus Jakarta Sans', sans-serif;
+      background-color: var(--bg);
+      color: var(--text);
+      line-height: 1.6;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    header {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 1.5rem 6%;
+      border-bottom: 1px solid var(--border);
+    }
+    .logo {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: 1.5rem;
+      font-weight: 600;
+      letter-spacing: 0.04em;
+    }
+    .lang-switch {
+      display: flex;
+      gap: 0.4rem;
+    }
+    .lang-btn {
+      background: transparent;
+      border: 1px solid var(--border);
+      padding: 0.35rem 0.7rem;
+      border-radius: 99px;
+      font-size: 0.8rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+      color: var(--muted);
+    }
+    .lang-btn.active, .lang-btn:hover {
+      background: var(--text);
+      color: #FFF;
+      border-color: var(--text);
+    }
+    main {
+      flex: 1;
+      max-width: 820px;
+      margin: 0 auto;
+      padding: 5rem 6% 4rem;
+      text-align: center;
+    }
+    .badge {
+      display: inline-block;
+      font-size: 0.78rem;
+      text-transform: uppercase;
+      letter-spacing: 0.12em;
+      color: var(--accent);
+      background: rgba(200, 90, 50, 0.1);
+      padding: 0.4rem 1rem;
+      border-radius: 99px;
+      margin-bottom: 1.5rem;
+      font-weight: 600;
+    }
+    h1 {
+      font-family: 'Cormorant Garamond', serif;
+      font-size: clamp(2.6rem, 6vw, 4.2rem);
+      line-height: 1.1;
+      font-weight: 600;
+      margin-bottom: 1.5rem;
+    }
+    h1 em {
+      font-style: italic;
+      color: var(--accent);
+    }
+    .subtitle {
+      font-size: 1.1rem;
+      color: var(--muted);
+      max-width: 600px;
+      margin: 0 auto 2.5rem;
+    }
+    .genres {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: center;
+      gap: 0.6rem;
+      margin-bottom: 3rem;
+    }
+    .genre-pill {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      padding: 0.45rem 1rem;
+      border-radius: 99px;
+      font-size: 0.85rem;
+      color: var(--text);
+    }
+    .card {
+      background: var(--surface);
+      border: 1px solid var(--border);
+      border-radius: 20px;
+      padding: 2.2rem;
+      max-width: 540px;
+      margin: 0 auto;
+      box-shadow: 0 12px 30px rgba(0,0,0,0.03);
+    }
+    .card h2 {
+      font-size: 1.15rem;
+      margin-bottom: 0.5rem;
+    }
+    .card p {
+      font-size: 0.92rem;
+      color: var(--muted);
+      margin-bottom: 1.2rem;
+    }
+    .contact-btn {
+      display: inline-block;
+      background: var(--text);
+      color: #FFF;
+      text-decoration: none;
+      padding: 0.85rem 1.8rem;
+      border-radius: 99px;
+      font-size: 0.95rem;
+      font-weight: 500;
+      transition: transform 0.2s, background 0.2s;
+    }
+    .contact-btn:hover {
+      background: var(--accent);
+      transform: translateY(-2px);
+    }
+    footer {
+      text-align: center;
+      padding: 2rem 6%;
+      font-size: 0.82rem;
+      color: var(--muted);
+      border-top: 1px solid var(--border);
+    }
+    footer a { color: var(--muted); text-decoration: underline; }
+  </style>
+</head>
+<body>
+
+  <header>
+    <div class="logo">AUTHORS MULTIVERSE</div>
+    <div class="lang-switch">
+      <button class="lang-btn active" onclick="setLang('de')">DE</button>
+      <button class="lang-btn" onclick="setLang('en')">EN</button>
+      <button class="lang-btn" onclick="setLang('pl')">PL</button>
+      <button class="lang-btn" onclick="setLang('fr')">FR</button>
+    </div>
+  </header>
+
+<!-- Zentrale Hauptnavigation für das Authors Multiverse Collective -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+  <main>
+    <div class="badge" id="badge">18 Stimmen · 1 Multiversum · Coming Soon</div>
+    <h1 id="headline">Hier entsteht ein neues <em>literarisches Multiversum.</em></h1>
+    <p class="subtitle" id="subtitle">
+      18 Autorinnen und Autoren. Die volle Bandbreite an Genres. Bald präsentieren wir hier unsere Werke für Leserinnen in Deutschland, Österreich, der Schweiz und weltweit – pur, direkt und ohne Umwege. Entwurf vorübergehend:   <a href="https://multiversewriters.netlify.app/">Ersten Entwurf anschauen.</a>
+    </p>
+
+    <div class="genres" id="genres">
+      <span class="genre-pill">Romance & New Adult</span>
+      <span class="genre-pill">Fantasy & Sci-Fi</span>
+      <span class="genre-pill">Thriller & Mystery</span>
+      <span class="genre-pill">Contemporary Fiction</span>
+      <span class="genre-pill">Short Stories</span>
+    </div>
+
+    <div class="card">
+      <h2 id="cta-title">Werde Teil der ersten Stunde</h2>
+      <p id="cta-text">Du möchtest als Erste erfahren, wenn unsere Bücher, Leseproben und Autoren-Portfolios online gehen – oder uns deine Wünsche für zukünftige Geschichten schicken?</p>
+      <a href="mailto:post@autoren-multiversum.de" class="contact-btn" id="cta-btn">Nachricht & Wünsche senden</a>
+    </div>
+  </main>
+
+ <!-- FOOTER & LEGAL -->
+<footer>
+  <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. Deutschland · Österreich · Schweiz · International</p>
+  <div style="margin-top: 8px;">
+    <a href="impressum.html">Impressum</a> | 
+    <a href="datenschutz.html">Datenschutzerklärung</a>
+  </div>
+  <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+    <span>Webdesign &amp; Umsetzung:</span>
+    <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+      <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+      <span>ARTBECKO</span>
+    </a>
+  </div>
+</footer>
+
+
+  <script>
+    const content = {
+      de: {
+        badge: "18 Stimmen · 1 Multiversum · Coming Soon",
+        headline: "Hier entsteht ein neues <em>literarisches Multiversum.</em>",
+        subtitle: "18 Autorinnen und Autoren. Die volle Bandbreite an Genres. Bald präsentieren wir hier unsere Werke für Leserinnen in Deutschland, Österreich, der Schweiz und weltweit – pur, direkt und ohne Umwege.",
+        genres: ["Romance & New Adult", "Fantasy & Sci-Fi", "Thriller & Mystery", "Gegenwartsliteratur", "Kurzgeschichten"],
+        ctaTitle: "Werde Teil der ersten Stunde",
+        ctaText: "Du möchtest als Erste erfahren, wenn unsere Bücher, Leseproben und Portfolios online gehen – oder uns deine Ideen & Wünsche schicken?",
+        ctaBtn: "Ideen & Wünsche per E-Mail senden",
+        footer: "© 2026 Authors Multiverse · DACH & International · Impressum folgt"
+      },
+      en: {
+        badge: "18 Voices · 1 Multiverse · Launching Soon",
+        headline: "A new <em>literary multiverse</em> is in the making.",
+        subtitle: "18 distinct authors. Every genre imaginable. Soon, we are bringing our original books, exclusive excerpts, and curated portfolios straight to readers worldwide.",
+        genres: ["Romance & New Adult", "Fantasy & Sci-Fi", "Thriller & Mystery", "Contemporary Fiction", "Short Stories"],
+        ctaTitle: "Get Early Access & Share Your Vibe",
+        ctaText: "Want to be first in line when our books drop—or tell us what kind of stories you’re craving next?",
+        ctaBtn: "Send Us Your Requests",
+        footer: "© 2026 Authors Multiverse · All Rights Reserved"
+      },
+      pl: {
+        badge: "18 Głosów · 1 Multiwersum · Wkrótce",
+        headline: "Tu powstaje nowe <em>literackie multiwersum.</em>",
+        subtitle: "18 autorek i autorów. Pełne spektrum gatunków. Już wkrótce zaprezentujemy tu nasze książki i fragmenty powieści – prosto od twórców dla czytelniczek na całym świecie.",
+        genres: ["Romans & New Adult", "Fantasy & Sci-Fi", "Thriller & Kryminał", "Literatura obyczajowa", "Opowiadania"],
+        ctaTitle: "Dołącz od samego początku",
+        ctaText: "Chcesz jako pierwsza dowiedzieć się o premierze naszych książek lub napisać nam, jakich historii szukasz?",
+        ctaBtn: "Wyślij nam wiadomość",
+        footer: "© 2026 Authors Multiverse · Wszelkie prawa zastrzeżone"
+      },
+      fr: {
+        badge: "18 Voix · 1 Multivers · Bientôt disponible",
+        headline: "Un nouveau <em>multivers littéraire</em> voit le jour.",
+        subtitle: "18 autrices et auteurs. Tous les genres réunis. Bientôt, découvrez nos œuvres, nos extraits exclusifs et nos univers – directement des créateurs aux lectrices.",
+        genres: ["Romance & New Adult", "Fantasy & Sci-Fi", "Thriller & Mystère", "Littérature contemporaine", "Nouvelles"],
+        ctaTitle: "Rejoignez l’aventure dès le début",
+        ctaText: "Envie d’être informée en avant-première de nos sorties ou de nous partager vos envies de lecture ?",
+        ctaBtn: "Nous envoyer vos envies",
+        footer: "© 2026 Authors Multiverse · Tous droits réservés"
+      }
+    };
+
+    function setLang(lang) {
+      const d = content[lang];
+      document.getElementById('badge').innerText = d.badge;
+      document.getElementById('headline').innerHTML = d.headline;
+      document.getElementById('subtitle').innerText = d.subtitle;
+      document.getElementById('cta-title').innerText = d.ctaTitle;
+      document.getElementById('cta-text').innerText = d.ctaText;
+      document.getElementById('cta-btn').innerText = d.ctaBtn;
+      
+
+      const genresContainer = document.getElementById('genres');
+      genresContainer.innerHTML = d.genres.map(g => `<span class="genre-pill">${g}</span>`).join('');
+
+      document.querySelectorAll('.lang-btn').forEach(btn => {
+        btn.classList.toggle('active', btn.innerText.toLowerCase() === lang);
+      });
+    }
+  </script>
+</body>
+</html>

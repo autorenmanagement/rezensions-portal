@@ -1,0 +1,431 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>Presse | Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+:root {
+  --bg-darkroom: #EAEFEF;
+  --card-dark: #F7FAFA;
+  --primary-sage: #2C6A72;
+  --accent-terracotta: #3D5A6C;
+  --cream-grey: #182329;
+  --line-muted: #BDCBD0;
+  --status-published: #2E5B4B;
+  --status-progress: #A86A44;
+  --btn-gradient: linear-gradient(135deg, #445E6A 0%, #1A3F49 100%);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-darkroom);
+  color: var(--cream-grey);
+  line-height: 1.7;
+}
+
+/* Navigationsleiste oben */
+.main-nav {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  background: rgba(247, 250, 250, 0.96);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border-bottom: 1px solid var(--line-muted);
+  padding: 12px 20px;
+  z-index: 1000;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px 18px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04);
+}
+.main-nav a, .dropdown-toggle {
+  color: var(--cream-grey);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.8px;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 6px 4px;
+  transition: color 0.2s ease;
+  font-family: inherit;
+}
+.main-nav a:hover, .dropdown:hover .dropdown-toggle {
+  color: var(--primary-sage);
+}
+
+/* Dropdown-Menüs */
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+.dropdown-content {
+  display: none;
+  position: absolute;
+  background: #ffffff;
+  min-width: 220px;
+  box-shadow: 0 8px 20px rgba(24, 35, 41, 0.12);
+  z-index: 1001;
+  top: 100%;
+  left: 50%;
+  transform: translateX(-50%);
+  border: 1px solid var(--line-muted);
+  border-top: 3px solid var(--primary-sage);
+  border-radius: 0 0 6px 6px;
+  padding: 6px 0;
+}
+.dropdown-content a {
+  color: var(--cream-grey);
+  padding: 9px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+  font-size: 0.85rem;
+  font-weight: 500;
+  text-transform: none;
+  letter-spacing: 0.3px;
+}
+.dropdown-content a:hover {
+  background-color: var(--card-dark);
+  color: var(--primary-sage);
+  font-weight: 600;
+}
+.dropdown:hover .dropdown-content {
+  display: block;
+}
+
+/* Haupt-Container */
+.network-container { max-width: 950px; margin: 0 auto; padding: 30px 20px 50px; }
+
+/* Header */
+header.presse-header {
+  text-align: center;
+  padding: 25px 0 35px 0;
+  position: relative;
+  margin-bottom: 35px;
+}
+header.presse-header::after {
+  content: ''; position: absolute; bottom: 0; left: 25%; width: 50%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--primary-sage), transparent);
+}
+.presse-header h1 {
+  font-size: 2.2rem; font-weight: 300; letter-spacing: 4px;
+  color: var(--cream-grey); text-transform: uppercase;
+}
+.presse-header h1 span { font-weight: 700; color: var(--primary-sage); }
+.tagline {
+  font-size: 0.95rem; color: var(--accent-terracotta); margin-top: 12px;
+  letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+}
+
+/* Inhalts-Karten */
+.presse-section {
+  background: #ffffff;
+  border: 1px solid var(--line-muted);
+  border-left: 4px solid var(--primary-sage);
+  border-radius: 6px;
+  padding: 28px 30px;
+  margin-bottom: 24px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+}
+.presse-section h2 {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-sage);
+  margin-bottom: 16px;
+  text-transform: uppercase;
+  letter-spacing: 1px;
+  border-bottom: 1px solid var(--line-muted);
+  padding-bottom: 10px;
+}
+.presse-section p {
+  color: var(--cream-grey);
+  font-size: 0.96rem;
+  margin-bottom: 14px;
+}
+.presse-section p:last-child { margin-bottom: 0; }
+
+/* Download-Liste */
+.download-list {
+  list-style-type: none;
+  padding: 0;
+  margin: 16px 0 0 0;
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+}
+.download-list li {
+  background: var(--card-dark);
+  border: 1px solid var(--line-muted);
+  border-radius: 4px;
+  padding: 12px 16px 12px 38px;
+  position: relative;
+  transition: border-color 0.2s, background-color 0.2s;
+}
+.download-list li:hover {
+  border-color: var(--primary-sage);
+  background: #ffffff;
+}
+.download-list li::before {
+  content: "\2192";
+  position: absolute;
+  left: 14px;
+  color: var(--primary-sage);
+  font-weight: bold;
+}
+.download-list a {
+  color: var(--accent-terracotta);
+  text-decoration: none;
+  font-size: 0.93rem;
+  display: block;
+}
+.download-list a strong {
+  color: var(--primary-sage);
+  font-weight: 700;
+}
+.download-list a:hover strong {
+  text-decoration: underline;
+}
+
+/* Pressekontakt */
+.contact-box {
+  text-align: center;
+  border-left-color: var(--accent-terracotta);
+}
+.contact-box h2 { color: var(--accent-terracotta); }
+.contact-box a {
+  color: var(--primary-sage);
+  font-weight: 600;
+  text-decoration: none;
+}
+.contact-box a:hover { text-decoration: underline; }
+
+/* Zurück-Button */
+.back-link {
+  display: inline-block; padding: 10px 20px; border: 2px solid var(--primary-sage);
+  color: var(--primary-sage); text-decoration: none; font-size: 0.85rem;
+  font-weight: bold; letter-spacing: 0.5px; border-radius: 4px; transition: all 0.2s;
+}
+.back-link:hover { background: rgba(44, 106, 114, 0.1); }
+
+/* Scroll-Effekt */
+.fade-scroll {
+  opacity: 0;
+  transform: translateY(25px);
+  transition: opacity 0.9s cubic-bezier(0.25, 1, 0.5, 1), transform 0.9s cubic-bezier(0.25, 1, 0.5, 1);
+}
+.fade-scroll.is-visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* Footer */
+footer {
+  text-align: center; margin-top: 50px; color: var(--cream-grey); font-size: 0.85rem;
+  opacity: 0.8; border-top: 1px solid var(--line-muted); padding-top: 25px;
+}
+footer a { color: var(--primary-sage); text-decoration: none; margin: 0 10px; font-weight: 600; }
+
+@media (max-width: 768px) {
+  .presse-header h1 { font-size: 1.7rem; }
+  .presse-section { padding: 22px 20px; }
+}
+</style>
+</head>
+<body>
+
+<!-- Zentrale Hauptnavigation für das Autoren-Multiversum -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+
+
+<div class="network-container">
+  <!-- Hauptüberschrift -->
+  <header class="presse-header">
+    <h1>Presse<span>portal</span></h1>
+    <div class="tagline">Willkommen im Medienbereich der Engine am KPB &plusmn;&sup3; Autoren-Multiversums</div>
+  </header>
+
+ <main>
+  <!-- Bereich 1: Über das Autoren-Team -->
+  <section class="presse-section fade-scroll">
+    <h2>Fakten &amp; Hintergrund</h2>
+    <p>
+      Die Engine am KPB &plusmn;&sup3; (Autoren-Multiversum) ist ein literarisches Projekt unter der kreativen Leitung von Danielle Krachtpantherbarre und Anna Mitrowska. Unsere Werke verbinden Medizin, Informatik, Wirtschaft und Kunst mit tiefgründiger Fiktion und familiärer Theatertradition.
+    </p>
+  </section>
+
+  <!-- Bereich 2: Geschützter Pressebereich (Passwort-Anforderung statt toter Links) -->
+  <section class="presse-section fade-scroll">
+    <h2>Presse-Kits &amp; Geschützter Medienzugang</h2>
+    <p>
+      Unsere hochauflösenden Presse-Pakete (Logos, Autorenporträts und Vorab-Leseproben) stehen akkreditierten Medienvertretern, Redaktionen und Rezensenten im passwortgeschützten Pressebereich zur Verfügung. Bitte fordern Sie Ihren persönlichen Zugangscode kurz per E-Mail an – wir senden Ihnen das gewünschte Material umgehend zu:
+    </p>
+        <ul class="download-list">
+      <li>
+        <a href="mailto:artbecko@web.de?subject=Presse-Zugang%20%26%20Pressematerial%20anfordern%20%E2%80%93%20Autoren-Multiversum&body=Sehr%20geehrte%20Damen%20und%20Herren%2C%0D%0A%0D%0Ahiermit%20beantrage%20ich%20das%20Passwort%20f%C3%BCr%20den%20gesch%C3%BCtzten%20Pressebereich%20sowie%20folgendes%20Pressematerial%20(Nichtzutreffendes%20bitte%20einfach%20l%C3%B6schen)%3A%0D%0A-%20Offizielles%20Hauptsiegel%20(HQ%20%2F%20Art-D%C3%A9co-Logos)%0D%0A-%20Autorenportr%C3%A4ts%20(Anna%20Mitrowska%20%26%20Autoren-Team)%0D%0A-%20Presse-Information%20%26%20Leseprobe%20%E2%80%9EDer%20Herzschlag%20des%20ewigen%20Gr%C3%BCns%E2%80%9C%0D%0A-%20Schriftliche%20Interview-Anfrage%20%2F%20Rezensionsexemplar%0D%0A%0D%0AMeine%20Angaben%20zur%20Redaktion%20%2F%20zum%20Medium%3A%0D%0AName%3A%20%0D%0ARedaktion%20%2F%20Blog%20%2F%20Medium%3A%20%0D%0AGeplanter%20Verwendungszweck%3A%20%0D%0A%0D%0AMit%20freundlichen%20Gr%C3%BC%C3%9Fen">
+          <strong>Vorbereiteten Presse-Antrag per E-Mail öffnen</strong> &ndash; <em>Passwort &amp; Presse-Kits (Siegel, Porträts, Leseprobe) mit einem Klick anfordern</em>
+        </a>
+      </li>
+    </ul>
+
+  </section>
+
+    <!-- Bereich 3: Aktuelle Pressemitteilung -->
+  <section class="presse-section fade-scroll">
+    <h2>Aktuelle Pressemitteilung &bull; Karlsruhe</h2>
+    <p>
+      Das Konsortium Engine am KPB &plusmn;&sup3; (Autoren-Multiversum) &ndash; ein literarisches Projekt unter der kreativen Leitung von Danielle Krachtpantherbarre und Anna Mitrowska &ndash; gibt den offiziellen Startschuss für die neuen literarischen Reihen und die gemeinsamen Werkstatt-Projekte bekannt. Im Mittelpunkt stehen generationenübergreifendes Erzählen, historische Spurensuche und die Verbindung aus klassischer Buchkunst und digitaler Plattform.
+    </p>
+    <p>
+      <strong>Hinweis für Redaktionen und Medienvertreter:</strong> Da sich Anna Mitrowska derzeit im Ausland aufhält und Danielle Krachtpantherbarre aufgrund einer eingeschränkten Mobilität nicht an öffentlichen Terminen teilnimmt, stehen beide Autorinnen für telefonische Interviews oder Vor-Ort-Termine nicht zur Verfügung. Wir bitten alle Pressevertreterinnen und Pressevertreter daher herzlich, ihre Anfragen ausschließlich schriftlich an unsere Pressestelle zu richten.
+    </p>
+  </section>
+
+
+  <!-- Bereich 4: Direkter Pressekontakt -->
+  <section class="presse-section contact-box fade-scroll">
+    <h2>Direkter Pressekontakt</h2>
+    <p>Für Interviewanfragen, Passwort-Freischaltungen, Rezensionsexemplare oder Bildwünsche wenden Sie sich bitte direkt an:</p>
+    <p style="margin-top: 18px;">
+      <strong style="color: var(--cream-grey); font-size: 1.05rem;">Autoren-Multiversum c/o Joanna Beck</strong><br>
+      Weltzienstraße 9<br>
+      76135 Karlsruhe
+    </p>
+    <p style="margin-top: 15px;">
+      <span style="color: var(--accent-terracotta); font-weight: 600;">Telefon/Fax/AB: </span><a href="tel:072198614607">+49 721-98614607</a><br>
+      <span style="color: var(--accent-terracotta); font-weight: 600;">WhatsApp: </span><a href="https://wa.me" target="_blank" rel="noopener">+49 176 312 575 73</a><br>
+
+      <span style="color: var(--accent-terracotta); font-weight: 600;">E-Mail: </span><a href="mailto:artbecko@web.de">artbecko@web.de</a>
+    </p>
+  </section>
+
+  <!-- Zurück-Link ganz unten -->
+  <div style="text-align: center; margin-top: 35px;">
+    <a href="index.html" class="back-link">&larr; Zurück zur Startseite</a>
+  </div>
+</main>
+
+ <!-- FOOTER & LEGAL -->
+<footer>
+  <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. D · A · CH · International</p>
+  <div style="margin-top: 8px;">
+    <a href="impressum.html">Impressum</a> | 
+    <a href="datenschutz.html">Datenschutzerklärung</a>
+  </div>
+  <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+    <span>Webdesign &amp; Umsetzung:</span>
+    <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+      <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+      <span>ARTBECKO</span>
+    </a>
+  </div>
+</footer>
+
+
+</div>
+
+<!-- JAVASCRIPT FÜR DEN SANFTEN SCROLL-EFFEKT -->
+<script>
+document.addEventListener("DOMContentLoaded", function() {
+  const observerOptions = {
+    root: null,
+    rootMargin: "0px",
+    threshold: 0.1
+  };
+
+  const observer = new IntersectionObserver(function(entries) {
+    entries.forEach(function(entry) {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+      }
+    });
+  }, observerOptions);
+
+  const animatedElements = document.querySelectorAll(".fade-scroll");
+  animatedElements.forEach(function(el) {
+    observer.observe(el);
+  });
+});
+</script>
+</body>
+</html>

@@ -1,0 +1,586 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>Lektorat | Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+  :root {
+    --bg-page: #edf1f1;
+    --bg-card: #ffffff;
+    --bg-subtle: #f7f9f9;
+    --bg-impuls: #fbf8f1;
+    --border-impuls: #d9b87c;
+    --primary: #264648;
+    --primary-hover: #1b3335;
+    --accent-teal: #3d6b6e;
+    --text-main: #222b2c;
+    --text-muted: #5c6b6d;
+    --border-light: #dce3e3;
+    --radius: 8px;
+  }
+
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding-bottom: 40px;
+  }
+
+  .top-nav {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-light);
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+  }
+  .top-nav a { color: var(--primary); text-decoration: none; margin: 0 12px; }
+  .top-nav a:hover { text-decoration: underline; }
+
+  .container {
+    max-width: 840px;
+    margin: 28px auto;
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 18px rgba(38, 70, 72, 0.05);
+    padding: 32px;
+  }
+
+  .header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+
+  .btn-back {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1.5px solid var(--primary);
+    border-radius: 6px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+  }
+  .btn-back:hover { background: var(--primary); color: #ffffff; }
+
+  .kicker {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  .title-block { text-align: center; margin-bottom: 24px; }
+  .title-block h1 {
+    font-size: 2.1rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .title-block h1 strong { font-weight: 700; color: var(--primary); }
+  .title-block p {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* Info-Box */
+  .intro-box {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius);
+    padding: 18px 20px;
+    margin-bottom: 28px;
+    font-size: 0.94rem;
+  }
+  .intro-box strong { color: var(--primary); }
+
+  /* Säulen-Karten */
+  .pillar-card {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    margin-bottom: 24px;
+    overflow: hidden;
+  }
+  .pillar-header {
+    background: var(--primary);
+    color: #ffffff;
+    padding: 14px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .pillar-header h2 { font-size: 1.05rem; letter-spacing: 0.04em; }
+  .pillar-score {
+    background: rgba(255,255,255,0.18);
+    padding: 3px 10px;
+    border-radius: 12px;
+    font-size: 0.82rem;
+    font-weight: 700;
+  }
+
+  .question-row {
+    padding: 16px 20px;
+    border-bottom: 1px solid var(--border-light);
+    background: #ffffff;
+  }
+  .question-row:last-child { border-bottom: none; }
+  .question-text {
+    font-weight: 600;
+    font-size: 0.96rem;
+    margin-bottom: 4px;
+  }
+  .question-hint {
+    font-size: 0.85rem;
+    color: var(--text-muted);
+    margin-bottom: 10px;
+  }
+
+  .rating-options {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 8px;
+  }
+  .rate-btn {
+    padding: 8px 6px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-subtle);
+    border-radius: 6px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--text-main);
+    cursor: pointer;
+    text-align: center;
+    transition: all 0.15s;
+  }
+  .rate-btn:hover { border-color: var(--primary); background: #e6efef; }
+  .rate-btn.selected {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+
+  /* Auswertungs-Button */
+  .action-area {
+    text-align: center;
+    margin: 28px 0;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 15px 28px;
+    border-radius: 6px;
+    font-size: 0.95rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    cursor: pointer;
+  }
+  .btn-primary:hover { background: var(--primary-hover); }
+
+  /* Ergebnis-Box */
+  .result-panel {
+    display: none;
+    border: 1px solid var(--border-light);
+    border-left: 5px solid var(--primary);
+    border-radius: var(--radius);
+    background: #ffffff;
+    padding: 26px;
+    margin-top: 24px;
+  }
+  .result-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    border-bottom: 1px solid var(--border-light);
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+  }
+  .total-badge {
+    font-size: 1.6rem;
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .stage-title {
+    font-size: 1.25rem;
+    font-weight: 700;
+    margin-bottom: 8px;
+  }
+  .advice-box {
+    background: var(--bg-impuls);
+    border: 1px solid #eadcc2;
+    border-left: 4px solid var(--border-impuls);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+    margin-top: 16px;
+  }
+  .advice-box h4 {
+    font-size: 0.82rem;
+    text-transform: uppercase;
+    letter-spacing: 0.06em;
+    color: #8a6424;
+    margin-bottom: 6px;
+  }
+  .btn-copy {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+  }
+  .btn-copy:hover { border-color: var(--primary); background: var(--bg-subtle); }
+
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-light);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .footer a { color: var(--primary); text-decoration: none; margin: 0 8px; }
+
+  @media (max-width: 650px) {
+    .container { margin: 12px; padding: 18px; }
+    .rating-options { grid-template-columns: 1fr 1fr; }
+  }
+</style>
+</head>
+<body>
+
+<!-- Zentrale Hauptnavigation für das Autoren-Multiversum -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+
+<main class="container">
+  <div class="header-meta">
+    <a href="index.html" class="btn-back">← Zurück zum Autoren-Multiversum</a>
+    <span class="kicker">HANDWERK • SELBST- &amp; GRUPPEN-LEKTORAT</span>
+  </div>
+
+  <div class="title-block">
+    <h1>LEKTORATS-<strong>KOMPASS</strong></h1>
+    <p>SYSTEMATISCHE MANUSKRIPT-DIAGNOSE IN 5 SÄULEN (25 KRITERIEN)</p>
+  </div>
+
+  <div class="intro-box">
+    <strong>So nutzt du dieses Werkzeug (allein oder in der Vorlesegruppe):</strong><br>
+    Ein gutes Lektorat arbeitet immer <em>von grob nach fein</em> – erst die Geschichte, zuletzt die Kommas. Bewerte dein Manuskript (oder eine vorgelesene Szene) ehrlich von <strong>1 (Baustelle)</strong> bis <strong>4 (Stark)</strong>. Am Ende berechnet der Kompass deinen aktuellen Reifegrad und zeigt dir, wo die nächste Überarbeitung am meisten bewirkt.
+  </div>
+
+  <div id="quiz-container"></div>
+
+  <div class="action-area">
+    <button class="btn-primary" onclick="auswerten()">LEKTORATS-DIAGNOSE BERECHNEN</button>
+  </div>
+
+  <div class="result-panel" id="result-panel">
+    <div class="result-top">
+      <div>
+        <span class="kicker">EMPIRISCHE SELBSTEINSCHÄTZUNG</span>
+        <div class="total-badge" id="res-punkte">0 / 100 Punkte</div>
+      </div>
+      <button class="btn-copy" id="copy-btn" onclick="ergebnisKopieren()">Auswertung für Notizbuch kopieren</button>
+    </div>
+
+    <div class="stage-title" id="res-stufe"></div>
+    <p id="res-text"></p>
+
+    <div class="advice-box">
+      <h4>Dein wichtigster nächster Schritt (Schwerpunkt-Empfehlung):</h4>
+      <p id="res-fokus"></p>
+    </div>
+  </div>
+
+<!-- FOOTER & LEGAL -->
+<footer class="footer">
+  <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. D · A · CH · International</p>
+  <div style="margin-top: 8px;">
+    <a href="impressum.html">Impressum</a> | 
+    <a href="datenschutz.html">Datenschutzerklärung</a>
+  </div>
+  <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+    <span>Webdesign &amp; Umsetzung:</span>
+    <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+      <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+      <span>ARTBECKO</span>
+    </a>
+  </div>
+</footer>
+
+
+
+</main>
+
+<script>
+  const saeulen = [
+    {
+      titel: "Säule 1: Struktur, Dramaturgie & Roter Faden",
+      tipp: "Dein größter Hebel liegt aktuell in der <strong>Dramaturgie &amp; Struktur</strong>: Prüfe jede Szene mit der Frage <em>„Was ändert sich am Ende dieser Szene?“</em>. Streiche Passagen, in denen Figuren nur reden oder warten, ohne dass ein Konflikt vorangeht. Nutze dazu unseren <strong>16-Punkte-Bauplan</strong> im Ideenbrüter.",
+      fragen: [
+        { q: "1. Packender Einstieg (Hook)", h: "Zieht die erste Seite den Leser sofort in eine Stimmung, Frage oder Handlung – ohne lange Vorgeschichte?" },
+        { q: "2. Klarer roter Faden", h: "Weiß man nach dem ersten Viertel, worum es im Kern geht und was auf dem Spiel steht?" },
+        { q: "3. Spannungsbogen ohne Durchhänger", h: "Steigern sich die Hindernisse in der Buchmitte spürbar, statt dass die Handlung auf der Stelle tritt?" },
+        { q: "4. Notwendigkeit jeder Szene", h: "Treibt jedes Kapitel entweder den äußeren Plot oder die innere Entwicklung einer Figur voran?" },
+        { q: "5. Stimmiges Ende (Katharsis)", h: "Löst der Schluss die zentralen Fragen glaubwürdig auf – ohne plötzlichen Zufalls-Retter?" }
+      ]
+    },
+    {
+      titel: "Säule 2: Figuren & Psychologische Tiefe",
+      tipp: "Dein größter Hebel liegt aktuell in der <strong>Figuren-Psychologie</strong>: Gib deiner Hauptfigur eine klare <em>innere Wunde</em> und eine <em>Lebenslüge</em>, damit sie nicht nur auf den Plot reagiert, sondern aus eigenem Antrieb handelt. Nutze dafür unseren <strong>Seelen-Kompass</strong>.",
+      fragen: [
+        { q: "6. Greifbare Motivation (Wunsch & Bedürfnis)", h: "Spürt man, was die Hauptfigur äußerlich erreichen will – und was ihr innerlich eigentlich fehlt?" },
+        { q: "7. Ecken, Kanten & Verletzlichkeit", h: "Hat die Figur echte Schwächen und Ängste, durch die Leser sofort Mitgefühl (Empathie) entwickeln?" },
+        { q: "8. Aktives Handeln statt Passivität", h: "Trifft die Hauptfigur eigene Entscheidungen (auch falsche!), statt nur von anderen herumgeschubst zu werden?" },
+        { q: "9. Glaubwürdige Gegenspieler", h: "Hat der Antagonist (oder das Hindernis) nachvollziehbare Gründe statt bloßer Bosheit?" },
+        { q: "10. Spürbare Entwicklung (Charakterbogen)", h: "Ist die Figur am Ende der Geschichte durch ihre Erfahrungen sichtbar gewachsen oder verändert?" }
+      ]
+    },
+    {
+      titel: "Säule 3: Dialoge & Subtext",
+      tipp: "Dein größter Hebel liegt aktuell in den <strong>Dialogen</strong>: Lies alle Gespräche einmal laut vor! Streiche Sätze, in denen Figuren sich gegenseitig Dinge erklären, die beide schon wissen, und baue kleine Gesten ein. Nutze dafür die <strong>Dialog- &amp; Chemie-Werkstatt</strong>.",
+      fragen: [
+        { q: "11. Natürlicher Klang beim Vorlesen", h: "Klingen die Sätze so, wie echte Menschen in dieser Epoche oder Lebenslage wirklich sprechen?" },
+        { q: "12. Keine „Wie du ja weißt…“-Erklärdialoge", h: "Wird Hintergrundwissen organisch eingewoben, statt es künstlich in Gespräche zu packen?" },
+        { q: "13. Reibung & Subtext zwischen den Zeilen", h: "Verfolgen die Gesprächspartner unterschiedliche Ziele – und sagen sie manchmal etwas anderes, als sie meinen?" },
+        { q: "14. Unverwechselbare Stimmen", h: "Erkennt man auch ohne Namen („sagte er“), welche Figur gerade spricht?" },
+        { q: "15. Körpersprache statt Redebegleitsatz-Flut", h: "Werden Dialoge durch kleine Handlungen (Teetasse drehen, Blick abwenden) lebendig statt durch ständiges „fragte / antwortete“?" }
+      ]
+    },
+    {
+      titel: "Säule 4: Stil, Sinnlichkeit & Erzähltempo",
+      tipp: "Dein größter Hebel liegt aktuell im <strong>Stil &amp; Kopfkino</strong>: Ersetze abstrakte Gefühlsbenennungen („sie war wütend“) durch sichtbare Körpersprache und mindestens zwei Sinneseindrücke pro Schauplatz. Stöbere dazu in der <strong>Wort-Apotheke</strong> und prüfe deine Szenen im <strong>7-W-Text-Spiegel</strong>.",
+      fragen: [
+        { q: "16. Zeigen statt Behaupten (Show, don't tell)", h: "Werden Gefühle wie Angst, Wut oder Zuneigung durch Gesten und Bilder spürbar gemacht, statt nur benannt?" },
+        { q: "17. Atmosphäre & Sinne", h: "Nimmt der Leser den Schauplatz über mindestens zwei Sinne wahr (Licht, Geräusche, Gerüche, Kälte)?" },
+        { q: "18. Abwechslungsreicher Satzrhythmus", h: "Wechseln sich kurze, treibende Spannungssätze mit ruhigeren Beschreibungen ab?" },
+        { q: "19. Treffende Verben statt Adjektiv-Berge", h: "Tragen starke Verben die Szene, statt jedes Hauptwort mit zwei Adjektiven zu schmücken?" },
+        { q: "20. Freiheit von Füllwörtern & Wiederholungen", h: "Sind unnötige Weichmacher (eigentlich, irgendwie, plötzlich, ein bisschen) bereits gezielt gestrichen?" }
+      ]
+    },
+    {
+      titel: "Säule 5: Perspektive, Logik & Handwerks-Feinschliff",
+      tipp: "Dein größter Hebel liegt aktuell im <strong>handwerklichen Feinschliff</strong>: Prüfe kapitelweise, ob du versehentlich zwischen den Gedanken zweier Figuren springst, und mache zum Schluss eine reine Laut-Lese-Runde für Zeitformen und Logik.",
+      fragen: [
+        { q: "21. Stabile Erzählperspektive (POV)", h: "Bleibt der Blickwinkel innerhalb einer Szene konsequent bei einer Figur, ohne unabsichtliches „Kopfspringen“?" },
+        { q: "22. Innere Logik & Stimmigkeit", h: "Passen Zeitabläufe, Jahreszeiten, Entfernungen und das Wissen der Figuren widerspruchsfrei zusammen?" },
+        { q: "23. Historische / Fachliche Authentizität", h: "Stimmen Gegenstände, Berufe, Redewendungen und Gepflogenheiten mit der gewählten Zeit überein?" },
+        { q: "24. Einheitliche Zeitform", h: "Wird die gewählte Erzählzeit (Präteritum oder Präsens) sauber durchgehalten, ohne unbeabsichtigte Sprünge?" },
+        { q: "25. Laut-Lese-Probe bestanden", h: "Wurde der Text mindestens einmal laut vorgelesen, um holprige Stellen und Wortdreher aufzuspüren?" }
+      ]
+    }
+  ];
+
+  const labels = ["1 • Baustelle", "2 • Im Ansatz", "3 • Solide", "4 • Stark"];
+  const antworten = new Array(25).fill(0);
+
+  function renderQuiz() {
+    const container = document.getElementById("quiz-container");
+    let qIndex = 0;
+
+    saeulen.forEach((s, sIdx) => {
+      const card = document.createElement("div");
+      card.className = "pillar-card";
+      card.innerHTML = `
+        <div class="pillar-header">
+          <h2>${s.titel}</h2>
+          <span class="pillar-score" id="score-s-${sIdx}">0 / 20 Pkt.</span>
+        </div>
+      `;
+
+      s.fragen.forEach((f) => {
+        const currentQ = qIndex;
+        const row = document.createElement("div");
+        row.className = "question-row";
+        row.innerHTML = `
+          <div class="question-text">${f.q}</div>
+          <div class="question-hint">${f.h}</div>
+          <div class="rating-options" id="opts-${currentQ}">
+            ${labels.map((lbl, idx) => `
+              <button type="button" class="rate-btn" onclick="setzeWert(${currentQ}, ${idx + 1}, ${sIdx}, this)">${lbl}</button>
+            `).join("")}
+          </div>
+        `;
+        card.appendChild(row);
+        qIndex++;
+      });
+
+      container.appendChild(card);
+    });
+  }
+
+  function setzeWert(qIdx, wert, sIdx, btn) {
+    antworten[qIdx] = wert;
+    const parent = document.getElementById("opts-" + qIdx);
+    parent.querySelectorAll(".rate-btn").forEach(b => b.classList.remove("selected"));
+    btn.classList.add("selected");
+
+    let sumS = 0;
+    for (let i = sIdx * 5; i < (sIdx + 1) * 5; i++) {
+      sumS += antworten[i];
+    }
+    document.getElementById("score-s-" + sIdx).textContent = `${sumS} / 20 Pkt.`;
+  }
+
+  function auswerten() {
+    const unbeantwortet = antworten.filter(v => v === 0).length;
+    if (unbeantwortet > 0) {
+      alert(`Bitte bewerte noch die restlichen ${unbeantwortet} Fragen, damit die Diagnose vollständig ist.`);
+      return;
+    }
+
+    const gesamt = antworten.reduce((a, b) => a + b, 0);
+    document.getElementById("res-punkte").textContent = `${gesamt} / 100 Punkte`;
+
+    let stufe = "";
+    let text = "";
+
+    if (gesamt <= 49) {
+      stufe = "Phase 1: Rohdiamant & Erstentwurf (25–49 Punkte)";
+      text = "Dein Manuskript steckt noch in der spannenden Entstehungs- und Rohbau-Phase. Das ist völlig normal! Kümmere dich jetzt noch nicht um Kommas oder einzelne Adjektive, sondern stärke zuerst das Fundament: Figuren-Motivation und den roten Faden.";
+    } else if (gesamt <= 74) {
+      stufe = "Phase 2: Solides Fundament in der Überarbeitung (50–74 Punkte)";
+      text = "Deine Geschichte trägt bereits und hat klare Stärken! Jetzt beginnt die eigentliche Lektorats-Arbeit: Durch gezieltes Schleifen an Dialogen, Subtext und Tempo wird aus einem guten Entwurf ein packendes Leseerlebnis.";
+    } else if (gesamt <= 89) {
+      stufe = "Phase 3: Fast druckreif – Zeit für Testleser & Feinschliff (75–89 Punkte)";
+      text = "Herzlichen Glückwunsch! Dein Text hat bereits ein hohes handwerkliches Niveau. Eine Runde mit eurer Vorlesegruppe oder ein Durchgang durch das Rezensenten-Portal hilft dir jetzt, die letzten kleinen blinden Flecken zu entdecken.";
+    } else {
+      stufe = "Phase 4: Lektorats-Reife & Korrektorats-Finale (90–100 Punkte)";
+      text = "Dein Manuskript ist in Struktur, Figurentiefe und Stil rundum stimmig! Jetzt steht nur noch das reine Korrektorat (Rechtschreibung, Zeichensetzung, Satzspiegel) an, bevor dein Buch in die Welt hinaus darf.";
+    }
+
+    let minSum = 999;
+    let schwaechsteSaeule = saeulen[0];
+    for (let s = 0; s < 5; s++) {
+      let sum = 0;
+      for (let i = s * 5; i < (s + 1) * 5; i++) sum += antworten[i];
+      if (sum < minSum) {
+        minSum = sum;
+        schwaechsteSaeule = saeulen[s];
+      }
+    }
+
+    document.getElementById("res-stufe").textContent = stufe;
+    document.getElementById("res-text").textContent = text;
+    document.getElementById("res-fokus").innerHTML = `${schwaechsteSaeule.tipp} <em>(Aktueller Stand in diesem Bereich: ${minSum} von 20 Punkten)</em>`;
+
+    const panel = document.getElementById("result-panel");
+    panel.style.display = "block";
+    panel.scrollIntoView({ behavior: "smooth" });
+  }
+
+  function ergebnisKopieren() {
+    const punkte = document.getElementById("res-punkte").textContent;
+    const stufe = document.getElementById("res-stufe").textContent;
+    const fokus = document.getElementById("res-fokus").textContent;
+
+    const text = `LEKTORATS-KOMPASS AUSWERTUNG\n` +
+                 `• Ergebnis: ${punkte}\n` +
+                 `• Einordnung: ${stufe}\n` +
+                 `• Empfohlener Schwerpunkt: ${fokus}`;
+
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById("copy-btn");
+      const orig = btn.textContent;
+      btn.textContent = "✓ Kopiert!";
+      setTimeout(() => { btn.textContent = orig; }, 2000);
+    });
+  }
+
+  renderQuiz();
+</script>
+
+</body>
+</html>

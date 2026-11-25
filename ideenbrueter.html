@@ -1,0 +1,957 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>Ideenbrüter | Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --bg-darkroom: #EAEFEF;
+      --card-dark: #F7FAFA;
+      --primary-sage: #2C6A72;
+      --accent-terracotta: #3D5A6C;
+      --cream-grey: #182329;
+      --line-muted: #BDCBD0;
+      --status-published: #2E5B4B;
+      --status-progress: #A86A44;
+      --btn-gradient: linear-gradient(135deg, #445E6A 0%, #1A3F49 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--bg-darkroom);
+      color: var(--cream-grey);
+      line-height: 1.7;
+    }
+    .network-container { max-width: 980px; margin: 0 auto; padding: 30px 20px 50px; }
+
+    /* Top-Navigation */
+    .top-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+    }
+    .back-link {
+      display: inline-block; padding: 8px 16px; border: 2px solid var(--primary-sage);
+      color: var(--primary-sage); text-decoration: none; font-size: 0.85rem;
+      font-weight: bold; letter-spacing: 0.5px; border-radius: 4px; transition: all 0.2s;
+    }
+    .back-link:hover { background: rgba(44, 106, 114, 0.1); }
+
+    /* Header */
+    header { text-align: center; padding: 25px 0 35px 0; position: relative; margin-bottom: 30px; }
+    header::after {
+      content: ''; position: absolute; bottom: 0; left: 25%; width: 50%; height: 1px;
+      background: linear-gradient(to right, transparent, var(--primary-sage), transparent);
+    }
+    h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 4px; color: var(--cream-grey); text-transform: uppercase; }
+    h1 span { font-weight: 700; color: var(--primary-sage); }
+    .tagline {
+      font-size: 0.95rem; color: var(--accent-terracotta); margin-top: 12px;
+      letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+    }
+
+    /* Modus-Tabs */
+    .mode-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; justify-content: center; }
+    .tab-btn {
+      padding: 11px 22px; border: 1px solid var(--line-muted); background: var(--card-dark);
+      color: var(--cream-grey); border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+      transition: all 0.2s;
+    }
+    .tab-btn.active { background: var(--btn-gradient); color: #fff; border-color: transparent; }
+
+    /* Steuerungsleiste */
+    .control-panel {
+      background: #ffffff; border: 1px solid var(--line-muted); border-radius: 6px;
+      padding: 20px 24px; margin-bottom: 24px;
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
+      gap: 16px; align-items: end; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .control-group label {
+      display: block; font-size: 0.78rem; font-weight: 700; text-transform: uppercase;
+      letter-spacing: 0.8px; color: var(--accent-terracotta); margin-bottom: 6px;
+    }
+    .control-group select {
+      width: 100%; padding: 11px 14px; border: 1px solid var(--line-muted);
+      border-radius: 4px; background: var(--card-dark); color: var(--cream-grey);
+      font-family: inherit; font-size: 0.92rem; cursor: pointer;
+    }
+    .action-btn {
+      width: 100%; padding: 12px 20px; color: #FFFFFF; font-weight: bold;
+      background: var(--btn-gradient); font-size: 0.9rem; letter-spacing: 1px;
+      text-transform: uppercase; border-radius: 4px; border: none; cursor: pointer;
+      transition: opacity 0.2s;
+    }
+    .action-btn:hover { opacity: 0.92; }
+
+    /* Ideenbrüter-Karten */
+    .oracle-card {
+      background: #ffffff; border: 1px solid var(--line-muted);
+      border-left: 5px solid var(--primary-sage); border-radius: 8px;
+      padding: 28px; box-shadow: 0 6px 18px rgba(0, 0, 0, 0.05);
+    }
+    .oracle-header {
+      display: flex; justify-content: space-between; align-items: center;
+      flex-wrap: wrap; gap: 10px; border-bottom: 1px solid var(--line-muted);
+      padding-bottom: 14px; margin-bottom: 20px;
+    }
+    .genre-badge {
+      font-size: 0.78rem; font-weight: bold; text-transform: uppercase;
+      letter-spacing: 1px; color: var(--primary-sage);
+      background: rgba(44, 106, 114, 0.1); padding: 4px 12px; border-radius: 4px;
+    }
+    .copy-btn {
+      background: var(--card-dark); border: 1px solid var(--line-muted);
+      color: var(--primary-sage); padding: 7px 14px; border-radius: 4px;
+      font-size: 0.82rem; font-weight: bold; cursor: pointer;
+    }
+    .copy-btn:hover { background: rgba(44, 106, 114, 0.1); border-color: var(--primary-sage); }
+
+    .slots-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 16px; margin-bottom: 16px;
+    }
+    .slot-box {
+      background: var(--card-dark); border: 1px solid var(--line-muted);
+      border-radius: 6px; padding: 16px 18px;
+      display: flex; flex-direction: column; justify-content: space-between;
+    }
+    .slot-top {
+      display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px;
+    }
+    .slot-label {
+      font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
+      letter-spacing: 0.9px; color: var(--accent-terracotta);
+    }
+    .reroll-mini {
+      background: transparent; border: 1px solid var(--line-muted); color: var(--primary-sage);
+      font-size: 0.72rem; font-weight: bold; padding: 2px 8px; border-radius: 3px; cursor: pointer;
+    }
+    .reroll-mini:hover { background: rgba(44, 106, 114, 0.1); }
+    .slot-value {
+      font-size: 1.02rem; font-weight: 600; color: var(--cream-grey); line-height: 1.45;
+    }
+    .challenge-box {
+      background: #fffaf0; border: 1px solid #e6d3b8;
+      border-left: 4px solid var(--status-progress); border-radius: 6px;
+      padding: 18px 20px;
+    }
+    .challenge-box .slot-label { color: var(--status-progress); }
+
+    /* 16-Punkte-Bauplan */
+    .act-group { margin-bottom: 26px; }
+    .act-title {
+      font-size: 1.15rem; font-weight: 700; color: var(--primary-sage);
+      text-transform: uppercase; letter-spacing: 1px; margin-bottom: 12px;
+      padding-bottom: 6px; border-bottom: 2px solid var(--primary-sage);
+    }
+    .step-grid {
+      display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 14px;
+    }
+    .step-card {
+      background: #ffffff; border: 1px solid var(--line-muted);
+      border-top: 3px solid var(--accent-terracotta); border-radius: 6px;
+      padding: 16px; box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
+    }
+    .step-num {
+      font-size: 0.75rem; font-weight: bold; text-transform: uppercase;
+      color: var(--accent-terracotta); letter-spacing: 0.8px;
+    }
+    .step-card h3 { font-size: 1rem; color: var(--cream-grey); margin: 4px 0 8px; }
+    .step-card p { font-size: 0.88rem; color: #3D5A6C; line-height: 1.5; }
+
+    /* Footer */
+    footer {
+      text-align: center; margin-top: 60px; color: var(--cream-grey); font-size: 0.85rem;
+      opacity: 0.8; border-top: 1px solid var(--line-muted); padding-top: 25px;
+    }
+    footer a { color: var(--primary-sage); text-decoration: none; margin: 0 10px; font-weight: 600; }
+    
+      /* 10-Kapitel-Schreibhandwerk-Leitfaden */
+  .multiversum-leitfaden {
+    margin: 45px 0 20px 0;
+  }
+
+  .leitfaden-header {
+    text-align: center;
+    margin-bottom: 22px;
+  }
+
+  .leitfaden-header h2 {
+    color: var(--primary-sage);
+    font-size: 1.3rem;
+    letter-spacing: 0.12em;
+    font-weight: 600;
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+
+  .leitfaden-intro {
+    font-size: 0.94rem;
+    color: var(--accent-terracotta);
+    line-height: 1.6;
+    max-width: 700px;
+    margin: 0 auto;
+  }
+
+  .mv-accordion-group {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .mv-accordion-item {
+    background-color: #ffffff;
+    border: 1px solid var(--line-muted);
+    border-radius: 6px;
+    transition: all 0.25s ease;
+    overflow: hidden;
+  }
+
+  .mv-accordion-item[open],
+  .mv-accordion-item:hover {
+    border-color: var(--primary-sage);
+    box-shadow: 0 3px 10px rgba(44, 106, 114, 0.12);
+  }
+
+  .mv-accordion-header {
+    list-style: none;
+    cursor: pointer;
+    padding: 15px 20px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-weight: 600;
+    font-size: 0.98rem;
+    color: var(--cream-grey);
+    user-select: none;
+  }
+
+  .mv-accordion-header::-webkit-details-marker {
+    display: none;
+  }
+
+  .mv-title {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+  }
+
+  .mv-arrow {
+    color: var(--primary-sage);
+    font-size: 0.78rem;
+    transition: transform 0.25s ease;
+  }
+
+  .mv-accordion-item[open] .mv-arrow {
+    transform: rotate(180deg);
+  }
+
+  .mv-accordion-content {
+    padding: 0 20px 20px 20px;
+    border-top: 1px solid var(--line-muted);
+    font-size: 0.93rem;
+    line-height: 1.6;
+  }
+
+  .mv-worum-box {
+    background-color: var(--card-dark);
+    border-left: 3px solid var(--primary-sage);
+    padding: 10px 14px;
+    margin: 14px 0;
+    border-radius: 0 4px 4px 0;
+    color: var(--cream-grey);
+  }
+
+  .mv-list {
+    margin: 0;
+    padding-left: 20px;
+    color: var(--cream-grey);
+  }
+
+  .mv-list li {
+    margin-bottom: 6px;
+  }
+
+  .mv-list li:last-child {
+    margin-bottom: 0;
+  }
+
+  </style>
+</head>
+<body>
+
+<!-- Zentrale Hauptnavigation für das Autoren-Multiversum -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+
+
+  <div class="network-container">
+    <nav class="top-nav">
+      <a href="index.html" class="back-link">&larr; Zurück zum Autoren-Multiversum</a>
+      <span style="font-size: 0.8rem; color: var(--accent-terracotta); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Autoren-Werkzeug &bull; Schreibübungen</span>
+    </nav>
+
+    <header>
+      <h1>Ideen<span>brüter</span></h1>
+      <div class="tagline">Zufalls-Orakel &amp; 16-Punkte-Manuskript-Raster für Autorinnen und Autoren</div>
+    </header>
+
+    <div class="mode-tabs">
+      <button type="button" class="tab-btn active" onclick="switchTab('oracle', this)">1. Das Ideen-Orakel (Zufallsgenerator)</button>
+      <button type="button" class="tab-btn" onclick="switchTab('plan', this)">2. Der 16-Punkte-Bauplan (4 Akte)</button>
+    </div>
+
+    <!-- TAB 1: IDEEN-ORAKEL -->
+    <main id="view-oracle">
+      <div class="control-panel">
+        <div class="control-group">
+          <label for="sel-genre">Genre filtern</label>
+          <select id="sel-genre">
+            <option value="all">Alle Genres (Bunter Mix)</option>
+            <option value="Krimi & Thriller">Krimi &amp; Thriller</option>
+            <option value="Fantasy">Fantasy &amp; Mystery</option>
+            <option value="Science-Fiction">Science-Fiction &amp; Dystopie</option>
+            <option value="Liebesroman">Liebesroman</option>
+            <option value="Histor. Roman">Historischer Roman &amp; Steampunk</option>
+            <option value="Kinderbuch">Kinderbuch</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <label for="sel-mix">Misch-Modus</label>
+          <select id="sel-mix">
+            <option value="mix">Frei kombinieren (Kreuz &amp; Quer)</option>
+            <option value="row">Stimmige Szene aus einem Guss</option>
+          </select>
+        </div>
+
+        <div class="control-group">
+          <button type="button" class="action-btn" onclick="rollAll()">Neue Übung würfeln (F9)</button>
+        </div>
+      </div>
+
+      <article class="oracle-card">
+        <div class="oracle-header">
+          <span class="genre-badge" id="out-genre">Genre</span>
+          <button type="button" class="copy-btn" id="copy-btn" onclick="copyPrompt()">Schreibübung kopieren</button>
+        </div>
+
+        <div class="slots-grid">
+          <div class="slot-box">
+            <div class="slot-top">
+              <span class="slot-label">Charakter</span>
+              <button type="button" class="reroll-mini" onclick="rerollSingle('char')">Neu</button>
+            </div>
+            <div class="slot-value" id="out-char">...</div>
+          </div>
+
+          <div class="slot-box">
+            <div class="slot-top">
+              <span class="slot-label">Setting / Schauplatz</span>
+              <button type="button" class="reroll-mini" onclick="rerollSingle('setting')">Neu</button>
+            </div>
+            <div class="slot-value" id="out-setting">...</div>
+          </div>
+
+          <div class="slot-box">
+            <div class="slot-top">
+              <span class="slot-label">Konflikt / Aufgabe</span>
+              <button type="button" class="reroll-mini" onclick="rerollSingle('conflict')">Neu</button>
+            </div>
+            <div class="slot-value" id="out-conflict">...</div>
+          </div>
+        </div>
+
+        <div class="challenge-box">
+          <div class="slot-top">
+            <span class="slot-label">Zusatz-Challenge (Stil &amp; Perspektive)</span>
+            <button type="button" class="reroll-mini" onclick="rerollSingle('challenge')">Neu</button>
+          </div>
+          <div class="slot-value" id="out-challenge">...</div>
+        </div>
+      </article>
+    </main>
+
+    <!-- TAB 2: DER 16-PUNKTE-BAUPLAN -->
+    <section id="view-plan" style="display: none;">
+      <div id="plan-container"></div>
+    </section>
+
+<!-- 10 KAPITEL SCHREIBHANDWERK -->
+<section class="multiversum-leitfaden">
+  <div class="leitfaden-header">
+    <h2>Das Handwerk des Erzählens &bull; 10 Kapitel</h2>
+    <p class="leitfaden-intro">Vom ersten Funken einer Figur bis zum letzten Feinschliff: Öffne den Leitfaden, wenn du deine ausgewürfelte Idee zu einer ganzen Geschichte ausbauen möchtest.</p>
+  </div>
+
+  <!-- ÄUSSERES AUFKLAPP-MENÜ FÜR ALLE 10 KAPITEL -->
+  <details class="mv-accordion-item" style="border: 2px solid var(--primary-sage); border-radius: 8px; background: var(--card-dark); padding: 6px;">
+    <summary class="mv-accordion-header" style="cursor: pointer; padding: 14px 18px; font-size: 1.02rem; color: var(--cream-grey);">
+      <span class="mv-title">
+        <strong>Worum geht es?</strong> Wie erschaffe ich lebendige Menschen aus Tinte und Papier? (Alle 10 Kapitel anzeigen)
+      </span>
+      <span class="mv-arrow">▼</span>
+    </summary>
+    
+    <!-- Akkordeon-Container -->
+    <div class="mv-accordion-group" style="padding: 12px 10px 6px 10px;">
+
+      <!-- Kapitel 1 -->
+      <details class="mv-accordion-item" open>
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">👤</span> Kapitel 1: Figurenentwicklung (Character Building)
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Wie erschaffe ich lebendige Menschen aus Tinte und Papier?
+          </div>
+          <ul class="mv-list">
+            <li><strong>Äußeres &amp; Inneres:</strong> Äußere Merkmale im Zusammenspiel mit tiefen inneren Konflikten.</li>
+            <li><strong>Antrieb:</strong> Was will die Figur erreichen (Motivation) – und was hindert sie daran (Hindernis)?</li>
+            <li><strong>Vorgeschichte:</strong> Die Biografie der Figur schreiben, noch bevor die eigentliche Geschichte beginnt.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Kapitel 2 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">👁️</span> Kapitel 2: Perspektive und Erzählverhalten (POV)
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Durch wessen Augen sieht der Leser die Geschichte?
+          </div>
+          <ul class="mv-list">
+            <li><strong>Der Ich-Erzähler:</strong> Sehr nah am Geschehen, weiß aber nicht alles.</li>
+            <li><strong>Der allwissende Erzähler:</strong> Sieht alles, weiß alles und blickt hinter jede Fassade.</li>
+            <li><strong>Der personale Erzähler:</strong> Bleibt ganz nah bei einer Figur und ihren Gedanken.</li>
+            <li><strong>Perspektivwechsel:</strong> Wie ändert sich die Geschichte, wenn man die Perspektive wechselt?</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Kapitel 3 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">🏗️</span> Kapitel 3: Plotting und Struktur (Der Aufbau)
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Die Architektur der Geschichte.
+          </div>
+          <ul class="mv-list">
+            <li><strong>Drei-Akt-Struktur:</strong> Ein stimmiger Aufbau aus Anfang, Mitte und Ende.</li>
+            <li><strong>Wendepunkte:</strong> Der „Point of no Return“ – der Punkt, an dem die Figur nicht mehr zurückkann.</li>
+            <li><strong>Spannungsbogen:</strong> Wie baut man Spannung auf und wie hält man das Tempo?</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Kapitel 4 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">✍️</span> Kapitel 4: Textur und Stil (Das eigentliche Schreiben)
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Das Handwerk auf Satzebene.
+          </div>
+          <ul class="mv-list">
+            <li><strong>Show, don’t tell:</strong> Zeigen statt behaupten – Szenen lebendig erlebbar machen.</li>
+            <li><strong>Sprachbilder:</strong> Treffende Metaphern und Bilder finden, die im Gedächtnis bleiben.</li>
+            <li><strong>Feinschliff:</strong> Satzrhythmus und Wortwahl gezielt auf die Stimmung der Szene abstimmen.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Kapitel 5 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">💬</span> Kapitel 5: Dialogführung (Lebendige Gespräche)
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Wie reden Figuren miteinander, damit Gespräche spannend bleiben?
+          </div>
+          <ul class="mv-list">
+            <li><strong>Subtext:</strong> Was zwischen den Zeilen passiert – wenn Figuren etwas anderes sagen, als sie eigentlich meinen.</li>
+            <li><strong>Verdichtung:</strong> Dialoge auf das Wesentliche kürzen, damit sie nicht wie alltäglicher, langweiliger Smalltalk klingen.</li>
+            <li><strong>Eigene Stimme:</strong> Jeder Figur eine unverwechselbare Ausdrucksweise und Wortwahl geben.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Kapitel 6 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">🏛️</span> Kapitel 6: Das Setting (Der Schauplatz)
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Wo spielt die Geschichte und wie beeinflusst der Ort die Stimmung?
+          </div>
+          <ul class="mv-list">
+            <li><strong>Räume als Spiegel der Seele:</strong> Wie die Umgebung das Innere zeigt (z. B. eine unaufgeräumte Küche als Ausdruck für das Chaos im Kopf der Figur).</li>
+            <li><strong>Atmosphäre &amp; Natur:</strong> Das Wetter und die Umgebung als aktive Mitspieler der Handlung nutzen.</li>
+            <li><strong>Weltenbau:</strong> Historische oder fantastische Welten in sich stimmig und logisch aufbauen.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Kapitel 7 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">⏳</span> Kapitel 7: Erzähltempo und Zeitstruktur
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Wie steuert man das Zeitempfinden beim Lesen?
+          </div>
+          <ul class="mv-list">
+            <li><strong>Zeitraffer:</strong> Wie ganze Jahre mühelos in einem einzigen Satz vergehen können.</li>
+            <li><strong>Zeitlupe:</strong> Wie ein sekundenkurzer Sturz über zwei Seiten gedehnt wird, um maximale Spannung zu erzeugen.</li>
+            <li><strong>Rückblenden:</strong> Erinnerungen und Vorgeschichte geschickt einbauen, ohne den Leser zu verwirren.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Kapitel 8 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">🧭</span> Kapitel 8: Motive, Symbole und Leitmotive
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Die geheime Bedeutung hinter den Dingen entdecken.
+          </div>
+          <ul class="mv-list">
+            <li><strong>Wandelnde Gegenstände:</strong> Ein Objekt, das immer wieder auftaucht und sich verändert (z. B. eine Uhr, die erst tickt und später stehen bleibt).</li>
+            <li><strong>Farbpsychologie:</strong> Farben und ihre unbewusste emotionale Wirkung gezielt einsetzen.</li>
+            <li><strong>Subtile Botschaften:</strong> Tiefe zwischen den Zeilen verankern, die beim Leser lange nachhallt.</li>
+          </ul>
+        </div>
+      </details>
+
+      <!-- Kapitel 9 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">🎬</span> Kapitel 9: Der Anfang und das Ende (Pacing &amp; Ending)
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Wie fängt man den Leser ein und wie lässt man ihn am Schluss wieder los?
+          </div>
+          <ul class="mv-list">
+            <li><strong>Der erste Satz (Der „Haken“):</strong> Ein Einstieg, der sofort Neugier weckt und in die Welt hineinzieht.</li>
+            <li><strong>Offenes vs. geschlossenes Ende:</strong> Die passende Abschlussform für die jeweilige Geschichte wählen.</li>
+            <li><strong>Unvergessliches Finale:</strong> Wie man einen Schlusspunkt setzt, der noch lange im Gedächtnis bleibt.</li>
+          </ul>
+        </div>
+      </details>
+      <!-- Kapitel 10 -->
+      <details class="mv-accordion-item">
+        <summary class="mv-accordion-header">
+          <span class="mv-title">
+            <span class="mv-icon">✨</span> Kapitel 10: Überarbeitung und Lektorat (Der Polier-Prozess)
+          </span>
+          <span class="mv-arrow">▼</span>
+        </summary>
+        <div class="mv-accordion-content">
+          <div class="mv-worum-box">
+            <strong>Worum geht es?</strong> Das nackte Skelett der Geschichte zum Glänzen bringen.
+          </div>
+          <ul class="mv-list">
+            <li><strong>„Kill your darlings“:</strong> Den Mut finden, unnötige Szenen oder Sätze zu streichen, die den Lesefluss bremsen.</li>
+            <li><strong>Roter Faden &amp; Logik:</strong> Prüfen, ob alle Handlungsstränge und Figurenentwicklungen schlüssig aufgehen.</li>
+            <li><strong>Feinschliff:</strong> Den Text auf Hochglanz polieren, bis jedes Wort sitzt.</li>
+          </ul>
+        </div>
+      </details>
+
+    </div>
+  </details>
+</section>
+
+
+
+
+ <!-- FOOTER & LEGAL -->
+<footer>
+  <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. D · A · CH · International</p>
+  <div style="margin-top: 8px;">
+    <a href="impressum.html">Impressum</a> | 
+    <a href="datenschutz.html">Datenschutzerklärung</a>
+  </div>
+  <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+    <span>Webdesign &amp; Umsetzung:</span>
+    <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+      <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+      <span>ARTBECKO</span>
+    </a>
+  </div>
+</footer>
+
+
+  </div>
+
+  <script>
+    const ideenDaten = [
+      // Krimi & Thriller
+      { g: "Krimi & Thriller", c: "Privatdetektiv*in", s: "Verregnete Großstadt", k: "Muss einen verschwundenen Zeugen finden" },
+      { g: "Krimi & Thriller", c: "FBI-Agent*in", s: "Geheime Polizeistation", k: "Wird für einen Mord verantwortlich gemacht" },
+      { g: "Krimi & Thriller", c: "Gerichtsmediziner*in", s: "Abgelegene Berghütte", k: "Entdeckt ein manipuliertes Beweisstück" },
+      { g: "Krimi & Thriller", c: "Ex-Sträfling", s: "Verlassene U-Bahn-Station", k: "Deckt ein geheimes Abkommen auf" },
+      { g: "Krimi & Thriller", c: "Polizeipsycholog*in", s: "Ermittlungsarchiv", k: "Muss einen Unschuldigen entlasten" },
+      { g: "Krimi & Thriller", c: "Whistleblower*in", s: "Luxushotel mit Sicherheitslücken", k: "Gerät ins Fadenkreuz eines Syndikats" },
+      { g: "Krimi & Thriller", c: "Journalist*in", s: "Verlassenes Industriegebiet", k: "Findet Hinweise auf einen Maulwurf im Team" },
+      { g: "Krimi & Thriller", c: "Versicherungsdetektiv*in", s: "Überwachtes Hochhaus", k: "Entlarvt einen Justizskandal" },
+      { g: "Krimi & Thriller", c: "Hacker*in", s: "Gefängnisflügel", k: "Wird gezwungen, Beweise zu fälschen" },
+      { g: "Krimi & Thriller", c: "Profiler*in", s: "Hackerbunker", k: "Muss eine drohende Geiselnahme verhindern" },
+      { g: "Krimi & Thriller", c: "Spion*in", s: "Verhörraum", k: "Stößt auf ein altes Familiengeheimnis" },
+      { g: "Krimi & Thriller", c: "Cold-Case-Ermittler*in", s: "Bunker aus dem Kalten Krieg", k: "Wird in ein Verhör verwickelt als Verdächtige*r" },
+      { g: "Krimi & Thriller", c: "Tatortreiniger*in", s: "Antiquitätengeschäft", k: "Muss einer Jugendfreundschaft misstrauen" },
+      { g: "Krimi & Thriller", c: "Ermittler*in für Kunstdiebstahl", s: "Alte Schulruine", k: "Deckt ein geheimes Überwachungsprogramm auf" },
+
+      // Fantasy & Mystery
+      { g: "Fantasy", c: "Magier*in", s: "Verborgene Bibliothek", k: "Muss ein verbotenes Zauberbuch beschaffen" },
+      { g: "Fantasy", c: "Drachenreiter*in", s: "Vulkaninsel mit Drachen", k: "Verliert die Kontrolle über den eigenen Drachen" },
+      { g: "Fantasy", c: "Gestaltwandler*in", s: "Mystischer Wald", k: "Wird von einer dunklen Macht verfolgt" },
+      { g: "Fantasy", c: "Hexe*r", s: "Alte Ruinen", k: "Trägt einen verfluchten Gegenstand bei sich" },
+      { g: "Fantasy", c: "Lichtformer*in", s: "Stadt der ewigen Nacht", k: "Kämpft gegen einen uralten Feind" },
+      { g: "Fantasy", c: "Elfenprinzessin", s: "Verzaubertes Königreich", k: "Muss ein gestohlenes Artefakt zurückholen" },
+      { g: "Fantasy", c: "Zeitreisende*r", s: "Kristallhöhle mit Portalen", k: "Bleibt in einer fremden Zeit gefangen" },
+      { g: "Fantasy", c: "Bibliothekswächter*in", s: "Astrale Bibliothek", k: "Entschlüsselt eine Wahrheit, die verborgen bleiben sollte" },
+      { g: "Fantasy", c: "Runenmeister*in", s: "Vergessenes Bergreich", k: "Entdeckt eine uralte Sprache mit zerstörerischer Kraft" },
+      { g: "Fantasy", c: "Spiegelwander*in", s: "Spiegelwüste", k: "Tritt in eine alternative Version seiner*ihrer selbst ein" },
+      { g: "Fantasy", c: "Orakel", s: "Verlorene Kathedrale", k: "Sagt eine Katastrophe voraus und muss sie verhindern" },
+      { g: "Fantasy", c: "Kristallpriester*in", s: "Tempel unter dem Wüstenmeer", k: "Versucht, einen Kristall vor dem Zerfall zu bewahren" },
+      { g: "Fantasy", c: "Chronomagier*in", s: "Uhrwerkstadt zwischen den Zeiten", k: "Muss eine Zeitlinie reparieren, bevor sie sich auflöst" },
+      { g: "Fantasy", c: "Traumtäuscher*in", s: "Internat für magisch Begabte", k: "Ein magisches Wesen erfüllt Träume nur gegen einen hohen Preis" },
+      { g: "Fantasy", c: "Schattenläufer*in", s: "Nebelverhangene Klippen von Baden", k: "Hütet ein verbotenes Portal zwischen den Welten" },
+
+      // Science-Fiction & Dystopie
+      { g: "Science-Fiction", c: "Kybernetiker*in", s: "Forschungslabor auf dem Mars", k: "Muss eine fehlgeschlagene KI-Operation rückgängig machen" },
+      { g: "Science-Fiction", c: "Weltraumpilot*in", s: "Verlassene Raumstation", k: "Verliert die Kontrolle über das eigene Schiff" },
+      { g: "Science-Fiction", c: "Cyber-Rebell*in", s: "Megacity unter einer Glaskuppel", k: "Wird von einer übermächtigen KI gejagt" },
+      { g: "Science-Fiction", c: "Zeitreisende*r", s: "Raum-Zeit-Anomalie", k: "Bleibt in einer Zeitschleife gefangen" },
+      { g: "Science-Fiction", c: "Schmuggler*in", s: "Neonbeleuchteter Schwarzmarkt", k: "Transportiert ein verbotenes Artefakt, ohne es zu wissen" },
+      { g: "Science-Fiction", c: "Android*in", s: "Raumhafen einer fernen Galaxie", k: "Entwickelt ein eigenes Bewusstsein und muss fliehen" },
+      { g: "Science-Fiction", c: "Terraformer*in", s: "Neue Kolonie auf Titan", k: "Stößt auf eine unbekannte Lebensform" },
+      { g: "Science-Fiction", c: "Raumarchäolog*in", s: "Antikes Wrack im All", k: "Weckt eine längst vergessene Technologie" },
+      { g: "Science-Fiction", c: "Gedächtnis-Jäger*in", s: "Holografische Simulation", k: "Hat die eigenen Erinnerungen an einen Fremden verloren" },
+      { g: "Science-Fiction", c: "Schrottsammler*in", s: "Raumschiff-Friedhof im All", k: "Weckt versehentlich ein 1000 Jahre altes Objekt" },
+      { g: "Science-Fiction", c: "Xenolinguist*in", s: "Funkstation auf fremdem Mond", k: "Muss eine Nachricht übersetzen, bevor es zu spät ist" },
+      { g: "Science-Fiction", c: "Sternenseher*in", s: "Religiöses Observatorium", k: "Muss einen kommenden Systemkollaps interpretieren" },
+
+      // Liebesroman
+      { g: "Liebesroman", c: "Schriftsteller*in", s: "Kleines Café in Paris", k: "Muss sich zwischen Liebe und Karriere entscheiden" },
+      { g: "Liebesroman", c: "Buchhändler*in", s: "Kleine Buchhandlung", k: "Wird von einer unerwarteten Liebeserklärung überrascht" },
+      { g: "Liebesroman", c: "Winzer*in", s: "Familiengeführtes Weingut", k: "Wird vor eine Entscheidung gestellt, die die Liebe gefährden könnte" },
+      { g: "Liebesroman", c: "Restaurator*in", s: "Historisches Herrenhaus", k: "Entdeckt ein Liebesbrief-Fragment, das alles verändert" },
+      { g: "Liebesroman", c: "Bibliothekar*in", s: "Historische Universitätsbibliothek", k: "Verliebt sich in jemanden, der nichts über Bücher wissen will" },
+      { g: "Liebesroman", c: "Florist*in", s: "Blumenladen in einer Altstadt", k: "Muss ein Missverständnis aufklären, bevor es zu spät ist" },
+      { g: "Liebesroman", c: "Kurator*in", s: "Kunstgalerie in Paris", k: "Muss ein Werk vor dem Verkauf retten – und eine Liebe gleich mit" },
+      { g: "Liebesroman", c: "Goldschmied*in", s: "Werkstatt in Florenz", k: "Entdeckt im Auftrag ein Symbol einer verlorenen Liebe" },
+      { g: "Liebesroman", c: "Bäcker*in", s: "Frühmarkt in Kopenhagen", k: "Verwechselt eine Bestellung und lernt so die Liebe kennen" },
+      { g: "Liebesroman", c: "Synchronsprecher*in", s: "Tonstudio in Berlin", k: "Verliebt sich in jemanden, den er*sie nur über die Stimme kennt" },
+
+      // Historischer Roman & Steampunk
+      { g: "Histor. Roman", c: "Adelige*r", s: "Königshof im 18. Jahrhundert", k: "Muss sich gegen eine Intrige am Hof behaupten" },
+      { g: "Histor. Roman", c: "Uhrmacher*in", s: "Werkstatt in der Industriellen Revolution", k: "Entwickelt eine Erfindung, die verboten werden soll" },
+      { g: "Histor. Roman", c: "Apotheker*in", s: "Kräuterstube im 14. Jahrhundert", k: "Wird fälschlich einer Vergiftung beschuldigt" },
+      { g: "Histor. Roman", c: "Klosterschreiber*in", s: "Skriptorium", k: "Muss einen verbotenen Text verstecken" },
+      { g: "Histor. Roman", c: "Buchdrucker*in", s: "Frühzeit der Reformation", k: "Wird wegen eines geheimen Flugblatts gesucht" },
+      { g: "Histor. Roman", c: "Meister-Erfinder*in", s: "Unterirdisches Dampf-Labor", k: "Eine Maschine entwickelt ein unheimliches Bewusstsein" },
+      { g: "Histor. Roman", c: "Geheimkurier*in", s: "Zeppelinstation über den Wolken", k: "Transportiert Pläne, die einen Konflikt auslösen könnten" },
+      { g: "Histor. Roman", c: "Gassenjunge/-mädchen", s: "Rauchige Fabrikstadt (19. Jhd.)", k: "Entdeckt ein verborgenes Uhrwerk-Geheimnis" },
+      { g: "Histor. Roman", c: "Fotopionier*in", s: "Belagerte Stadt mit Dunkelkammer", k: "Dokumentiert ein Geheimnis – auf eigenes Risiko" },
+      { g: "Histor. Roman", c: "Botaniker*in", s: "Glashaus des Kaisers/der Kaiserin", k: "Entdeckt eine seltene Pflanze mit rätselhafter Wirkung" },
+      { g: "Histor. Roman", c: "Komponist*in", s: "Hoforchester in Wien", k: "Muss ein verschollenes Werk rekonstruieren" },
+      { g: "Histor. Roman", c: "Übersetzer*in", s: "Handelsstadt an der Seidenstraße", k: "Entschlüsselt eine Botschaft, die nicht für ihn*sie bestimmt war" },
+
+      // Kinderbuch
+      { g: "Kinderbuch", c: "Mutiges Kind", s: "Baumhaus im Wald", k: "Muss einen geheimen Schatz finden" },
+      { g: "Kinderbuch", c: "Tollpatschiger Drache", s: "Wolkenschloss", k: "Verliert sein*ihr magisches Feuer" },
+      { g: "Kinderbuch", c: "Kluger Zauberlehrling", s: "Versteckte Zauberbibliothek", k: "Muss einen wichtigen Zauberspruch lernen" },
+      { g: "Kinderbuch", c: "Schüchterner Geist", s: "Altes Spukhaus", k: "Muss beweisen, dass er*sie nicht gruselig ist" },
+      { g: "Kinderbuch", c: "Magischer Pinsel", s: "Schulklassenzimmer", k: "Zeichnet aus Versehen etwas zum Leben" },
+      { g: "Kinderbuch", c: "Staunender Bücherwurm", s: "Spielzeugladen bei Nacht", k: "Muss einem Teddybär helfen, nach Hause zu finden" },
+      { g: "Kinderbuch", c: "Verzauberter Bleistift", s: "Geheimschublade im Kinderzimmer", k: "Schreibt von selbst und verursacht Chaos" },
+      { g: "Kinderbuch", c: "Kleine*r Leuchtturmwächter*in", s: "Insel mit Sturmwarnung", k: "Muss das Licht wieder einschalten, bevor das Schiff kommt" },
+      { g: "Kinderbuch", c: "Geschichtenerzähler*in", s: "Bibliothek bei Kerzenlicht", k: "Findet ein Buch, das seine Leser*innen vergisst" },
+      { g: "Kinderbuch", c: "Unsichtbare*r Freund*in", s: "Kindergeburtstag mit Spielen", k: "Muss sich entscheiden, ob er*sie sichtbar werden will" }
+    ];
+
+   const challenges = [
+  "Schreibe eine Szene aus der Sicht eines Gegenstands.",
+  "Nutze nur Sinneseindrücke (Hören, Riechen, Fühlen), um das Setting zu beschreiben.",
+  "Schreibe eine Szene, bei der jeder Satz mit dem nächsten Buchstaben des Alphabets beginnt (A-Z-Challenge).",
+  "Verwende ausschließlich kurze, prägnante Sätze.",
+  "Vermeide jegliche Adjektive in der gesamten Szene.",
+  "Schreibe eine Szene aus der Sicht eines unwichtigen Nebencharakters.",
+  "Erzähle die Szene rückwärts vom Ende zum Anfang.",
+  "Vermeide das Wort „und“ in der gesamten Szene.",
+  "Beginne die Szene mitten in einer laufenden Handlung.",
+  "Erzähle die Szene aus der Sicht eines Tieres.",
+  "Schreibe eine Szene ausschließlich in der 2. Person („Du gehst durch die dunkle Gasse…“).",
+  "Schreibe die Szene in Briefform oder als Tagebucheintrag.",
+  "Nutze Körpersprache, um Gefühle zu zeigen – ohne direkte Emotionen zu benennen.",
+  "Schreibe eine Szene ohne das Wort „sagen“ oder Synonyme davon.",
+  "Nutze keine Eigennamen in der gesamten Szene.",
+  "Erzähle die Szene so, dass Leser*innen erst ganz am Ende erkennen, wer spricht oder handelt.",
+  "Erzähle aus der Perspektive einer verknallten Figur – aber ohne das Wort „Liebe“ zu verwenden.",
+  "Baue drei historische Begriffe ein, die heute kaum noch jemand nutzt.",
+  "Beschreibe einen Moment großer Angst – ohne das Wort „Angst“.",
+  "Lass eine Figur eine scheinbare Kleinigkeit finden, die alles verändert.",
+  "Psychologie-Challenge: Eine Figur wirft einer anderen genau den Fehler vor, den sie selbst heimlich begangen hat (Projektion).",
+  "Psychologie-Challenge: Zeige durch reine Körpersprache (Subtext), dass eine Figur ihre tiefe Angst hinter lauter Arroganz versteckt.",
+  "Psychologie-Challenge: Zwei Figuren streiten vordergründig über eine Banalität (z. B. eine kaputte Teetasse), meinen aber eigentlich eine alte Verletzung.",
+  "Psychologie-Challenge: Eine Figur sagt im Dialog durchgehend „Alles in Ordnung“, während ihre Gesten das genaue Gegenteil verraten.",
+  "Psychologie-Challenge: Eine Figur möchte unbedingt um Hilfe bitten, doch ihr Stolz lässt es nicht zu – zeige diesen inneren Kampf.",
+  "Psychologie-Challenge: Lass eine Figur eine rein egoistische Entscheidung treffen und sie vor anderen mit „vernünftigen“ Argumenten rechtfertigen (Rationalisierung).",
+  "Psychologie-Challenge: Eine ängstliche Figur sucht Nähe und Bestätigung, während ihr Gegenüber sich bei jedem Schritt sofort zurückzieht.",
+  "Psychologie-Challenge: Zeige den Moment, in dem eine Figur zum ersten Mal an ihrer eigenen „Lebenslüge“ zu zweifeln beginnt.",
+  "Psychologie-Challenge: Eine Figur schweigt in einer Gruppe zu einem offensichtlichen Unrecht, weil sie Angst hat, selbst ausgegrenzt zu werden.",
+  "Psychologie-Challenge: Ein vertrauter Gegenstand, Geruch oder Klang löst bei der Hauptfigur plötzlich eine verdrängte Erinnerung aus.",
+  "Psychologie-Challenge: Beende die Szene mit einer offenen emotionalen Frage (Zeigarnik-Effekt), die den Leser sofort weiterblättern lässt.",
+  "Psychologie-Challenge: Eine sonst sehr kontrollierte, kühle Figur verliert durch einen winzigen Auslöser für einen Moment ihre Fassung."
+];
+
+    const bauplanDaten = [
+      {
+        act: "Akt 1: Die alte Welt (Kapitel 1–4)",
+        steps: [
+          { n: 1, t: "Alltag & Status Quo", d: "Wie sieht der normale Tag deines Charakters aus? Was nervt ihn an seinem aktuellen Zuhause/Setting?" },
+          { n: 2, t: "Der Ruf des Abenteuers", d: "Welches plötzliche Ereignis oder welcher Fund bricht herein? (Eine Karte, ein Geräusch, ein Rätsel?)" },
+          { n: 3, t: "Zögern & Hindernis", d: "Warum kann oder will die Figur nicht sofort losziehen? Wer oder was hält sie auf (Angst, Verbot, Strafe)?" },
+          { n: 4, t: "Point of no Return", d: "Welcher Moment zwingt die Figur, die alte Welt endgültig zu verlassen? (Es gibt kein Zurück mehr!)" }
+        ]
+      },
+      {
+        act: "Akt 2: Der Aufbruch (Kapitel 5–8)",
+        steps: [
+          { n: 5, t: "Die neue Welt", d: "Wie sieht der neue Ort aus, den die Figur betritt? Beschreibe die ersten drei Sinneseindrücke (Riechen, Hören, Sehen)." },
+          { n: 6, t: "Verbündete & kleine Rätsel", d: "Wer schließt sich der Figur an (Freunde, Helfer)? Welches erste kleine Teilrätsel wird gemeinsam gelöst?" },
+          { n: 7, t: "Der falsche Sieg (Midpoint)", d: "Welchen großen Teilerfolg feiert die Truppe? Was glauben sie, schon geschafft zu haben (z. B. ersten Schatz gefunden)?" },
+          { n: 8, t: "Der Wendepunkt (Die Falle)", d: "Warum war der Sieg ein Fehler? Wer taucht plötzlich auf oder welche Gefahr schnappt jetzt zu? Der Rückweg ist versperrt!" }
+        ]
+      },
+      {
+        act: "Akt 3: Die Krise (Kapitel 9–12)",
+        steps: [
+          { n: 9, t: "Steigender Druck", d: "Wie spitzt sich die Lage zu? Die Zeit läuft davon (z. B. eine tickende Uhr, ein herannahender Gegner)." },
+          { n: 10, t: "Der schwere Verlust", d: "Welches wichtige Werkzeug geht verloren oder welcher Freund wendet sich im Streit ab? Die Magie/Hilfe versagt." },
+          { n: 11, t: "Dunkle Nacht der Seele", d: "Der absolute Tiefpunkt. Warum will die Figur aufgeben? Was ist ihre größte Angst in diesem Moment?" },
+          { n: 12, t: "Der Schlüssel zur Wahrheit", d: "Welche moralische Erkenntnis oder welche Entdeckung im allerletzten Moment bringt die Hoffnung und die Lösung zurück?" }
+        ]
+      },
+      {
+        act: "Akt 4: Das Finale (Kapitel 13–16)",
+        steps: [
+          { n: 13, t: "Der Showdown", d: "Wie nutzt die Figur all ihre gelernten Fähigkeiten, um das Problem oder den Gegner im großen Finale zu überlisten?" },
+          { n: 14, t: "Der Clou & Die Moral", d: "Warum siegt die Figur (durch Klugheit oder Zusammenhalt, nicht durch Gewalt)? Das Rätsel ist endgültig gelöst." },
+          { n: 15, t: "Das neue Leben", d: "Wie sieht die Rückkehr nach Hause aus? Was hat sich im Alltag verändert, weil die Figur reifer geworden ist?" },
+          { n: 16, t: "Das offene Tor", d: "Welches kleine, geheime Detail oder welcher Schlusssatz deutet darauf hin, dass das Abenteuer im Verborgenen weitergeht?" }
+        ]
+      }
+    ];
+
+    function getFilteredPool() {
+      const genre = document.getElementById("sel-genre").value;
+      if (genre === "all") return ideenDaten;
+      return ideenDaten.filter(function(item) { return item.g === genre; });
+    }
+
+    function pickRandom(arr) {
+      return arr[Math.floor(Math.random() * arr.length)];
+    }
+
+    function rollAll() {
+      const pool = getFilteredPool();
+      const mixMode = document.getElementById("sel-mix").value;
+
+      if (mixMode === "row") {
+        const row = pickRandom(pool);
+        document.getElementById("out-genre").innerText = row.g;
+        document.getElementById("out-char").innerText = row.c;
+        document.getElementById("out-setting").innerText = row.s;
+        document.getElementById("out-conflict").innerText = row.k;
+      } else {
+        const r1 = pickRandom(pool);
+        const r2 = pickRandom(pool);
+        const r3 = pickRandom(pool);
+        const selectedGenre = document.getElementById("sel-genre").value;
+        document.getElementById("out-genre").innerText = selectedGenre === "all" ? "Bunter Genre-Mix" : selectedGenre;
+        document.getElementById("out-char").innerText = r1.c;
+        document.getElementById("out-setting").innerText = r2.s;
+        document.getElementById("out-conflict").innerText = r3.k;
+      }
+
+      document.getElementById("out-challenge").innerText = pickRandom(challenges);
+      document.getElementById("copy-btn").innerText = "Schreibübung kopieren";
+    }
+
+    function rerollSingle(slot) {
+      const pool = getFilteredPool();
+      if (slot === "char") document.getElementById("out-char").innerText = pickRandom(pool).c;
+      if (slot === "setting") document.getElementById("out-setting").innerText = pickRandom(pool).s;
+      if (slot === "conflict") document.getElementById("out-conflict").innerText = pickRandom(pool).k;
+      if (slot === "challenge") document.getElementById("out-challenge").innerText = pickRandom(challenges);
+      document.getElementById("copy-btn").innerText = "Schreibübung kopieren";
+    }
+
+    function copyPrompt() {
+      const text =
+        "SCHREIBÜBUNG (" + document.getElementById("out-genre").innerText + ")\n" +
+        "Charakter: " + document.getElementById("out-char").innerText + "\n" +
+        "Setting: " + document.getElementById("out-setting").innerText + "\n" +
+        "Konflikt: " + document.getElementById("out-conflict").innerText + "\n" +
+        "Zusatz-Challenge: " + document.getElementById("out-challenge").innerText;
+
+      if (navigator.clipboard) {
+        navigator.clipboard.writeText(text).then(function() {
+          document.getElementById("copy-btn").innerText = "✓ Kopiert!";
+        });
+      }
+    }
+
+    function renderBauplan() {
+      const container = document.getElementById("plan-container");
+      let html = "";
+      bauplanDaten.forEach(function(actObj) {
+        html += '<div class="act-group">';
+        html += '<div class="act-title">' + actObj.act + '</div>';
+        html += '<div class="step-grid">';
+        actObj.steps.forEach(function(st) {
+          html += '<div class="step-card">';
+          html += '<div class="step-num">Baustein ' + st.n + '</div>';
+          html += '<h3>' + st.t + '</h3>';
+          html += '<p>' + st.d + '</p>';
+          html += '</div>';
+        });
+        html += '</div></div>';
+      });
+      container.innerHTML = html;
+    }
+
+    function switchTab(tab, btn) {
+      document.querySelectorAll(".tab-btn").forEach(function(b) { b.classList.remove("active"); });
+      btn.classList.add("active");
+      document.getElementById("view-oracle").style.display = tab === "oracle" ? "block" : "none";
+      document.getElementById("view-plan").style.display = tab === "plan" ? "block" : "none";
+    }
+
+    // F9-Taste wie in einer Excel-Tabelle unterstützen
+    document.addEventListener("keydown", function(e) {
+      if (e.key === "F9") {
+        e.preventDefault();
+        rollAll();
+      }
+    });
+
+    renderBauplan();
+    rollAll();
+  </script>
+</body>
+</html>

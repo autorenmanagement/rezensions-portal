@@ -1,0 +1,612 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>Kompendium| Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+    <style>
+        :root {
+            --bg-darkroom: #EAEFEF;
+            --card-dark: #F7FAFA;
+            --primary-sage: #2C6A72;
+            --accent-terracotta: #3D5A6C;
+            --cream-grey: #182329;
+            --line-muted: #BDCBD0;
+            --btn-gradient: linear-gradient(135deg, #445E6A 0%, #1A3F49 100%);
+        }
+
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            background-color: var(--bg-darkroom);
+            color: var(--cream-grey);
+            line-height: 1.7;
+        }
+
+        .network-container {
+            max-width: 950px;
+            margin: 0 auto;
+            padding: 40px 20px;
+        }
+
+        header {
+            text-align: center;
+            padding: 30px 0 35px 0;
+            position: relative;
+        }
+
+        header::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 25%;
+            width: 50%;
+            height: 1px;
+            background: linear-gradient(to right, transparent, var(--primary-sage), transparent);
+        }
+
+        h1 {
+            font-size: 2.2rem;
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--cream-grey);
+            text-transform: uppercase;
+        }
+
+        h1 span {
+            font-weight: 700;
+            color: var(--primary-sage);
+        }
+
+        .tagline {
+            font-size: 0.95rem;
+            color: var(--accent-terracotta);
+            margin-top: 12px;
+            letter-spacing: 1px;
+            text-transform: uppercase;
+            font-weight: 600;
+        }
+
+        .intro-section {
+            background: rgba(44, 106, 114, 0.05);
+            border-left: 4px solid var(--primary-sage);
+            padding: 20px 30px;
+            margin: 35px 0;
+            border-radius: 0 8px 8px 0;
+            font-size: 1rem;
+        }
+
+        .portal-card {
+            background: rgba(247, 250, 250, 0.9);
+            border: 1px solid var(--line-muted);
+            border-top: 4px solid var(--primary-sage);
+            border-radius: 8px;
+            padding: 30px;
+            margin-bottom: 35px;
+            box-shadow: 0 8px 20px rgba(24, 35, 41, 0.06);
+        }
+
+        h2 {
+            color: var(--primary-sage);
+            font-size: 1.35rem;
+            font-weight: 600;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            padding-bottom: 10px;
+            border-bottom: 1px solid var(--line-muted);
+        }
+
+        h3 {
+            color: var(--accent-terracotta);
+            font-size: 1.15rem;
+            margin-top: 25px;
+            margin-bottom: 10px;
+            font-weight: 700;
+        }
+
+        h4 {
+            color: var(--primary-sage);
+            font-size: 1rem;
+            margin-top: 18px;
+            margin-bottom: 8px;
+            font-weight: 600;
+        }
+
+        p {
+            margin-bottom: 14px;
+            font-size: 0.96rem;
+        }
+
+        .embed-wrapper {
+            position: relative;
+            width: 100%;
+            height: 550px;
+            margin-top: 20px;
+            border: 1px solid var(--line-muted);
+            border-radius: 6px;
+            overflow: hidden;
+            background: #ffffff;
+        }
+
+        .embed-wrapper iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
+        /* Akkordeon-Kapitel für das Kompendium */
+        details.kapitel-box {
+            background: #ffffff;
+            border: 1px solid var(--line-muted);
+            border-radius: 6px;
+            margin-bottom: 16px;
+            overflow: hidden;
+        }
+
+        details.kapitel-box summary {
+            padding: 16px 20px;
+            font-weight: 700;
+            font-size: 1.05rem;
+            color: var(--cream-grey);
+            background: rgba(44, 106, 114, 0.04);
+            cursor: pointer;
+            list-style: none;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        details.kapitel-box summary::-webkit-details-marker {
+            display: none;
+        }
+
+        details.kapitel-box summary::after {
+            content: '▼';
+            font-size: 0.8rem;
+            color: var(--primary-sage);
+            transition: transform 0.2s;
+        }
+
+        details.kapitel-box[open] summary::after {
+            transform: rotate(180deg);
+        }
+
+        .kapitel-inhalt {
+            padding: 25px;
+            border-top: 1px solid var(--line-muted);
+        }
+
+        /* Tabellen-Styling */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin: 18px 0;
+            font-size: 0.92rem;
+            background: #ffffff;
+        }
+
+        th, td {
+            border: 1px solid var(--line-muted);
+            padding: 12px 15px;
+            text-align: left;
+            vertical-align: top;
+        }
+
+        th {
+            background-color: rgba(44, 106, 114, 0.1);
+            color: var(--cream-grey);
+            font-weight: 700;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f9fbfb;
+        }
+
+        ul.kompendium-liste {
+            margin: 12px 0 18px 22px;
+        }
+
+        ul.kompendium-liste li {
+            margin-bottom: 8px;
+            font-size: 0.95rem;
+        }
+
+        .dozenten-impuls {
+            background: rgba(61, 90, 108, 0.06);
+            border-left: 3px solid var(--accent-terracotta);
+            padding: 15px 20px;
+            margin: 20px 0;
+            border-radius: 0 6px 6px 0;
+            font-style: italic;
+            font-size: 0.94rem;
+        }
+
+        .check-item {
+            background: #f8fafc;
+            border: 1px solid var(--line-muted);
+            border-left: 3px solid var(--primary-sage);
+            padding: 12px 16px;
+            margin-bottom: 10px;
+            border-radius: 4px;
+        }
+
+        .back-link {
+            display: inline-block;
+            margin-bottom: 20px;
+            color: var(--primary-sage);
+            text-decoration: none;
+            font-weight: 600;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+
+        footer {
+            text-align: center;
+            margin-top: 60px;
+            color: var(--cream-grey);
+            font-size: 0.85rem;
+            opacity: 0.7;
+            border-top: 1px solid var(--line-muted);
+            padding-top: 25px;
+        }
+    </style>
+</head>
+<body>
+<!-- Zentrale Hauptnavigation für das Autoren-Multiversum -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+<div class="network-container">
+    <a href="index.html" class="back-link">&larr; Zurück zur Startseite</a>
+
+    <header>
+        <h1>Autoren<span>Schatzkammer</span></h1>
+        <div class="tagline">Geschützter Wissensspeicher &bull; Nur für verifizierte Mitglieder</div>
+    </header>
+
+    <div class="intro-section">
+        <strong>Willkommen im inneren Kreis:</strong> Alle hier hinterlegten Leitfäden, Präsentationen und Kompendien unterliegen unserer Schweigegarantie. Bitte gib diesen Zugangscode nicht an Dritte weiter.
+    </div>
+
+    <!-- BEREICH 1: MULTIMEDIA & DOWNLOADS -->
+<section class="portal-card">
+  <h2>1. Einführung &amp; Multimedia-Materialien</h2>
+  <p>Lade dir hier unsere Präsentation als PDF, den Audio-Beitrag zum Werkzeugkasten sowie das Video zum 7-W-Text-Check direkt herunter:</p>
+
+  <div style="display: flex; flex-direction: column; gap: 14px; margin-top: 20px;">
+    
+    <!-- Datei 1: PDF -->
+    <div style="background: #ffffff; border: 1px solid var(--line-muted); border-left: 4px solid var(--primary-sage); border-radius: 6px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <strong style="color: var(--cream-grey); font-size: 1rem;">📄 Das Autoren-Multiversum (Präsentation)</strong><br>
+        <span style="font-size: 0.85rem; color: var(--accent-terracotta);">Kompletter Überblick über unser literarisches Ökosystem &bull; PDF-Dokument</span>
+      </div>
+      <a href="das_autoren-multiversum.pdf" download style="background: var(--btn-gradient); color: #ffffff; text-decoration: none; padding: 10px 18px; border-radius: 5px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;">
+        &darr; PDF herunterladen
+      </a>
+    </div>
+
+    <!-- Datei 2: Audio (.m4a) -->
+    <div style="background: #ffffff; border: 1px solid var(--line-muted); border-left: 4px solid var(--accent-terracotta); border-radius: 6px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <strong style="color: var(--cream-grey); font-size: 1rem;">🎧 Der Werkzeugkasten des Autoren-Multiversums</strong><br>
+        <span style="font-size: 0.85rem; color: var(--accent-terracotta);">Hörbeitrag zu Schreibwerkzeugen &amp; Methoden &bull; Audio-Datei (.m4a)</span>
+      </div>
+      <a href="der_werkzeugkasten_des_autoren-multiversums.m4a" download style="background: var(--btn-gradient); color: #ffffff; text-decoration: none; padding: 10px 18px; border-radius: 5px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;">
+        &darr; Audio herunterladen
+      </a>
+    </div>
+
+    <!-- Datei 3: Video (.mp4) -->
+    <div style="background: #ffffff; border: 1px solid var(--line-muted); border-left: 4px solid var(--primary-sage); border-radius: 6px; padding: 16px 20px; display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px;">
+      <div>
+        <strong style="color: var(--cream-grey); font-size: 1rem;">🎬 Der 7-W-Check für Texte</strong><br>
+        <span style="font-size: 0.85rem; color: var(--accent-terracotta);">Video-Anleitung zur Szenen-Analyse &bull; Video-Datei (.mp4)</span>
+      </div>
+      <a href="7-w-check_fuer_texte.mp4" download style="background: var(--btn-gradient); color: #ffffff; text-decoration: none; padding: 10px 18px; border-radius: 5px; font-size: 0.85rem; font-weight: 600; letter-spacing: 0.5px;">
+        &darr; Video herunterladen
+      </a>
+    </div>
+
+  </div>
+</section>
+
+
+    <!-- BEREICH 2: DAS SPRACHSCHATZ-KOMPENDIUM -->
+    <section class="portal-card" style="border-top-color: var(--accent-terracotta);">
+        <h2>2. Sprachschatz-Kompendium: Ausdrucksstarke Sprachkunst &amp; Historische Kulissen</h2>
+        <p>Klicke auf die einzelnen Kapitel, um die Wort-Apotheke, Action Beats, historisches Alltagswissen und den 7-W-Handwerks-Check aufzuklappen.</p>
+
+        <!-- KAPITEL 1 -->
+        <details class="kapitel-box" open>
+            <summary>1. Die Wort-Apotheke: Befreiung von sprachlicher Monotonie</summary>
+            <div class="kapitel-inhalt">
+                <h4>1.1 Dynamische Bewegungs- und Dialogverben</h4>
+                <p>In der literarischen Praxis neigen Erstentwürfe oft dazu, in abgenutzte Schablonen wie „gehen“ oder „sagen“ zu verfallen. Viele Autoren versuchen diesen sprachlichen Leerlauf durch nachgestellte Adverbien zu kaschieren (etwa: „ging er schnell“ oder „sagte sie wütend“). Aus didaktischer Sicht stellt dies eine Doppelung dar: Das Adverb erklärt die Emotion nur von außen (<em>Telling</em>), anstatt sie im Prädikat selbst wirksam werden zu lassen.</p>
+                <p>Die <em>Wort-Apotheke</em> bietet gezielte, hochgradig spezifische Verben, die blasse Beschreibungen sofort durch ein präzises inneres Bild ersetzen (<em>Showing</em>). Ein Verb wie <em>stürmen</em> bündelt Tempo, Zielgerichtetheit und Agitation bereits in einem einzigen Wort – das Adverb „schnell“ wird überflüssig. Ebenso transportiert <em>zischen</em> augenblicklich Schärfe und Verpressung der Stimme, wo ein „sagte sie wütend“ hölzern und belehrend wirkt.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Monotones Verb</th>
+                            <th>Ausdrucksstarke Alternative (Wort-Apotheke)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>gehen / laufen</strong></td>
+                            <td>schlendern, hasten, schleichen, stapfen, huschen, wanken, stürmen, verharren</td>
+                        </tr>
+                        <tr>
+                            <td><strong>sagen / fragen</strong></td>
+                            <td>raunen, entgegnen, einwerfen, hauchen, zischen, murmeln, stocken, bekräftigen</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <p><strong>Didaktischer Nutzen für die Figurendynamik:</strong> Ein einziges präzise gewähltes Verb enthüllt die Stimmung, den physiologischen Zustand und die Körpersprache einer Figur unmittelbar aus der Handlung heraus. Der Wechsel von „er ging“ zu „er wankte“ oder „er verharrte“ verlegt den Fokus von der bloßen Ortsveränderung direkt auf die seelische Verfassung, ohne dass langatmige Erklärungen das Erzähltempo hemmen.</p>
+
+                <h4>1.2 Atmosphärische Sinnenwelt (Licht &amp; Klangwelten)</h4>
+                <p>Um Schauplätze nicht nur schematisch zu skizzieren, sondern tief im Kopf der Leserschaft zu verankern (<strong>WO</strong>), bedient sich die szenische Verankerung der gezielten Aktivierung multisensorischer Register:</p>
+                <ul class="kompendium-liste">
+                    <li><strong>Licht &amp; Schatten (Beleuchtung &amp; Atmosphäre):</strong> schummrig, flackern, glimmen, Dämmerlicht, bernsteinfarben.</li>
+                    <li><strong>Blickarten &amp; Interaktion:</strong> blinzeln, starren, mustern.</li>
+                    <li><strong>Klangwelt (Geräuschkulisse):</strong> knarzen, rascheln, hallen, prasseln, säuseln, dröhnen, knistern.</li>
+                    <li><strong>Dynamischer Kontrast:</strong> bleierne Stille.</li>
+                </ul>
+
+                <h4>1.3 Sprachliche Raritäten &amp; Vergessene Perlen</h4>
+                <ul class="kompendium-liste">
+                    <li><strong>Augenweide:</strong> Bezeichnet etwas, dessen Anblick tiefe ästhetische Freude bereitet; veredelt visuelle Porträts von Figuren oder architektonischen Details.</li>
+                    <li><strong>Kinkerlitzchen:</strong> Benennt belanglose Kleinigkeiten; eignet sich hervorragend für Figurenrede, um eine charmant-altmodische oder pragmatisch-abwertende Haltung zu zeichnen.</li>
+                    <li><strong>Flausen:</strong> Drückt unbedachte, vorlaute Ideen oder Ausflüchte aus; perfekt zur Charakterisierung von kindlicher Naivität oder jugendlichem Übermut.</li>
+                    <li><strong>Kleinod:</strong> Beschreibt eine seltene, kostbare Rarität; hebt Artefakte oder geheime Orte emotional und optisch aus der Umgebung heraus.</li>
+                    <li><strong>Müßiggang:</strong> Meint das zweckfreie, genussvolle Verweilen; verleiht Szenen eine bewusst entschleunigte, nostalgische Frequenz.</li>
+                    <li><strong>Herzblut:</strong> Drückt leidenschaftliches Engagement und Hingabe aus; macht den inneren Antrieb einer Figur unmittelbar greifbar.</li>
+                    <li><strong>Zwielicht:</strong> Beschreibt die physische Dämmerung sowie moralische Ambiguität; erzeugt augenblicklich eine atmosphärische und dramaturgische Spannung.</li>
+                    <li><strong>Begeistwunderung:</strong> Eine inspirierende Wortschöpfung – inklusive deiner eigenen Wort-Schöpfung „Begeistwunderung“! –, die tiefes Staunen mit innerer Begeisterung verschmilzt.</li>
+                </ul>
+
+                <div class="dozenten-impuls">
+                    <strong>Dozenten-Impuls:</strong> Die Bereitstellung eines kraftvollen Vokabulars bildet lediglich das Fundament des Sprachschliffs. Die entscheidende dramaturgische Hürde besteht darin, diese Verben wirkungsvoll in der Szenenstruktur einzusetzen.
+                </div>
+            </div>
+        </details>
+
+        <details class="kapitel-box">
+            <summary>2. Redebegleitsätze durch Handlung und Subtext ersetzen</summary>
+            <div class="kapitel-inhalt">
+                <h4>2.1 Das Prinzip der Action Beats („Die Hände sprechen mit“)</h4>
+                <p>Das ständige Wiederholen von Inquit-Formeln („sagte er“, „fragte sie“) führt zu einer Ermüdung des Leseflusses. Das handwerkliche Prinzip der <em>Action Beats</em> löst dieses Problem: Anstelle des bloßen Redebegleitsatzes tritt eine prägnante Mikro-Handlung unmittelbar vor oder nach der wörtlichen Rede.</p>
+
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Monotoner Dialog (Inquit-Formel)</th>
+                            <th>Lebendige Szene (Action Beats &amp; Mikro-Handlungen)</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>„Ich weiß nicht, was ich tun soll“, sagte er verzweifelt.</td>
+                            <td>Er drehte die Teetasse langsam zwischen den Fingern. „Ich weiß nicht, was ich tun soll.“</td>
+                        </tr>
+                        <tr>
+                            <td>„Das geht dich überhaupt nichts an“, fragte sie verärgert.</td>
+                            <td>Sie wandte den Blick ab und starrte aus dem Fenster. „Das geht dich überhaupt nichts an.“</td>
+                        </tr>
+                        <tr>
+                            <td>„Wir müssen sofort aufbrechen“, sagte er nervös.</td>
+                            <td>Er knöpfte hektisch seinen Mantel zu. „Wir müssen sofort aufbrechen.“</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>2.2 Der 5-Punkte-Check für lebendige Dialoge</h4>
+                <div class="check-item"><strong>&#9744; 1. Kein „Wie du ja weißt...“-Erklärdialog:</strong> Figuren teilen sich niemals Informationen mit, die beiden bereits bekannt sind, nur um das Publikum aufzuschlauen.</div>
+                <div class="check-item"><strong>&#9744; 2. Antworten auf Umwegen (Subtext-Ebene):</strong> Vermeide spiegelbildliche Rede-Antwort-Muster. Eine Figur weicht der direkten Frage aus – durch Gegenfragen, Ironie oder Stille.</div>
+                <div class="check-item"><strong>&#9744; 3. Die Hände sprechen mit (Action Beats):</strong> Physische Aktionen und Handhabungen von Requisiten spiegeln den inneren Mikrokosmos der Figur wider.</div>
+                <div class="check-item"><strong>&#9744; 4. Unverwechselbare Stimmen (Vokales Profil):</strong> Figuren müssen auch ohne Sprecherbezeichnung allein anhand von Satzlänge, Wortwahl und Tempo identifizierbar sein.</div>
+                <div class="check-item"><strong>&#9744; 5. Laut-Lese-Probe bestanden:</strong> Der Dialog muss beim lauten Rezitieren flüssig und rhythmisch wirken. Sperrige Schachtelsätze werden gestrichen.</div>
+
+                <div class="dozenten-impuls">
+                    <strong>Dozenten-Impuls:</strong> Requisiten sind keine leblosen Deko-Elemente – sie bilden die Brücke zwischen der inneren Verfassung der Figuren und der historischen Authentizität des Schauplatzes.
+                </div>
+            </div>
+        </details>
+
+        <details class="kapitel-box">
+            <summary>3. Historisches Alltagswissen: Requisite und Kulisse</summary>
+            <div class="kapitel-inhalt">
+                <h4>3.1 Vergessene Berufe und Handwerke</h4>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Beruf</th>
+                            <th>Handwerk / Tätigkeit</th>
+                            <th>Historischer Nutzen / Szene-Inspiration</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td><strong>Stellmacher / Wagner</strong></td>
+                            <td>Baut Holzräder, Wagen und Kutschen.</td>
+                            <td>Ideal für Reisevorbereitungen, Werkstattszenen, Sabotageakte oder Achsbrüche.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Büttner / Küfer / Böttcher</strong></td>
+                            <td>Stellt Fässer, Bottiche und Zuber aus Holzdauben her.</td>
+                            <td>Schafft authentische Schauplätze in Brauereien, Weinkellern oder auf Handelsschiffen.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Türmer</strong></td>
+                            <td>Hält vom höchsten Turm Ausschau nach Bränden und Feinden.</td>
+                            <td>Erzeugt dramatische Momente bei Sturmsignalen oder dem Herannahen von Bedrohungen.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Bader</strong></td>
+                            <td>Schneidet Haare, rasiert, zieht Zähne, lässt zur Ader und betreibt das Badehaus.</td>
+                            <td>Eröffnet Szenen für Wundbehandlungen, verdeckte Informationen und historische Medizin.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Posamentierer</strong></td>
+                            <td>Fertigt Borten, Quasten, Fransen und Zierbänder an.</td>
+                            <td>Verfeinert Szenen in Schneiderwerkstätten oder bei Adelsausstattungen.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Lumpensammler</strong></td>
+                            <td>Sammelt alte Textilien als Rohstoff für die Papierherstellung.</td>
+                            <td>Beleuchtet soziale Elendsviertel sowie das Vorstadium des Buchwesens.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Schriftsetzer</strong></td>
+                            <td>Setzt Texte spiegelverkehrt aus einzelnen Bleilettern zusammen.</td>
+                            <td>Perfekt für Flugblatt-Szenen, Zensurkonflikte und geheime Nachrichten.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Kesselflicker</strong></td>
+                            <td>Repariert als fahrender Handwerker löchrige Kupfertöpfe und Pfannen.</td>
+                            <td>Bietet Begegnungsräume auf Dorfmärkten und Wanderstraßen.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Seiler</strong></td>
+                            <td>Stellt Taue, Stricke und Seile aus Hanf oder Flachs her.</td>
+                            <td>Bietet lange Werkstattbahnen als Kulisse für Gespräche über Schifffahrt und Handwerk.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Köhler</strong></td>
+                            <td>Verschwelt Holz tief in den Wäldern in Meilern zu Holzkohle.</td>
+                            <td>Verleiht Wald- und Einsiedlerszenen eine düstere, isolierte und rauchige Szenerie.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Nachtwächter</strong></td>
+                            <td>Zieht nachts durch Gassen, ruft die Stunden aus und achtet auf Ruhe und Feuer.</td>
+                            <td>Perfekt als unliebsamer Zeuge oder Signalgeber bei Stadtbränden.</td>
+                        </tr>
+                        <tr>
+                            <td><strong>Flößer</strong></td>
+                            <td>Verbindet Baumstämme zu Floßen und lenkt sie flussabwärts.</td>
+                            <td>Bringt physische Dynamik und Gefahren auf Binnengewässern ein.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h4>3.2 Nostalgische Alltagsgegenstände als sensorische Requisiten</h4>
+                <ul class="kompendium-liste">
+                    <li><strong>Löschwiege (Akustisch / Visuell / Haptisch):</strong> Schreibtischutensil mit Löschpapier zum Trocknen frischer Tinte. Das gleichmäßige, wiegende Geräusch dehnt bedrohliche Gesprächspausen rhythmisch.</li>
+                    <li><strong>Fingerhut (Haptisch / Visuell):</strong> Kleiner Hut aus Metall oder Bein zum Schutz beim Nähen. Nervöses Tippen auf der Tischplatte verrät unterdrückte Anspannung.</li>
+                    <li><strong>Kohleneisen / Plätteisen (Olfaktorisch / Thermisch):</strong> Schweres Gusseisenbügeleisen, mit glühenden Kohlen befüllt. Stechender Brandgeruch und flimmernde Hitze erzeugen beklemmende Atmosphäre.</li>
+                    <li><strong>Teppichklopfer (Akustisch / Visuell):</strong> Geflochtenes Weidenruten-Werkzeug. Das peitschenartige Knallen im Hinterhof dient als akustischer Taktgeber oder Ventil für Wut.</li>
+                    <li><strong>Bohrwinde (Kinästhetisch / Akustisch):</strong> Handgetriebenes Holzbohrwerkzeug. Das stetige Ächzen des Holzes verstärkt körperliche Anstrengung bei Einbruchs- oder Reparaturszenen.</li>
+                    <li><strong>Stopfei (Haptisch / Visuell):</strong> Glattes Ei aus Holz oder Porzellan zum Stopfen von Strümpfen. Vermittelt in kargen Szenen Armut und eiserne Sparsamkeit.</li>
+                    <li><strong>Flotte Lotte (Akustisch / Haptisch):</strong> Mechanische Passiermühle mit Kurbel. Das metallische Rumpeln schützt geheime Gespräche in der Küche vor Belauschung.</li>
+                    <li><strong>Rechenschieber (Visuell / Akustisch):</strong> Analoges Recheninstrument. Das leise Gleiten des Läufers signalisiert kühle Distanz oder akribische Berechnung.</li>
+                    <li><strong>Messschieber (Haptisch / Visuell):</strong> Präzisionswerkzeug mit Nonius-Schenkel. Unterstreicht die fehlerintolerante Natur eines Ermittlers oder Handwerkers.</li>
+                </ul>
+            </div>
+        </details>
+
+        <details class="kapitel-box">
+            <summary>4. Der 7-W-Handwerks-Check zur Szenen-Analyse</summary>
+            <div class="kapitel-inhalt">
+                <div class="check-item"><strong>1. WER handelt &amp; fühlt?</strong> Verfügt die Hauptfigur über ein stimmliches Profil und klare Körpersprache? (Fokus: Dynamische Verben aus der Wort-Apotheke).</div>
+                <div class="check-item"><strong>2. WAS geschieht konkret?</strong> Trägt ein greifbares Ereignis oder Konflikt die Szene statt bloßem Erklärdialog?</div>
+                <div class="check-item"><strong>3. WANN spielt der Moment?</strong> Sind Epoche, Tageszeit und Erzähltempo (von Atemlosigkeit bis Müßiggang) spürbar?</div>
+                <div class="check-item"><strong>4. WO befinden wir uns (Sinne)?</strong> Wird der Schauplatz über mindestens zwei Sinne (<strong>Licht, Geräusch, Geruch</strong>) greifbar?</div>
+                <div class="check-item"><strong>5. WIE ist der Sprachrhythmus?</strong> Wechseln sich kurze Spannungssätze mit ruhigen Beschreibungen ab? (Laut-Lese-Probe).</div>
+                <div class="check-item"><strong>6. WARUM handelt die Figur so?</strong> Wird der innere Antrieb in der Subtext-Ebene über <em>Action Beats</em> sichtbar?</div>
+                <div class="check-item"><strong>7. WOZU führt diese Szene?</strong> Bewirkt der Abschnitt eine unumkehrbare Veränderung oder einen Sog zum Weiterlesen?</div>
+
+                <div class="dozenten-impuls" style="margin-top: 25px;">
+                    <strong>Leitlinie aus dem Autoren-Multiversum:</strong> Erst das nahtlose Ineinandergreifen von kraftvollen Verben, sprechenden Mikro-Handlungen und sensorisch greifbaren Alltagsrequisiten haucht einem Manuskript echte Immersion ein. Wer seine Szenen systematisch mit dem 7-W-Text-Spiegel durchleuchtet, verwandelt bloßen Text in ein unvergessliches Kopfkino.
+                </div>
+            </div>
+        </details>
+    </section>
+
+    <footer>
+        <p>&copy; Autoren-Multiversum &bull; Geschützter Bereich (AES-256 verschlüsselt)</p>
+    </footer>
+</div>
+
+</body>
+</html>
