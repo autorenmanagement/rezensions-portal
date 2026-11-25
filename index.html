@@ -1,0 +1,585 @@
+<!DOCTYPE html>
+<html lang="de" style="scroll-behavior: smooth;">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autoren-Multiversum | Engine am KPB ±³ – Das literarische Netzwerk</title>
+  <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±3: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+  <meta name="author" content="Joanna Elisabeth Beck Engine am KPB ±3">
+  <meta name="robots" content="index, follow">
+
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±3">
+  <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+  <meta property="og:image" content="img/logo1.jpg">
+  <meta property="og:locale" content="de_DE">
+
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --bg-darkroom: #EAEFEF;
+      --card-dark: #F7FAFA;
+      --primary-sage: #2C6A72;
+      --accent-terracotta: #3D5A6C;
+      --cream-grey: #182329;
+      --line-muted: #BDCBD0;
+      --status-published: #2E5B4B;
+      --status-progress: #A86A44;
+      --btn-gradient: linear-gradient(135deg, #445E6A 0%, #1A3F49 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body { font-family: 'Segoe UI', Roboto, Arial, sans-serif; background-color: var(--bg-darkroom); color: var(--cream-grey); line-height: 1.7; }
+    .network-container { max-width: 980px; margin: 0 auto; padding: 25px 20px 40px 20px; }
+    header { text-align: center; padding: 30px 0 28px 0; position: relative; }
+    header::after { content: ''; position: absolute; bottom: 0; left: 25%; width: 50%; height: 1px; background: linear-gradient(to right, transparent, var(--primary-sage), transparent); }
+    h1 { font-size: 2.3rem; font-weight: 300; letter-spacing: 5px; color: var(--cream-grey); text-transform: uppercase; }
+    h1 span { font-weight: 700; color: var(--primary-sage); }
+    .tagline { font-size: 0.95rem; color: var(--accent-terracotta); margin-top: 10px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; opacity: 0.85; }
+    .intro-section { background: rgba(44, 106, 114, 0.06); border-left: 4px solid var(--primary-sage); padding: 20px 28px; margin: 25px 0; border-radius: 0 8px 8px 0; font-size: 1.02rem; }
+    .portal-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 24px; margin-top: 25px; }
+    .portal-card { background: rgba(247, 250, 250, 0.85); border: 1px solid rgba(255, 255, 255, 0.7); border-radius: 8px; padding: 26px; box-shadow: 0 6px 18px rgba(24, 35, 41, 0.05); display: flex; flex-direction: column; justify-content: space-between; }
+    .portal-card h2 { color: var(--primary-sage); font-size: 1.25rem; font-weight: 600; letter-spacing: 1px; margin-bottom: 12px; text-transform: uppercase; padding-bottom: 10px; border-bottom: 1px solid var(--line-muted); }
+    .action-btn { width: 100%; padding: 12px 0; color: #FFFFFF !important; font-weight: bold; display: inline-block; text-align: center; background: var(--btn-gradient) !important; text-decoration: none; font-size: 0.85rem; letter-spacing: 1px; text-transform: uppercase; border-radius: 4px; border: none; cursor: pointer; }
+    .action-btn:hover { opacity: 0.92; }
+    .submission-box { background: #fffaf0; border-left: 4px solid #dd6b20; border-radius: 8px; display: none; padding: 20px; margin-top: 20px; }
+
+    /* EINHEITLICHE AKKORDEON-LISTE */
+    .mv-details { background: #ffffff; border: 1px solid var(--line-muted); border-radius: 8px; margin-bottom: 10px; overflow: hidden; box-shadow: 0 2px 8px rgba(0,0,0,0.03); }
+    .mv-summary { padding: 15px 20px; font-weight: 700; font-size: 1rem; color: #182329; cursor: pointer; background: #f8fafc; display: flex; justify-content: space-between; align-items: center; user-select: none; list-style: none; }
+    .mv-summary::-webkit-details-marker { display: none; }
+    .mv-summary::after { content: '▼'; font-size: 0.75rem; color: var(--primary-sage); transition: transform 0.25s; }
+    .mv-details[open] .mv-summary::after { transform: rotate(180deg); }
+    .mv-content { padding: 20px; border-top: 1px solid #edf2f7; background: #ffffff; }
+    .mv-grid-3 { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 16px; }
+
+    /* CHRONIK STYLING */
+    .book-accordion { background: var(--card-dark); border: 1px solid var(--line-muted); border-radius: 6px; margin-bottom: 10px; overflow: hidden; }
+    .book-header { width: 100%; padding: 14px 20px; background: rgba(0,0,0,0.01); display: flex; justify-content: space-between; align-items: center; border: none; cursor: pointer; text-align: left; }
+    .book-code-badge { display: inline-block; font-size: 0.65rem; font-weight: bold; text-transform: uppercase; padding: 2px 7px; border-radius: 4px; color: #fff; margin-bottom: 3px; }
+    .badge-published { background-color: var(--status-published); }
+    .badge-progress { background-color: var(--status-progress); }
+    .book-content { max-height: 0; overflow: hidden; transition: max-height 0.4s ease-out; }
+    .book-internal { padding: 20px; }
+    .fokus-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 16px; margin: 15px 0; }
+    .fokus-card { background: rgba(0,0,0,0.02); padding: 15px; border-radius: 6px; }
+    .fokus-card img { width: 100%; height: 130px; object-fit: cover; border-radius: 4px; margin-bottom: 10px; }
+
+    footer { text-align: center; margin-top: 50px; color: var(--cream-grey); font-size: 0.85rem; opacity: 0.85; border-top: 1px solid var(--line-muted); padding-top: 22px; }
+    footer a { color: var(--primary-sage); text-decoration: none; margin: 0 8px; font-weight: 600; }
+
+    #bild-zoom:target, #zoom-ki:target, #zoom-stadion:target, #zoom-film:target { display: flex !important; }
+  </style>
+</head>
+<body>
+
+  <!-- ZENTRALE HAUPTNAVIGATION OBEN -->
+  <nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+    <div style="max-width: 1120px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 16px;">
+
+      <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+      <!-- Menüpunkt 1: Gemeinschaft & Lektorat -->
+      <details style="position: relative; display: inline-block;">
+        <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+        <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+          <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+          <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+          <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+          <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+          <a href="lektorat.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Lektorat &amp; Manuskript-Service</a>
+          <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+          <a href="name-contest.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Name-Contest (Mitmachen)</a>
+        </div>
+      </details>
+
+      <!-- Menüpunkt 2: Schreibwerkstatt -->
+      <details style="position: relative; display: inline-block;">
+        <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Schreibwerkstatt &#9662;</summary>
+        <div style="position: absolute; top: 100%; left: 0; min-width: 265px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+          <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+          <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+          <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+          <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+          <a href="dialog-werkstatt.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Dialog- &amp; Chemie-Werkstatt</a>
+          <a href="kulissen-alchemist.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Kulissen-Alchemist (Schauplätze)</a>
+          <a href="plot-twist-orakel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Plot-Twist-Orakel</a>
+          <a href="seelen-kompass.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Seelen-Kompass (Figurentiefe)</a>
+          <a href="lesezeichen-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Lesezeichen-Generator</a>
+          <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        </div>
+      </details>
+
+      <!-- Menüpunkt 3: Quiz & Tests -->
+      <details style="position: relative; display: inline-block;">
+        <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Quiz &amp; Tests &#9662;</summary>
+        <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+          <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+          <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+          <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+        </div>
+      </details>
+
+      <!-- Menüpunkt 4: Bücher & Archiv -->
+      <details style="position: relative; display: inline-block;">
+        <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+        <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+          <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+          <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+          <a href="kompendium.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Das Kompendium</a>
+          <a href="tresor.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Tresor (Exklusiv)</a>
+          <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+        </div>
+      </details>
+
+      <!-- Menüpunkt 5: Info & Rechtliches -->
+      <details style="position: relative; display: inline-block;">
+        <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+        <div style="position: absolute; top: 100%; right: 0; min-width: 215px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+          <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+          <a href="formular.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Kontakt &amp; Postfach</a>
+          <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+          <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz</a>
+        </div>
+      </details>
+
+      <!-- International-Button -->
+      <a href="intl.html" style="border: 1.5px solid #2C6A72; color: #2C6A72; text-decoration: none; font-weight: 700; font-size: 0.78rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 4px 10px; border-radius: 4px;">&#127760; EN / PL / FR</a>
+
+    </div>
+  </nav>
+
+  <div class="network-container">
+    <header>
+      <h1>Autoren<span>Multiversum</span></h1>
+      <div class="tagline">Bücher auf den Punkt gebracht mit dem 7-W-Fokus.</div>
+      <div style="margin: 12px auto; text-align: center; max-width: 145px;">
+        <img src="img/logo1.jpg" alt="Autoren-Multiversum Logo" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+        <div style="font-size: 0.72rem; color: #718096; margin-top: 4px; font-style: italic;">Engine am KPB &plusmn;&sup3;</div>
+      </div>
+      <div style="max-width: 460px; margin: 12px auto 0 auto;">
+        <a href="das_autoren-multiversum.pdf" target="_blank" style="display: block; text-align: center; padding: 10px 16px; background: #264648; color: #ffffff; border-radius: 6px; text-decoration: none; font-size: 0.84rem; font-weight: 700; letter-spacing: 0.04em;">
+          &#128196; INFOBROSCHÜRE (PDF) &rarr;
+        </a>
+      </div>
+    </header>
+
+    <!-- INTERNE #NAVIGATION (SCHNELLWAHL) -->
+    <div style="background: #F7FAFA; border: 1px solid #BDCBD0; border-radius: 6px; padding: 10px 14px; margin-top: 18px; display: flex; flex-wrap: wrap; justify-content: center; align-items: center; gap: 8px 14px; font-size: 0.8rem;">
+      <span style="font-weight: 700; color: #3D5A6C; text-transform: uppercase;">Auf dieser Seite:</span>
+      <a href="#portale" style="color: #2C6A72; text-decoration: none; font-weight: 600;">&#9662; Portale</a>
+      <span style="color: #BDCBD0;">|</span>
+      <a href="#schaufenster" style="color: #2C6A72; text-decoration: none; font-weight: 600;">&#9662; Angebote &amp; Werkzeuge</a>
+      <span style="color: #BDCBD0;">|</span>
+      <a href="#hintergrund" style="color: #2C6A72; text-decoration: none; font-weight: 600;">&#9662; Vision, 7-W-Fokus &amp; Chronik</a>
+      <span style="color: #BDCBD0;">|</span>
+      <a href="#cockpit" style="color: #3D5A6C; text-decoration: none; font-weight: 600;">&#128274; Cockpit</a>
+    </div>
+
+    <main>
+      <!-- INTRO -->
+      <div class="intro-section">
+        <p>Ein generationenübergreifendes Netzwerk für die Literatur von heute und morgen. Wir verbinden Erfahrung mit dem frischen Geist neuer Perspektiven.</p>
+      </div>
+
+      <!-- PORTAL-GRID HAUPTKACHELN -->
+      <div id="portale" class="portal-grid" style="scroll-margin-top: 70px;">
+        <!-- Linke Kachel: Rezensenten-Portal -->
+        <div class="portal-card">
+          <div>
+            <h2>Das Rezensenten-Portal</h2>
+            <p style="margin-bottom: 12px;">Für Testleser und Rezensenten. Nutzen Sie unseren strukturierten 7-W-Fokus, um gelesene Werke tiefgründig, emotional und präzise zu analysieren.</p>
+            <div style="text-align: left; margin: 12px 0; font-size: 0.85rem; line-height: 1.45; border-top: 1px solid var(--line-muted); padding-top: 10px;">
+              <strong>Dein Weg zum Testleser:</strong><br>
+              &bull; <strong>Bewerbung:</strong> Klicke unten auf den Button.<br>
+              &bull; <strong>Match:</strong> Manuskripte kommen passend per E-Mail.<br>
+              &bull; <strong>Sicherheit:</strong> Du bestätigst kurz die Schweigegarantie.<br>
+              &bull; <strong>Analyse:</strong> Du liest entspannt als PDF oder Word.<br>
+              &bull; <strong>Feedback:</strong> Digitale Übermittlung via 7-W-Analyse.
+            </div>
+          </div>
+          <a href="rezensionen.html" class="action-btn" style="margin-top: 12px;">Jetzt 7-W-Analyse &amp; Kooperation starten</a>
+        </div>
+
+        <!-- Rechte Kachel: Für Autoren & Rezensenten -->
+        <div class="portal-card">
+          <div>
+            <h2>Für Autoren &amp; Rezensenten</h2>
+            <p style="margin-bottom: 12px;">Du möchtest, dass wir dein Buch lesen, analysieren und eine fundierte Rezension im 7-W-Fokus veröffentlichen?</p>
+            <div style="margin: 10px auto; text-align: center; max-width: 150px;">
+              <a href="#bild-zoom" style="text-decoration: none; outline: none; display: block;">
+                <img src="img/pruefer-buch.jpg" alt="Buchrezension im Autoren-Multiversum" style="width: 100%; height: auto; border-radius: 6px; box-shadow: 0 2px 6px rgba(0,0,0,0.15);">
+                <div style="font-size: 0.72rem; color: #718096; margin-top: 4px; font-style: italic;">&#128269; Tippen zum Vergrößern</div>
+              </a>
+            </div>
+          </div>
+          <button class="action-btn" onclick="toggleSubmissionBox()" style="margin-top: 12px;">Buch einreichen</button>
+        </div>
+      </div>
+
+      <!-- EINREICHUNGS-BEREICH -->
+      <div class="submission-box" id="submission-info">
+        <h3 style="color: #dd6b20; margin: 0 0 6px 0; text-transform: uppercase; font-size: 1rem;">So reichst du dein Manuskript ein:</h3>
+        <p style="font-size: 0.86rem; margin: 0 0 10px 0;">Bitte sende uns deine Unterlagen unkompliziert über unser geschütztes Postfach oder das Lektorats-Formular:</p>
+        <div style="display: flex; gap: 15px; flex-wrap: wrap; font-size: 0.84rem; margin-bottom: 12px; font-weight: 600;">
+          <span>&#10003; Manuskript als PDF/Word</span>
+          <span>&#10003; Kurzes Exposé (max. 1 Seite)</span>
+          <span>&#10003; Angabe von Genre &amp; Zielgruppe</span>
+        </div>
+        <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+          <a href="rezensionen.html" class="action-btn" style="width: auto; padding: 9px 20px; font-size: 0.78rem;">Direkt zum Rezensions-Formular &rarr;</a>
+          <a href="lektorat.html" class="action-btn" style="width: auto; padding: 9px 20px; font-size: 0.78rem;">Zum Lektorats-Service &rarr;</a>
+        </div>
+      </div>
+
+      <!-- VOLLBILD-POPUP FÜR DAS PRÜFER-BILD -->
+      <div id="bild-zoom" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.85); z-index: 99999; justify-content: center; align-items: center; padding: 10px; cursor: pointer;" onclick="window.location.hash='';">
+        <img src="img/pruefer-buch.jpg" alt="Buchrezension Großansicht" style="max-width: 95%; max-height: 85vh; border-radius: 4px;">
+      </div>
+
+      <!-- SCHAUFENSTER-KACHELN -->
+      <section id="schaufenster" style="scroll-margin-top: 70px; margin: 40px 0;">
+        <div style="text-align: center; margin-bottom: 22px;">
+          <span style="font-size: 0.78rem; font-weight: 700; letter-spacing: 1.5px; text-transform: uppercase; color: var(--accent-terracotta);">Das Autoren-Multiversum entdecken</span>
+          <h2 style="font-size: 1.55rem; font-weight: 300; letter-spacing: 2px; color: var(--cream-grey); text-transform: uppercase; margin-top: 4px;">
+            Bücher, Werkstatt &amp; <strong style="font-weight: 700; color: var(--primary-sage);">Gemeinschaft</strong>
+          </h2>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 20px;">
+          <!-- Kachel 1 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--primary-sage); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--primary-sage);">Neuerscheinung &bull; Fabel</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Der Trolligatorterrier</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Eine satirische Fabel über Neid, die „Geranien-Mentalität“ und die Kunst des Schweigens inkl. Leitfaden gegen digitale Störenfriede.</p>
+            </div>
+            <a href="trolligatorterrier.html" class="action-btn">Blick ins Buch &rarr;</a>
+          </div>
+
+          <!-- Kachel 2 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--primary-sage); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--primary-sage);">Netzwerk &amp; Austausch</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Unsere Autorinnen</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Generationenübergreifendes Vorlesen, ehrliches Feedback und eigene Profilseiten für Autorinnen jeden Alters.</p>
+            </div>
+            <a href="autorinnen.html" class="action-btn">Autorinnen entdecken &rarr;</a>
+          </div>
+
+          <!-- Kachel 3 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--primary-sage); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--primary-sage);">Textarbeit &amp; Feinschliff</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Lektorat &amp; 7-W-Spiegel</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Prüfe deine Szenen im 7-W-Text-Spiegel, verfeinere deine Sprache in der Wort-Apotheke oder buche unser Lektorat.</p>
+            </div>
+            <a href="lektorat.html" class="action-btn">Zum Lektorats-Service &rarr;</a>
+          </div>
+
+          <!-- Kachel 4 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--accent-terracotta); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--accent-terracotta);">Plot &amp; Spannung</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Ideenbrüter &amp; Plot-Twist-Orakel</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Würfle neue Szenen-Ideen, plane deinen Roman mit dem 16-Punkte-Raster oder finde überraschende Wendungen.</p>
+            </div>
+            <a href="plot-twist-orakel.html" class="action-btn">Zum Plot-Twist-Orakel &rarr;</a>
+          </div>
+
+          <!-- Kachel 5 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--accent-terracotta); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--accent-terracotta);">Figuren &amp; Dialoge</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Seelen-Kompass &amp; Dialog-Werkstatt</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Verleihe deinen Figuren psychologische Tiefe, erzeuge Subtext-Reibung oder erschaffe historische Charaktere.</p>
+            </div>
+            <a href="seelen-kompass.html" class="action-btn">Zum Seelen-Kompass &rarr;</a>
+          </div>
+
+          <!-- Kachel 6 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--accent-terracotta); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--accent-terracotta);">Atmosphäre &amp; Gestaltung</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Kulissen-Alchemist &amp; Lesezeichen</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Erschaffe lebendige Schauplätze für alle Sinne oder gestalte dein eigenes druckfertiges Lesezeichen im Browser.</p>
+            </div>
+            <a href="kulissen-alchemist.html" class="action-btn">Zum Kulissen-Alchemisten &rarr;</a>
+          </div>
+
+          <!-- Kachel 7 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--status-progress); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--status-progress);">Rätsel &amp; Kopfkino</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Literatur-Quiz &amp; VVIQ-Test</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Teste dein Wissen über vergessene Wörter und alte Berufe oder miss die Stärke deines inneren Kopfkinos.</p>
+            </div>
+            <a href="quiz.html" class="action-btn">Zum Quiz starten &rarr;</a>
+          </div>
+
+          <!-- Kachel 8 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--status-progress); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--status-progress);">Mitmach-Aktionen</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Name-Contest &amp; Wettbewerb</h3>
+              <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Stelle dich unseren 3 Schreibaufgaben oder hilf uns bei der Namensfindung beim großen Name-Contest.</p>
+            </div>
+            <a href="name-contest.html" class="action-btn">Zum Name-Contest &rarr;</a>
+          </div>
+
+          <!-- Kachel 9 -->
+          <div style="background: #ffffff; border: 1px solid var(--line-muted); border-top: 4px solid var(--status-progress); border-radius: 8px; padding: 22px; display: flex; flex-direction: column; justify-content: space-between;">
+            <div>
+              <span style="font-size: 0.72rem; font-weight: 700; text-transform: uppercase; color: var(--status-progress);">Wissen &amp; Schätze</span>
+              <h3 style="font-size: 1.15rem; margin: 6px 0 8px;">Kompendium, Archiv &amp; Tresor</h3>
+                  <p style="font-size: 0.88rem; color: var(--accent-terracotta); margin-bottom: 16px;">Stöbere im literarischen Kompendium, entdecke Manuskripte in der Bibliotheca Universalis oder öffne den Tresor.</p>
+            </div>
+            <a href="kompendium.html" class="action-btn">Ins Kompendium schauen &rarr;</a>
+          </div>
+        </div>
+      </section>
+
+      <!-- EINHEITLICHE AKKORDEON-LISTE -->
+      <section id="hintergrund" style="scroll-margin-top: 70px; margin: 35px 0;">
+
+        <!-- Tab 1: Audio & Video -->
+        <details class="mv-details">
+          <summary class="mv-summary"><span>&#127911; Audio- &amp; Video-Rundgang: Das Autoren-Multiversum entdecken</span></summary>
+          <div class="mv-content" style="text-align: center;">
+            <p style="font-size: 0.9rem; color: var(--accent-terracotta); margin-bottom: 14px;">Lehn dich zurück und hör dir unseren Audio-Podcast oder unseren Video-Check zum Autoren-Multiversum an:</p>
+            <div style="max-width: 560px; margin: 0 auto 15px auto;">
+              <video controls preload="metadata" style="width: 100%; border-radius: 6px; border: 1px solid var(--line-muted); background: #000000;">
+                <source src="7-w-check fuer texte.mp4" type="video/mp4">
+              </video>
+            </div>
+            <a href="der werkzeugkasten des autoren-multiversums.m4a" target="_blank" class="action-btn" style="width: auto; padding: 10px 20px;">&#127911; Audio-Podcast anhören &rarr;</a>
+          </div>
+        </details>
+
+        <!-- Tab 2: Unsere Vision -->
+        <details class="mv-details">
+          <summary class="mv-summary"><span>&#10024; Von der Analyse zum Bestseller – Unsere Vision</span></summary>
+          <div class="mv-content">
+            <div class="mv-grid-3">
+              <div style="background: #f8fafc; border-radius: 8px; padding: 14px; text-align: center;">
+                <a href="#zoom-ki" style="text-decoration: none; display: block;">
+                  <img src="img/pruefer-buch-ki.jpg" alt="KI und Mensch" style="width: 100%; height: 160px; object-fit: cover; border-radius: 6px;">
+                  <div style="font-size: 0.72rem; color: var(--primary-sage); margin-top: 4px; font-weight: bold;">&#128269; Tippen zum Vergrößern</div>
+                </a>
+                <h4 style="margin: 10px 0 6px; color: #182329;">DIE 4 PERSPEKTIVEN</h4>
+                <p style="font-size: 0.85rem;">80% tiefe Struktur- und Datenanalyse, gepaart mit 20% reinem menschlichen Verstand und Intuition.</p>
+              </div>
+              <div style="background: #f8fafc; border-radius: 8px; padding: 14px; text-align: center;">
+                <a href="#zoom-stadion" style="text-decoration: none; display: block;">
+                  <img src="img/stadion-lesung.jpg" alt="Stadion" style="width: 100%; height: 160px; object-fit: cover; border-radius: 6px;">
+                  <div style="font-size: 0.72rem; color: var(--primary-sage); margin-top: 4px; font-weight: bold;">&#128269; Tippen zum Vergrößern</div>
+                </a>
+                <h4 style="margin: 10px 0 6px; color: #182329;">WANN &amp; WO: DIE GROSSE BÜHNE</h4>
+                <p style="font-size: 0.85rem;">Wenn eine normale Leseecke nicht mehr ausreicht, ziehen wir ins Stadion um – weil Geschichten die große Bühne verdienen.</p>
+              </div>
+              <div style="background: #f8fafc; border-radius: 8px; padding: 14px; text-align: center;">
+                <a href="#zoom-film" style="text-decoration: none; display: block;">
+                  <img src="img/filmset-bestseller.jpg" alt="Filmset" style="width: 100%; height: 160px; object-fit: cover; border-radius: 6px;">
+                  <div style="font-size: 0.72rem; color: var(--primary-sage); margin-top: 4px; font-weight: bold;">&#128269; Tippen zum Vergrößern</div>
+                </a>
+                <h4 style="margin: 10px 0 6px; color: #182329;">WOZU: DER WEG ZUR VERFILMUNG</h4>
+                <p style="font-size: 0.85rem;">Vom Manuskript direkt auf die Leinwand – eine fundierte Analyse bereitet den Weg von der Zeile bis zur Verfilmung.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Tab 3: Der 7-W-Fokus -->
+        <details class="mv-details">
+          <summary class="mv-summary"><span>&#128269; Das Herzstück unserer Analyse – Der 7-W-Fokus</span></summary>
+          <div class="mv-content" style="display: grid; gap: 10px; font-size: 0.92rem;">
+            <div style="padding: 10px; border-left: 4px solid var(--primary-sage); background: #f8fafc;"><strong>WER steht im Mittelpunkt?</strong> Wer ist die Hauptfigur? War sie greifbar, sympathisch oder bewusst aneckend?</div>
+            <div style="padding: 10px; border-left: 4px solid var(--primary-sage); background: #f8fafc;"><strong>WAS passiert wirklich?</strong> Bringe den Kern und tieferen Sinn der Geschichte in zwei Sätzen auf den Punkt.</div>
+            <div style="padding: 10px; border-left: 4px solid var(--primary-sage); background: #f8fafc;"><strong>WANN spielt die Geschichte?</strong> Konntest du die Atmosphäre, den Rhythmus und das Lebensgefühl spüren?</div>
+            <div style="padding: 10px; border-left: 4px solid var(--primary-sage); background: #f8fafc;"><strong>WARUM muss dieses Buch gelesen werden?</strong> Welches menschliche Problem packt die Geschichte an der Wurzel?</div>
+            <div style="padding: 10px; border-left: 4px solid var(--primary-sage); background: #f8fafc;"><strong>WO entfaltet sich das Geschehen?</strong> Welches Umfeld oder welche Kulisse ist dir visuell geblieben?</div>
+            <div style="padding: 10px; border-left: 4px solid var(--primary-sage); background: #f8fafc;"><strong>WIE hast du den Schreibstil empfunden?</strong> Wie hat dich der Aufbau gefesselt (Spannung, Wendungen, Bildsprache)?</div>
+            <div style="padding: 10px; border-left: 4px solid var(--primary-sage); background: #f8fafc;"><strong>WOZU sollte man dieses Buch aufschlagen?</strong> Fazit: Mit welcher Erkenntnis schließt man das Buch?</div>
+          </div>
+        </details>
+
+        <!-- Tab 4: Die 4 Perspektiven (Kernteam) -->
+        <details class="mv-details">
+          <summary class="mv-summary"><span>&#128101; Das Kernteam – Die 4 Perspektiven</span></summary>
+          <div class="mv-content">
+            <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(210px, 1fr)); gap: 12px;">
+              <div style="padding: 14px; background: #f8fafc; border-radius: 6px; border-top: 3px solid var(--primary-sage);">
+                <h4 style="margin-bottom: 4px;">Yannick Scholz</h4>
+                <p style="font-size: 0.84rem;">Die Voice der neuen Generation. Direkt, emotional und mit frischem Blick auf rasante Plots.</p>
+              </div>
+              <div style="padding: 14px; background: #f8fafc; border-radius: 6px; border-top: 3px solid var(--primary-sage);">
+                <h4 style="margin-bottom: 4px;">Sandra Scholz</h4>
+                <p style="font-size: 0.84rem;">Fokus auf Struktur. Meisterin des sprachlichen Feinschliffs, des Satzrhythmus und der Logik.</p>
+              </div>
+              <div style="padding: 14px; background: #f8fafc; border-radius: 6px; border-top: 3px solid var(--primary-sage);">
+                <h4 style="margin-bottom: 4px;">Rainer Beck</h4>
+                <p style="font-size: 0.84rem;">Historiker im Herzen. Tiefenanalyse von Atmosphäre, Worldbuilding und historischen Kulissen.</p>
+              </div>
+              <div style="padding: 14px; background: #f8fafc; border-radius: 6px; border-top: 3px solid var(--primary-sage);">
+                <h4 style="margin-bottom: 4px;">Angelika Riff-Grünwald</h4>
+                <p style="font-size: 0.84rem;">Spezialistin für menschliche Psyche und glaubwürdige, tiefgründige Charakterentwicklung.</p>
+              </div>
+            </div>
+          </div>
+        </details>
+
+        <!-- Tab 5: Die Multiversums-Chronik -->
+        <details class="mv-details">
+          <summary class="mv-summary"><span>&#128218; Die Multiversums-Chronik – Unsere Analysen</span></summary>
+          <div class="mv-content">
+            <div id="chronik-container"></div>
+          </div>
+        </details>
+
+      </section>
+
+      <!-- KOMPAKTES INTERNES COCKPIT -->
+      <div id="cockpit" style="scroll-margin-top: 70px; margin-top: 25px;">
+        <details class="mv-details">
+          <summary class="mv-summary" style="color: var(--accent-terracotta); font-size: 0.92rem;">
+            <span>&#128274; Das interne Cockpit (Kernteam-Zugang)</span>
+          </summary>
+          <div class="mv-content">
+            <p id="cockpit-text" style="font-size: 0.9rem; margin-bottom: 12px;">
+              Exklusiver Zugang für das erweiterte Kernteam Autoren-Multiversum zur Protokollierung unserer laufenden Projekte.
+            </p>
+            <div id="auth-area" style="max-width: 380px;">
+              <input type="password" id="cockpit-password" placeholder="Mitglieder-Passwort" style="width: 100%; padding: 10px 12px; margin-bottom: 10px; border-radius: 6px; border: 1px solid var(--line-muted);">
+              <button onclick="checkCockpitAccess()" class="action-btn" style="padding: 10px 18px; font-size: 0.82rem;">Cockpit entsperren</button>
+            </div>
+            <div id="form-container" style="display: none; margin-top: 20px; width: 100%; height: 650px; border-radius: 6px; overflow: hidden; border: 1px solid var(--line-muted);"></div>
+          </div>
+        </details>
+      </div>
+    </main>
+
+   <!-- VOLLBILD-POPUPS FÜR DIE VISION-BILDER -->
+<div id="zoom-ki" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; justify-content: center; align-items: center; padding: 10px;" onclick="window.location.hash='';">
+  <img src="img/pruefer-buch-ki.jpg" alt="KI und Mensch" style="max-width: 95%; max-height: 85vh; border-radius: 4px;">
+</div>
+<div id="zoom-stadion" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; justify-content: center; align-items: center; padding: 10px;" onclick="window.location.hash='';">
+  <img src="img/stadion-lesung.jpg" alt="Stadion" style="max-width: 95%; max-height: 85vh; border-radius: 4px;">
+</div>
+<div id="zoom-film" style="display: none; position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); z-index: 99999; justify-content: center; align-items: center; padding: 10px;" onclick="window.location.hash='';">
+  <img src="img/filmset-bestseller.jpg" alt="Filmset" style="max-width: 95%; max-height: 85vh; border-radius: 4px;">
+</div>
+
+<footer>
+
+      <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. D &bull; A &bull; CH &bull; International</p>
+      <div style="margin-top: 8px;">
+        <a href="impressum.html">Impressum</a> |
+        <a href="datenschutz.html">Datenschutzerklärung</a>
+      </div>
+      <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+        <span>Webdesign &amp; Umsetzung: </span>
+        <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+          <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+          <span>ARTBECKO</span>
+        </a>
+      </div>
+    </footer>
+
+  </div><!-- ENDE .network-container -->
+
+  <script>
+    const buecherDatenbank = [
+      {
+        code: "Analyse #YSCH-003", status: "published", analyst: "Yannick Scholz (21)",
+        titel: "Das Geheimnis der Zwischenwelt",
+        quote: "„Richtig gutes Buch, hat mich voll abgeholt! Ich habe das Buch am Wochenende im Bett quasi in einem Rutsch durchgelesen.“",
+        plots: { title: "Der Plot & Einstieg", img: "img/bild1.jpg", text: "Bin eigentlich ohne große Erwartungen rangegangen, aber die Story hat mich echt gecatcht." },
+        wann: { title: "WANN: Die Atmosphäre", img: "img/bild2.jpg", text: "Obwohl ich die 60er natürlich null miterlebt habe, kam diese ganze Stimmung richtig gut rüber..." },
+        waswo: { title: "WAS & WO: Das Mysterium", img: "img/bild3.jpg", text: "Die Story fängt erst an wie ein typisches Kinderabenteuer, wird dann aber richtig mysteriös." },
+        fazit: "Lässt sich super flüssig weglesen und macht einfach Laune. Wer mal wieder Bock auf eine spannende Story hat, macht hier nichts falsch."
+      },
+      {
+        code: "Analyse #SSCH-001", status: "progress", analyst: "Sandra Scholz",
+        titel: "Titel des zweiten Buches",
+        quote: "„In Analyse: Die strukturelle Auswertung läuft derzeit auf Hochtouren.“",
+        plots: { title: "Der Plot & Aufbau", img: "img/bild1.jpg", text: "Inhalt und 7-W-Fokus für Buch 2 werden vorbereitet..." },
+        wann: { title: "WANN: Die Zeitebene", img: "img/bild2.jpg", text: "Die sprachliche und zeitliche Einordnung wird aktuell verfeinert." },
+        waswo: { title: "WAS & WO: Das Setting", img: "img/bild3.jpg", text: "Die Schauplatz-Analysen stehen kurz vor der Fertigstellung." },
+        fazit: "Dieses Werk befindet sich aktuell im Feinschliff unseres Kernteams. Die vollständige Rezension erscheint in Kürze."
+      },
+      {
+        code: "Analyse #RBEC-002", status: "progress", analyst: "Rainer Beck",
+        titel: "Titel des dritten Buches",
+        quote: "„In Analyse: Untersuchung der historischen Kulisse und Tiefenatmosphäre.“",
+        plots: { title: "Der Plot & Einstieg", img: "img/bild1.jpg", text: "Inhalt und 7-W-Fokus für Buch 3 werden vorbereitet..." },
+        wann: { title: "WANN: Die Atmosphäre", img: "img/bild2.jpg", text: "Die atmosphärische Tiefe wird detailliert aufgeschlüsselt." },
+        waswo: { title: "WAS & WO: Die Kulisse", img: "img/bild3.jpg", text: "Die historischen Details werden mit echten Fakten abgeglichen." },
+        fazit: "Unsere Experten werten die Kulissen- und Spannungsbögen derzeit sorgfältig aus."
+      }
+    ];
+
+    function renderChronik() {
+      const container = document.getElementById('chronik-container');
+      container.innerHTML = "";
+      buecherDatenbank.forEach(buch => {
+        const badgeClass = buch.status === 'published' ? 'badge-published' : 'badge-progress';
+        const badgeText = buch.status === 'published' ? 'Veröffentlicht' : 'In Analyse';
+        container.innerHTML += `
+          <div class="book-accordion">
+            <button class="book-header" onclick="toggleBook(this)">
+              <div>
+                <span class="book-code-badge ${badgeClass}">${buch.code} &bull; ${badgeText}</span>
+                <h3 style="font-size: 1.1rem;">${buch.titel}</h3>
+              </div>
+              <span style="color: var(--primary-sage); font-size: 0.85rem; font-style: italic; font-weight: 600;">Analyst: ${buch.analyst}</span>
+            </button>
+            <div class="book-content">
+              <div class="book-internal">
+                <p style="font-style: italic; color: var(--primary-sage); border-left: 3px solid var(--accent-terracotta); padding-left: 14px; margin-bottom: 18px;">${buch.quote}</p>
+                <div class="fokus-grid">
+                  <div class="fokus-card"><img src="${buch.plots.img}" alt="Plot"><h4>${buch.plots.title}</h4><p style="font-size:0.85rem;">${buch.plots.text}</p></div>
+                  <div class="fokus-card"><img src="${buch.wann.img}" alt="Atmosphäre"><h4>${buch.wann.title}</h4><p style="font-size:0.85rem;">${buch.wann.text}</p></div>
+                  <div class="fokus-card"><img src="${buch.waswo.img}" alt="Mysterium"><h4>${buch.waswo.title}</h4><p style="font-size:0.85rem;">${buch.waswo.text}</p></div>
+                </div>
+                <div style="background: rgba(44,106,114,0.04); border: 1px solid var(--line-muted); border-radius: 6px; padding: 14px;">
+                  <h4 style="color: var(--primary-sage); text-transform: uppercase; font-size: 0.85rem;">Das unbestechliche Fazit</h4>
+                  <p style="font-size: 0.9rem;">${buch.fazit}</p>
+                </div>
+              </div>
+            </div>
+          </div>`;
+      });
+    }
+
+    window.onload = function() { renderChronik(); };
+
+    function checkCockpitAccess() {
+      const password = document.getElementById('cockpit-password').value;
+      if (password === 'Cockpit2026') {
+        const enc = "68747470733a2f2f646f63732e676f6f676c652e636f6d2f666f726d732f642f652f3146414970514c5356653776367452557432426755597141546b75626e594d6552627753463850374347584e324a335678546f495f6f67412f76696577666f726d3f656d6265646465643d74727565";
+        let url = "";
+        for (let i = 0; i < enc.length; i += 2) { url += String.fromCharCode(parseInt(enc.substr(i, 2), 16)); }
+        document.getElementById('auth-area').style.display = 'none';
+        document.getElementById('cockpit-text').innerHTML = "<strong>Erfolgreich autorisiert.</strong> Das Protokoll-Formular ist jetzt direkt geladen:";
+        const container = document.getElementById('form-container');
+        container.style.display = 'block';
+        container.innerHTML = `<iframe src="${url}" width="100%" height="100%" frameborder="0">Wird geladen...</iframe>`;
+      } else {
+        alert('Falsches Passwort! Zugriff verweigert.');
+        document.getElementById('cockpit-password').value = '';
+      }
+    }
+
+    function toggleSubmissionBox() {
+      const box = document.getElementById('submission-info');
+      box.style.display = (box.style.display === 'block') ? 'none' : 'block';
+      if (box.style.display === 'block') { box.scrollIntoView({ behavior: 'smooth' }); }
+    }
+
+    function toggleBook(header) {
+      const content = header.nextElementSibling;
+      content.style.maxHeight = (content.style.maxHeight && content.style.maxHeight !== '0px') ? '0px' : content.scrollHeight + "px";
+    }
+  </script>
+</body>
+</html>

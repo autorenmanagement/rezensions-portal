@@ -1,0 +1,305 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>Impressum | Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --bg-darkroom: #EAEFEF;
+      --card-dark: #F7FAFA;
+      --primary-sage: #2C6A72;
+      --accent-terracotta: #3D5A6C;
+      --cream-grey: #182329;
+      --line-muted: #BDCBD0;
+      --btn-gradient: linear-gradient(135deg, #445E6A 0%, #1A3F49 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--bg-darkroom);
+      color: var(--cream-grey);
+      line-height: 1.75;
+    }
+
+    /* Sprachumschalter DE / EN / PL */
+    .lang-bar {
+      background: #182329;
+      padding: 8px 20px;
+      text-align: right;
+    }
+    .lang-bar button {
+      background: transparent;
+      border: 1px solid rgba(255, 255, 255, 0.25);
+      color: #EAEFEF;
+      padding: 4px 12px;
+      margin-left: 8px;
+      border-radius: 4px;
+      font-size: 0.78rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.2s;
+    }
+    .lang-bar button.active, .lang-bar button:hover {
+      background: var(--primary-sage);
+      border-color: var(--primary-sage);
+      color: #ffffff;
+    }
+
+    .network-container { max-width: 900px; margin: 0 auto; padding: 30px 20px 60px; }
+
+    .top-nav {
+      display: flex; justify-content: space-between; align-items: center;
+      margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+    }
+    .back-link {
+      display: inline-block; padding: 8px 16px; border: 2px solid var(--primary-sage);
+      color: var(--primary-sage); text-decoration: none; font-size: 0.85rem;
+      font-weight: bold; letter-spacing: 0.5px; border-radius: 4px; transition: all 0.2s;
+    }
+    .back-link:hover { background: rgba(44, 106, 114, 0.1); }
+
+    header { text-align: center; padding: 25px 0 35px 0; position: relative; margin-bottom: 30px; }
+    header::after {
+      content: ''; position: absolute; bottom: 0; left: 25%; width: 50%; height: 1px;
+      background: linear-gradient(to right, transparent, var(--primary-sage), transparent);
+    }
+    h1 { font-size: 2.1rem; font-weight: 300; letter-spacing: 4px; color: var(--cream-grey); text-transform: uppercase; }
+    h1 span { font-weight: 700; color: var(--primary-sage); }
+    .tagline {
+      font-size: 0.95rem; color: var(--accent-terracotta); margin-top: 12px;
+      letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+    }
+
+    .legal-box {
+      background: #ffffff;
+      border: 1px solid var(--line-muted);
+      border-left: 4px solid var(--primary-sage);
+      border-radius: 6px;
+      padding: 24px 28px;
+      margin-bottom: 20px;
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+    .legal-box h2 {
+      font-size: 1.05rem;
+      color: var(--primary-sage);
+      text-transform: uppercase;
+      letter-spacing: 0.8px;
+      margin-bottom: 10px;
+      padding-bottom: 6px;
+      border-bottom: 1px solid var(--line-muted);
+    }
+    .legal-box p { font-size: 0.94rem; margin-bottom: 10px; }
+    .legal-box p:last-child { margin-bottom: 0; }
+    .legal-box a { color: var(--primary-sage); font-weight: 600; text-decoration: none; }
+    .legal-box a:hover { text-decoration: underline; }
+
+    footer {
+      text-align: center; margin-top: 60px; color: var(--cream-grey); font-size: 0.85rem;
+      opacity: 0.8; border-top: 1px solid var(--line-muted); padding-top: 25px;
+    }
+    footer a { color: var(--primary-sage); text-decoration: none; margin: 0 10px; font-weight: 600; }
+  </style>
+</head>
+<body>
+
+  <!-- Mehrsprachiger Umschalter -->
+  <div class="lang-bar">
+    <button type="button" onclick="changeLanguage('de')" id="btn-de" class="active">Deutsch</button>
+    <button type="button" onclick="changeLanguage('en')" id="btn-en">English</button>
+    <button type="button" onclick="changeLanguage('pl')" id="btn-pl">Polski</button>
+  </div>
+
+ <!-- Zentrale Hauptnavigation für das Autoren-Multiversum -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+    <header>
+      <h1 id="ds-main-title">Daten<span>schutz</span></h1>
+      <div class="tagline">Transparente Informationen zur Datenverarbeitung im Multiversum</div>
+    </header>
+
+    <main>
+      <div class="legal-box">
+        <h2 id="ds-sec1-title">I. Verantwortliche Stelle &amp; Grundsatz</h2>
+        <p id="ds-sec1-text">
+          Verantwortlich für die Datenverarbeitung auf dieser Webseite ist Joanna Elisabeth Beck, Weltzienstr. 9, 76135 Karlsruhe (Kontakt über unser geschütztes <a href="formular.html">Kontaktformular</a>). Wir erheben so wenig Daten wie möglich und verzichten vollständig auf Tracking-Cookies oder Werbenetzwerke.
+        </p>
+      </div>
+
+      <div class="legal-box">
+        <h2 id="ds-sec2-title">II. Hosting &amp; Formular-Übermittlung (Netlify)</h2>
+        <p id="ds-sec2-text1">
+          Diese Webseite wird über den Dienstleister Netlify (Netlify, Inc., San Francisco, USA) bereitgestellt. Beim Aufruf der Seiten werden technisch notwendige Server-Logdaten (z. B. IP-Adresse, Browsertyp, Uhrzeit) zur sicheren Auslieferung verarbeitet.
+        </p>
+        <p id="ds-sec2-text2">
+          Wenn Sie uns über ein Formular (z. B. Kontakt, Autoren-Steckbrief, Rezensionsanfrage oder Wettbewerb) Angaben oder Dateien übermitteln, werden diese Daten ausschließlich zur Bearbeitung Ihres Anliegens bzw. zur Einrichtung Ihrer Autorenseite verwendet und nicht an unbefugte Dritte weitergegeben.
+        </p>
+      </div>
+
+      <div class="legal-box">
+        <h2 id="ds-sec3-title">III. Lokale Schreibwerkzeuge im Browser</h2>
+        <p id="ds-sec3-text">
+          Unsere interaktiven Werkzeuge (wie der 7-W-Text-Spiegel, der Ideenbrüter, die Wort-Apotheke oder der Lesezeichen-Generator) arbeiten rein lokal in Ihrem Webbrowser. Eingegebene Manuskript-Texte werden dabei nicht an uns übertragen oder gespeichert.
+        </p>
+      </div>
+
+      <div class="legal-box">
+        <h2 id="ds-sec4-title">IV. Ihre Rechte (Auskunft, Berichtigung &amp; Löschung)</h2>
+        <p id="ds-sec4-text">
+          Sie haben nach der DSGVO jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten sowie ein Recht auf Berichtigung, Sperrung oder vollständige Löschung dieser Daten. Nutzen Sie hierfür gerne unser <a href="formular.html">Kontaktformular</a>.
+        </p>
+      </div>
+    </main>
+
+<!-- FOOTER & LEGAL -->
+<footer>
+  <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. D · A · CH · International</p>
+  <div style="margin-top: 8px;">
+    <a href="impressum.html">Impressum</a> | 
+    <a href="datenschutz.html">Datenschutzerklärung</a>
+  </div>
+  <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+    <span>Webdesign &amp; Umsetzung:</span>
+    <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+      <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+      <span>ARTBECKO</span>
+    </a>
+  </div>
+</footer>
+
+
+  </div>
+
+  <script>
+    const translations = {
+      de: {
+        backLink: "← Zurück zur Startseite",
+        sec1Title: "I. Verantwortliche Stelle & Grundsatz",
+        sec1Text: "Verantwortlich für die Datenverarbeitung auf dieser Webseite ist Joanna Elisabeth Beck, Weltzienstr. 9, 76135 Karlsruhe (Kontakt über unser geschütztes Kontaktformular). Wir erheben so wenig Daten wie möglich und verzichten vollständig auf Tracking-Cookies oder Werbenetzwerke.",
+        sec2Title: "II. Hosting & Formular-Übermittlung (Netlify)",
+        sec2Text1: "Diese Webseite wird über den Dienstleister Netlify (Netlify, Inc., San Francisco, USA) bereitgestellt. Beim Aufruf der Seiten werden technisch notwendige Server-Logdaten (z. B. IP-Adresse, Browsertyp, Uhrzeit) zur sicheren Auslieferung verarbeitet.",
+        sec2Text2: "Wenn Sie uns über ein Formular (z. B. Kontakt, Autoren-Steckbrief, Rezensionsanfrage oder Wettbewerb) Angaben oder Dateien übermitteln, werden diese Daten ausschließlich zur Bearbeitung Ihres Anliegens bzw. zur Einrichtung Ihrer Autorenseite verwendet und nicht an unbefugte Dritte weitergegeben.",
+        sec3Title: "III. Lokale Schreibwerkzeuge im Browser",
+        sec3Text: "Unsere interaktiven Werkzeuge (wie der 7-W-Text-Spiegel, der Ideenbrüter, die Wort-Apotheke oder der Lesezeichen-Generator) arbeiten rein lokal in Ihrem Webbrowser. Eingegebene Manuskript-Texte werden dabei nicht an uns übertragen oder gespeichert.",
+        sec4Title: "IV. Ihre Rechte (Auskunft, Berichtigung & Löschung)",
+        sec4Text: "Sie haben nach der DSGVO jederzeit das Recht auf unentgeltliche Auskunft über Ihre gespeicherten personenbezogenen Daten sowie ein Recht auf Berichtigung, Sperrung oder vollständige Löschung dieser Daten."
+      },
+      en: {
+        backLink: "← Back to Startpage",
+        sec1Title: "I. Controller & Privacy Principle",
+        sec1Text: "Responsible for data processing on this website is Joanna Elisabeth Beck, Weltzienstr. 9, 76135 Karlsruhe, Germany (contact via our protected contact form). We collect as little data as possible and do not use tracking cookies or advertising networks.",
+        sec2Title: "II. Hosting & Form Submissions (Netlify)",
+        sec2Text1: "This website is hosted by Netlify (Netlify, Inc., San Francisco, USA). When visiting the pages, technically necessary server log data (e.g., IP address, browser type, time) is processed to ensure secure delivery.",
+        sec2Text2: "If you submit information or files via a form (e.g., contact, author profile, review request, or contest), this data is used solely to process your request or set up your author page and is never shared with unauthorized third parties.",
+        sec3Title: "III. Local Writing Tools in Your Browser",
+        sec3Text: "Our interactive tools (such as the 7-W Text Mirror, Idea Incubator, Word Apothecary, or Bookmark Generator) run purely locally in your web browser. Any manuscript texts entered are never transmitted to or stored by us.",
+        sec4Title: "IV. Your Rights (Access, Rectification & Erasure)",
+        sec4Text: "Under the GDPR, you have the right at any time to free information about your stored personal data as well as the right to rectification, restriction, or complete deletion of this data."
+      },
+      pl: {
+        backLink: "← Powrót do strony głównej",
+        sec1Title: "I. Administrator danych i zasada minimalizacji",
+        sec1Text: "Administratorem danych osobowych na tej stronie jest Joanna Elisabeth Beck, Weltzienstr. 9, 76135 Karlsruhe (kontakt przez nasz bezpieczny formularz kontaktowy). Zbieramy jak najmniej danych i nie stosujemy plików cookie do śledzenia ani sieci reklamowych.",
+        sec2Title: "II. Hosting i obsługa formularzy (Netlify)",
+        sec2Text1: "Strona jest hostowana przez usługodawcę Netlify (Netlify, Inc., San Francisco, USA). Podczas odwiedzania stron przetwarzane są niezbędne technicznie dane serwera (np. adres IP, typ przeglądarki, czas) w celu bezpiecznego wyświetlania strony.",
+        sec2Text2: "Dane i pliki przesyłane za pomocą formularzy (np. kontakt, profil autora, zapytanie o recenzję lub konkurs) są wykorzystywane wyłącznie w celu realizacji Państwa zgłoszenia i nie są przekazywane osobom trzecim.",
+        sec3Title: "III. Lokalne narzędzia pisarskie w przeglądarce",
+        sec3Text: "Nasze interaktywne narzędzia (takie jak Lustro Tekstu 7-W, Inkubator Pomysłów, Apteka Słów czy Generator Zakładek) działają wyłącznie lokalnie w Państwa przeglądarce. Wpisywane fragmenty tekstów nie są do nas przesyłane ani zapisywane.",
+        sec4Title: "IV. Państwa prawa (dostęp, sprostowanie i usunięcie)",
+        sec4Text: "Zgodnie z RODO mają Państwo w każdej chwili prawo do bezpłatnej informacji o przechowywanych danych osobowych, a także prawo do ich sprostowania, ograniczenia przetwarzania lub całkowitego usunięcia."
+      }
+    };
+
+    function changeLanguage(lang) {
+      ["de", "en", "pl"].forEach(function(l) {
+        document.getElementById("btn-" + l).classList.remove("active");
+      });
+      document.getElementById("btn-" + lang).classList.add("active");
+      document.documentElement.lang = lang;
+
+     
+      document.getElementById("ds-sec1-title").innerText = translations[lang].sec1Title;
+      document.getElementById("ds-sec1-text").innerText = translations[lang].sec1Text;
+      document.getElementById("ds-sec2-title").innerText = translations[lang].sec2Title;
+      document.getElementById("ds-sec2-text1").innerText = translations[lang].sec2Text1;
+      document.getElementById("ds-sec2-text2").innerText = translations[lang].sec2Text2;
+      document.getElementById("ds-sec3-title").innerText = translations[lang].sec3Title;
+      document.getElementById("ds-sec3-text").innerText = translations[lang].sec3Text;
+      document.getElementById("ds-sec4-title").innerText = translations[lang].sec4Title;
+      document.getElementById("ds-sec4-text").innerText = translations[lang].sec4Text;
+    }
+  </script>
+</body>
+</html>
