@@ -1,0 +1,869 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>Seelen Kompas | Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+  :root {
+    --bg-page: #edf1f1;
+    --bg-card: #ffffff;
+    --bg-subtle: #f7f9f9;
+    --bg-impuls: #fbf8f1;
+    --border-impuls: #d9b87c;
+    --primary: #264648;
+    --primary-hover: #1b3335;
+    --accent-teal: #3d6b6e;
+    --text-main: #222b2c;
+    --text-muted: #5c6b6d;
+    --border-light: #dce3e3;
+    --radius: 8px;
+  }
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+  }
+
+  body {
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    background-color: var(--bg-page);
+    color: var(--text-main);
+    line-height: 1.6;
+    padding-bottom: 40px;
+  }
+
+  /* Navigation (wie im Autoren-Multiversum) */
+  .top-nav {
+    background: #ffffff;
+    border-bottom: 1px solid var(--border-light);
+    padding: 14px 20px;
+    text-align: center;
+    font-size: 0.85rem;
+    font-weight: 600;
+    letter-spacing: 0.06em;
+    color: var(--primary);
+  }
+  .top-nav a {
+    color: var(--primary);
+    text-decoration: none;
+    margin: 0 12px;
+  }
+  .top-nav a:hover {
+    text-decoration: underline;
+  }
+
+  /* Haupt-Container */
+  .container {
+    max-width: 820px;
+    margin: 28px auto;
+    background: var(--bg-card);
+    border-radius: 12px;
+    border: 1px solid var(--border-light);
+    box-shadow: 0 4px 18px rgba(38, 70, 72, 0.05);
+    padding: 32px;
+  }
+
+  /* Kopfzeile */
+  .header-meta {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-bottom: 28px;
+  }
+
+  .btn-back {
+    display: inline-block;
+    padding: 8px 16px;
+    border: 1.5px solid var(--primary);
+    border-radius: 6px;
+    color: var(--primary);
+    text-decoration: none;
+    font-size: 0.9rem;
+    font-weight: 600;
+    transition: all 0.2s;
+  }
+  .btn-back:hover {
+    background: var(--primary);
+    color: #ffffff;
+  }
+
+  .kicker {
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 0.1em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* Titelbereich */
+  .title-block {
+    text-align: center;
+    margin-bottom: 28px;
+  }
+  .title-block h1 {
+    font-size: 2.1rem;
+    font-weight: 300;
+    letter-spacing: 0.14em;
+    color: var(--text-main);
+    text-transform: uppercase;
+    margin-bottom: 8px;
+  }
+  .title-block h1 strong {
+    font-weight: 700;
+    color: var(--primary);
+  }
+  .title-block p {
+    font-size: 0.85rem;
+    letter-spacing: 0.08em;
+    color: var(--text-muted);
+    text-transform: uppercase;
+  }
+
+  /* Tabs (wie beim Ideenbrüter) */
+  .tabs {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 12px;
+    margin-bottom: 24px;
+  }
+  .tab-btn {
+    padding: 14px 16px;
+    border: 1px solid var(--border-light);
+    background: var(--bg-subtle);
+    color: var(--text-main);
+    font-size: 0.95rem;
+    font-weight: 600;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .tab-btn.active {
+    background: var(--primary);
+    color: #ffffff;
+    border-color: var(--primary);
+  }
+
+  .tab-content {
+    display: none;
+  }
+  .tab-content.active {
+    display: block;
+  }
+
+  /* Steuerungs-Box Generator */
+  .control-box {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 20px;
+    margin-bottom: 24px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 14px;
+  }
+  .control-info {
+    font-size: 0.92rem;
+    color: var(--text-muted);
+    max-width: 440px;
+  }
+  .btn-primary {
+    background: var(--primary);
+    color: #ffffff;
+    border: none;
+    padding: 13px 22px;
+    border-radius: 6px;
+    font-size: 0.9rem;
+    font-weight: 700;
+    letter-spacing: 0.05em;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+  .btn-primary:hover {
+    background: var(--primary-hover);
+  }
+
+  /* Ergebnis-Karte (mit grünem linken Akzentstreifen) */
+  .result-card {
+    border: 1px solid var(--border-light);
+    border-left: 4px solid var(--primary);
+    border-radius: var(--radius);
+    padding: 24px;
+    background: #ffffff;
+  }
+
+  .result-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 10px;
+    padding-bottom: 16px;
+    margin-bottom: 18px;
+    border-bottom: 1px solid var(--border-light);
+  }
+
+  .badge {
+    display: inline-block;
+    background: #e6efef;
+    color: var(--primary);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.06em;
+    padding: 4px 10px;
+    border-radius: 4px;
+    text-transform: uppercase;
+    margin-bottom: 4px;
+  }
+
+  .archetype-title {
+    font-size: 1.45rem;
+    font-weight: 700;
+    color: var(--text-main);
+  }
+
+  .btn-copy {
+    background: #ffffff;
+    border: 1px solid var(--border-light);
+    color: var(--text-main);
+    padding: 8px 14px;
+    border-radius: 6px;
+    font-size: 0.85rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: all 0.2s;
+  }
+  .btn-copy:hover {
+    background: var(--bg-subtle);
+    border-color: var(--primary);
+  }
+
+  /* 2x2 Grid für Seelen-Bausteine */
+  .psych-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 14px;
+    margin-bottom: 16px;
+  }
+
+  .psych-box {
+    background: var(--bg-subtle);
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    padding: 15px;
+  }
+  .psych-box h3 {
+    font-size: 0.76rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: var(--accent-teal);
+    margin-bottom: 6px;
+  }
+  .psych-box p {
+    font-size: 0.94rem;
+    color: var(--text-main);
+  }
+
+  /* 7-W-Impuls Box (warmgelb wie im Plot-Twist-Orakel) */
+  .impuls-box {
+    background: var(--bg-impuls);
+    border: 1px solid #eadcc2;
+    border-left: 4px solid var(--border-impuls);
+    border-radius: var(--radius);
+    padding: 16px 18px;
+  }
+  .impuls-box h4 {
+    font-size: 0.78rem;
+    text-transform: uppercase;
+    letter-spacing: 0.07em;
+    color: #8a6424;
+    margin-bottom: 4px;
+  }
+  .impuls-box p {
+    font-size: 0.95rem;
+    font-weight: 500;
+    color: var(--text-main);
+  }
+
+  /* Aufklapp-Karten (Tab 2) */
+  .accordion-item {
+    border: 1px solid var(--border-light);
+    border-radius: var(--radius);
+    margin-bottom: 12px;
+    overflow: hidden;
+    background: #ffffff;
+  }
+  .accordion-header {
+    width: 100%;
+    text-align: left;
+    background: var(--bg-subtle);
+    border: none;
+    padding: 16px 20px;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--primary);
+    cursor: pointer;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .accordion-header:hover {
+    background: #ebf0f0;
+  }
+  .accordion-body {
+    display: none;
+    padding: 18px 20px;
+    border-top: 1px solid var(--border-light);
+    background: #ffffff;
+  }
+  .accordion-item.open .accordion-body {
+    display: block;
+  }
+  .accordion-item.open .arrow {
+    transform: rotate(180deg);
+  }
+  .leitfrage {
+    border-left: 3px solid var(--primary);
+    padding-left: 12px;
+    margin-bottom: 14px;
+    font-weight: 600;
+    color: var(--text-main);
+  }
+  .accordion-body ul {
+    padding-left: 20px;
+  }
+  .accordion-body li {
+    margin-bottom: 8px;
+    font-size: 0.95rem;
+  }
+
+  /* Footer */
+  .footer {
+    text-align: center;
+    margin-top: 32px;
+    padding-top: 18px;
+    border-top: 1px solid var(--border-light);
+    font-size: 0.82rem;
+    color: var(--text-muted);
+  }
+  .footer a {
+    color: var(--primary);
+    text-decoration: none;
+    margin: 0 8px;
+  }
+  .footer a:hover {
+    text-decoration: underline;
+  }
+
+  @media (max-width: 650px) {
+    .container {
+      margin: 12px;
+      padding: 20px;
+    }
+    .tabs, .psych-grid {
+      grid-template-columns: 1fr;
+    }
+  }
+</style>
+</head>
+<body>
+
+<!-- Zentrale Hauptnavigation für das Autoren-Multiversum -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+
+
+<main class="container">
+  <div class="header-meta">
+    <a href="index.html" class="btn-back">← Zurück zum Autoren-Multiversum</a>
+    <span class="kicker">HANDWERK • FIGUREN-PSYCHOLOGIE</span>
+  </div>
+
+  <div class="title-block">
+    <h1>SEELEN-<strong>KOMPASS</strong></h1>
+    <p>INNERE WUNDEN, LEBENSLÜGEN &amp; ABWEHRMECHANISMEN FÜR GLAUBWÜRDIGE FIGUREN</p>
+  </div>
+
+  <!-- Tabs -->
+  <div class="tabs">
+    <button class="tab-btn active" onclick="switchTab('generator', this)">1. Der Wunde- &amp; Lüge-Generator</button>
+    <button class="tab-btn" onclick="switchTab('wissen', this)">2. Psychologie-Spickzettel (4 Module)</button>
+  </div>
+
+  <!-- TAB 1: GENERATOR -->
+  <section id="tab-generator" class="tab-content active">
+    <div class="control-box">
+      <div class="control-info">
+        Verleihe deiner Figur psychologische Tiefe: Würfle eine Kombination aus vergangener Verletzung, innerer Blockade und Stressreaktion.
+      </div>
+      <button class="btn-primary" onclick="wuerfleProfil()">NEUE SEELEN-DYNAMIK WÜRFELN</button>
+    </div>
+
+    <div class="result-card" id="profil-karte">
+      <div class="result-header">
+        <div>
+          <span class="badge" id="p-kategorie">PSYCHOLOGISCHES ARCHETYP-PROFIL</span>
+          <h2 class="archetype-title" id="p-titel">Der unantastbare Perfektionist</h2>
+        </div>
+        <button class="btn-copy" id="copy-btn" onclick="profilKopieren()">Seelen-Profil kopieren</button>
+      </div>
+
+      <div class="psych-grid">
+        <div class="psych-box">
+          <h3>Innere Wunde (Ghost)</h3>
+          <p id="p-wunde">Wurde als Kind nur dann beachtet und gelobt, wenn er makellose Leistungen erbrachte.</p>
+        </div>
+        <div class="psych-box">
+          <h3>Lebenslüge (Lie)</h3>
+          <p id="p-luege">„Ich bin nur etwas wert, wenn ich keine Fehler mache.“</p>
+        </div>
+        <div class="psych-box">
+          <h3>Abwehrmechanismus (Stressreaktion)</h3>
+          <p id="p-abwehr">Intellektualisierung &amp; Kontrolle – wird unter Druck eiskalt, überkritisch gegenüber anderen und lässt niemanden emotional an sich heran.</p>
+        </div>
+        <div class="psych-box">
+          <h3>Wunsch vs. Bedürfnis</h3>
+          <p id="p-wunsch">Will den unangefochtenen Erfolg erringen (Wunsch) – braucht aber die Erfahrung, auch mit Fehlern geliebt zu werden (Bedürfnis).</p>
+        </div>
+      </div>
+
+      <div class="impuls-box">
+        <h4>7-W-Schreibimpuls für deine nächste Szene:</h4>
+        <p id="p-impuls">WIE verändert sich seine Körpersprache, wenn ihm vor Zeugen ein offensichtlicher Fehler unterläuft?</p>
+      </div>
+    </div>
+  </section>
+
+  <!-- TAB 2: NACHSCHLAGEWERK -->
+  <section id="tab-wissen" class="tab-content">
+    
+    <div class="accordion-item open">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <span>1. Bindungstypen – Wie deine Figuren lieben und streiten</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="leitfrage">Worum geht es? Warum manche Figuren klammern, andere flüchten – und wie daraus echte Beziehungsreibung entsteht.</div>
+        <ul>
+          <li><strong>Sicher gebunden:</strong> Kann Nähe zulassen, Konflikte ruhig ansprechen und dem Partner Freiraum lassen (oft der moralische Anker in einer Geschichte).</li>
+          <li><strong>Ängstlich gebunden:</strong> Hat ständige Angst vor Verlust, sucht dauernd Bestätigung, interpretiert Schweigen als Ablehnung und neigt zu Eifersucht oder Klammern.</li>
+          <li><strong>Vermeidend gebunden:</strong> Fühlt sich durch zu viel Nähe eingeengt, zieht sich im Streit sofort zurück, wirkt kühl und schützt seine Unabhängigkeit um jeden Preis. <em>(Praxis-Tipp: Kombiniere eine ängstliche und eine vermeidende Figur für maximale Dialog-Spannung!)</em></li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <span>2. Abwehrmechanismen – Warum Figuren selten direkt die Wahrheit sagen</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="leitfrage">Worum geht es? Wie Figuren ihr Selbstbild schützen, wenn sie unter Druck geraten – perfekt für lebendigen Subtext.</div>
+        <ul>
+          <li><strong>Projektion:</strong> Eine Figur wirft anderen genau den Fehler vor, den sie an sich selbst nicht erträgt (z. B. ein unehrlicher Mensch verdächtigt ständig andere der Lüge).</li>
+          <li><strong>Rationalisierung:</strong> Eine Figur erfindet logisch klingende Ausreden für eine rein emotionale oder egoistische Tat („Ich habe das nur zu deinem Besten getan“).</li>
+          <li><strong>Verdrängung &amp; Verschiebung:</strong> Unangenehme Gefühle werden weggeschoben und entladen sich an einem harmlosen Ziel (z. B. Streit mit dem Vorgesetzten → Figur lässt den Frust zu Hause an einer unbeteiligten Person aus).</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <span>3. Gruppendynamik &amp; Macht – Konflikte in Gemeinschaften</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="leitfrage">Worum geht es? Wie sich Menschen verändern, sobald sie Teil einer Gruppe, Familie oder Dorfgemeinschaft sind.</div>
+        <ul>
+          <li><strong>Konformitätsdruck:</strong> Figuren schweigen aus Angst vor Ausgrenzung zu einem Unrecht – oder machen bei etwas mit, das sie allein nie tun würden.</li>
+          <li><strong>Das Sündenbock-Prinzip:</strong> Eine verunsicherte Gruppe sucht sich einen Außenseiter, um von eigenen Problemen oder Fehlern abzulenken.</li>
+          <li><strong>Verdeckte Machtspiele:</strong> Wer stellt die Fragen, wer bestimmt das Thema und wer schweigt? Wahre Macht zeigt sich in Szenen oft nicht durch Lautstärke, sondern durch Kontrolle über Informationen.</li>
+        </ul>
+      </div>
+    </div>
+
+    <div class="accordion-item">
+      <button class="accordion-header" onclick="toggleAccordion(this)">
+        <span>4. Leserpsychologie – So erzeugst du emotionalen Sog</span>
+        <span class="arrow">▼</span>
+      </button>
+      <div class="accordion-body">
+        <div class="leitfrage">Worum geht es? Wie das Gehirn deiner Leser Geschichten verarbeitet – und wie du sie bis zur letzten Seite fesselst.</div>
+        <ul>
+          <li><strong>Empathie durch Verletzlichkeit:</strong> Leser lieben keine perfekten Helden. Zeige früh, wo deine Figur leidet, ungerecht behandelt wird oder trotz Angst mutig handelt.</li>
+          <li><strong>Zeigarnik-Effekt (Offene Schleifen):</strong> Das menschliche Gehirn hasst unbeantwortete Fragen. Beende Szenen oder Kapitel mit einem ungelösten Rätsel oder emotionalen Bruch – der Leser <em>muss</em> weiterblättern.</li>
+          <li><strong>Katharsis (Emotionale Entladung):</strong> Ein starkes Ende löst nicht nur das äußere Problem (z. B. die Aufklärung eines Geheimnisses), sondern heilt auch die innere <em>Lebenslüge</em> der Hauptfigur.</li>
+        </ul>
+      </div>
+    </div>
+	
+	<div style="max-width: 820px; margin: 24px auto; background: #ffffff; border: 1px solid #dce3e3; border-radius: 12px; padding: 28px; font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;">
+  <div style="display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 12px; margin-bottom: 20px;">
+    <div>
+      <span style="font-size: 0.78rem; font-weight: 700; letter-spacing: 0.08em; color: #3d6b6e; text-transform: uppercase;">ANTI-BLOCKADE • BEZIEHUNGS-REIBUNG</span>
+      <h2 style="font-size: 1.5rem; color: #222b2c; margin-top: 4px;">Seelen-Kollisions-Generator</h2>
+    </div>
+    <button onclick="wuerfleKollision()" style="background: #264648; color: #ffffff; border: none; padding: 12px 20px; border-radius: 6px; font-weight: 700; cursor: pointer;">
+      NEUE KOLLISION WÜRFELN
+    </button>
+  </div>
+
+  <div style="border: 1px solid #dce3e3; border-left: 4px solid #264648; border-radius: 8px; padding: 20px;">
+    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 14px; margin-bottom: 16px;">
+      <div style="background: #f7f9f9; border: 1px solid #dce3e3; border-radius: 8px; padding: 14px;">
+        <div style="font-size: 0.75rem; font-weight: 700; color: #3d6b6e; text-transform: uppercase;">FIGUR A</div>
+        <div id="k-figA" style="font-size: 1.05rem; font-weight: 700; color: #222b2c; margin-top: 4px;">Die harmoniebedürftige Selbstverleugnerin</div>
+      </div>
+      <div style="background: #f7f9f9; border: 1px solid #dce3e3; border-radius: 8px; padding: 14px;">
+        <div style="font-size: 0.75rem; font-weight: 700; color: #3d6b6e; text-transform: uppercase;">FIGUR B</div>
+        <div id="k-figB" style="font-size: 1.05rem; font-weight: 700; color: #222b2c; margin-top: 4px;">Der zynische Einzelgänger</div>
+      </div>
+    </div>
+
+    <div style="background: #f7f9f9; border: 1px solid #dce3e3; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
+      <strong style="font-size: 0.8rem; color: #264648; text-transform: uppercase;">1. Der Trigger (Warum sie sich gegenseitig reizen):</strong>
+      <p id="k-trigger" style="margin-top: 4px; font-size: 0.95rem;">Sein bissiger Sarkasmus trifft genau ihre Angst, abgelehnt zu werden – und ihre übertriebene Freundlichkeit hält er für falsche Heuchelei.</p>
+    </div>
+
+    <div style="background: #f7f9f9; border: 1px solid #dce3e3; border-radius: 8px; padding: 14px; margin-bottom: 12px;">
+      <strong style="font-size: 0.8rem; color: #264648; text-transform: uppercase;">2. Die Eskalations-Falle (Streit-Muster):</strong>
+      <p id="k-eskalation" style="margin-top: 4px; font-size: 0.95rem;">Sie schluckt ihren Ärger herunter und lächelt alles weg, bis sie plötzlich explodiert; er zieht sich daraufhin sofort eiskalt zurück.</p>
+    </div>
+
+    <div style="background: #fbf8f1; border: 1px solid #eadcc2; border-left: 4px solid #d9b87c; border-radius: 8px; padding: 14px;">
+      <strong style="font-size: 0.8rem; color: #8a6424; text-transform: uppercase;">3. Der Heilungs-Moment (Katharsis-Chance):</strong>
+      <p id="k-heilung" style="margin-top: 4px; font-size: 0.95rem;">Sie lernt bei ihm zum ersten Mal, wütend „Nein“ zu sagen – und er merkt überrascht, dass sie ihn danach trotzdem nicht im Stich lässt.</p>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- FOOTER & LEGAL -->
+<footer class="footer">
+  <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. D · A · CH · International</p>
+  <div style="margin-top: 8px;">
+    <a href="impressum.html">Impressum</a> | 
+    <a href="datenschutz.html">Datenschutzerklärung</a>
+  </div>
+  <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+    <span>Webdesign &amp; Umsetzung:</span>
+    <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+      <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+      <span>ARTBECKO</span>
+    </a>
+  </div>
+</footer>
+
+
+
+<script>
+  const kollisionen = [
+    {
+      figA: "Die harmoniebedürftige Selbstverleugnerin",
+      figB: "Der zynische Einzelgänger",
+      trigger: "Sein bissiger Sarkasmus trifft genau ihre Angst, abgelehnt zu werden – und ihre übertriebene Freundlichkeit hält er für falsche Heuchelei.",
+      eskalation: "Sie schluckt ihren Ärger herunter und lächelt alles weg, bis sie plötzlich explodiert; er zieht sich daraufhin sofort eiskalt zurück.",
+      heilung: "Sie lernt bei ihm zum ersten Mal, wütend „Nein“ zu sagen – und er merkt überrascht, dass sie ihn danach trotzdem nicht im Stich lässt."
+    },
+    {
+      figA: "Der unantastbare Perfektionist",
+      figB: "Die rastlose Flüchterin",
+      trigger: "Ihr spontanes Chaos bringt seine strengen Pläne ins Wanken – und seine ständige Kontrolle gibt ihr das Gefühl, eingesperrt zu sein.",
+      eskalation: "Er belehrt sie wie ein Kind, woraufhin sie sofort mit einem lockeren Spruch das Weite sucht.",
+      heilung: "Als ein Plan komplett scheitert, zeigt sie ihm, wie man im Chaos lacht – und er wird für sie zum ersten sicheren Hafen."
+    },
+    {
+      figA: "Die überfürsorgliche Beschützerin",
+      figB: "Die stolze Einzelkämpferin",
+      trigger: "Ihre ständigen Hilfsangebote fühlen sich für die Einzelkämpferin wie Entmündigung und Demütigung an.",
+      eskalation: "Je schroffer die Einzelkämpferin Hilfe ablehnt, desto verzweifelter versucht die Beschützerin, heimlich alles für sie zu regeln.",
+      heilung: "Die Beschützerin lernt, loszulassen und zu vertrauen – und genau dadurch bittet die Einzelkämpferin zum ersten Mal freiwillig um Rat."
+    },
+    {
+      figA: "Die misstrauische Wahrheitssucherin",
+      figB: "Der charmante Blendwerk-Künstler",
+      trigger: "Sie spürt sofort, dass hinter seinen glänzenden Geschichten etwas verborgen liegt, und beginnt, ihn wie eine Detektivin auszufragen.",
+      eskalation: "Je tiefer sie bohrt, desto mehr Nebelkerzen und Ausreden erfindet er, um sein wahres, unsicheres Ich zu schützen.",
+      heilung: "Als er seine Maske fallen lässt und seine Schwäche zugibt, legt sie ihr Misstrauen ab und sieht den echten Menschen dahinter."
+    },
+    {
+      figA: "Die verbitterte Gerechtigkeitsfanatikerin",
+      figB: "Der schuldbeladene Büßer",
+      trigger: "Ihr strenges Urteil über menschliche Fehler trifft genau seine tiefste Scham über sein eigenes Versagen in der Vergangenheit.",
+      eskalation: "Sie klagt ihn gnadenlos an – und er widerspricht nicht einmal, weil er glaubt, jede Strafe verdient zu haben.",
+      heilung: "Als sie erkennt, wie sehr er bereits leidet, begreift sie, dass Gnade stärker ist als Rache – und schenkt ihm damit den ersten Schritt zur Selbstvergebung."
+    },
+    {
+      figA: "Der hochmütige Status-Jäger",
+      figB: "Die kühle Analytikerin",
+      trigger: "Seine prahlerischen Machtspiele prallen an ihrer nüchternen Logik völlig ab, was seine tiefe Unsicherheit bloßlegt.",
+      eskalation: "Er wird immer lauter und autoritärer, während sie ihn mit einem einzigen ruhigen Faktensatz komplett entzaubert.",
+      heilung: "Ohne seine Status-Fassade entdeckt er bei ihr, dass sein Verstand und seine ehrliche Meinung mehr zählen als jeder Titel."
+    }
+  ];
+
+  let kIndex = 0;
+  function wuerfleKollision() {
+    let neu;
+    do { neu = Math.floor(Math.random() * kollisionen.length); } while (neu === kIndex);
+    kIndex = neu;
+    const k = kollisionen[kIndex];
+    document.getElementById("k-figA").textContent = k.figA;
+    document.getElementById("k-figB").textContent = k.figB;
+    document.getElementById("k-trigger").textContent = k.trigger;
+    document.getElementById("k-eskalation").textContent = k.eskalation;
+    document.getElementById("k-heilung").textContent = k.heilung;
+  }
+
+  const profile = [
+    {
+      titel: "Der unantastbare Perfektionist",
+      wunde: "Wurde als Kind nur dann beachtet und gelobt, wenn er makellose Leistungen erbrachte.",
+      luege: "„Ich bin nur etwas wert, wenn ich keine Fehler mache.“",
+      abwehr: "Intellektualisierung & Kontrolle – wird unter Druck eiskalt, überkritisch gegenüber anderen und lässt niemanden emotional an sich heran.",
+      wunsch: "Will den unangefochtenen Erfolg erringen (Wunsch) – braucht aber die Erfahrung, auch mit Fehlern geliebt zu werden (Bedürfnis).",
+      impuls: "WIE verändert sich seine Körpersprache, wenn ihm vor Zeugen ein offensichtlicher Fehler unterläuft?"
+    },
+    {
+      titel: "Die harmoniebedürftige Selbstverleugnerin",
+      wunde: "Erlebte in der Familie ständige, unberechenbare Konflikte und fühlte sich für den Frieden verantwortlich.",
+      luege: "„Wenn ich meine eigenen Wünsche ausspreche, werde ich verlassen.“",
+      abwehr: "Verdrängung & Überanpassung – lächelt Ärger weg, sagt „Alles gut“, bis sich der Groll eines Tages explosionsartig entlädt.",
+      wunsch: "Will es allen recht machen und den Frieden wahren (Wunsch) – braucht aber den Mut, Grenzen zu setzen (Bedürfnis).",
+      impuls: "WAS sagt sie im Dialog – und was verrät gleichzeitig ihre unbewusste Geste?"
+    },
+    {
+      titel: "Der zynische Einzelgänger",
+      wunde: "Wurde von seiner engsten Vertrauensperson in einer Notsituation verraten oder im Stich gelassen.",
+      luege: "„Vertrauen ist eine Einladung zum Verrat – allein bin ich sicher.“",
+      abwehr: "Projektion & Sarkasmus – unterstellt anderen sofort eigennützige Motive und stößt Helfer mit bissigem Spott weg.",
+      wunsch: "Will völlig unabhängig bleiben und niemandem etwas schulden (Wunsch) – braucht aber wieder echte Verbündete (Bedürfnis).",
+      impuls: "WARUM hilft er trotzdem heimlich einer schwächeren Figur, obwohl er es laut abstreitet?"
+    },
+    {
+      titel: "Die überfürsorgliche Beschützerin",
+      wunde: "Konnte früher einen geliebten Menschen trotz aller Anstrengung nicht vor einem Unglück bewahren.",
+      luege: "„Nur wenn ich alles kontrolliere, bleiben die Menschen um mich herum sicher.“",
+      abwehr: "Bevormundung & Verleugnung – erstickt andere mit Fürsorge und weigert sich zu sehen, dass ihre Schützlinge längst erwachsen sind.",
+      wunsch: "Will jede Gefahr von ihrer Familie fernhalten (Wunsch) – braucht aber die Erkenntnis, dass sie nicht alles retten kann (Bedürfnis).",
+      impuls: "WOZU führt ihr Eingreifen, als die beschützte Person dadurch erst recht in Gefahr gerät?"
+    },
+    {
+      titel: "Der hochmütige Status-Jäger",
+      wunde: "Wuchs in Armut oder gesellschaftlicher Ächtung auf und wurde für seine Herkunft gedemütigt.",
+      luege: "„Nur Macht, Titel und Besitz schützen mich davor, wieder klein und hilflos zu sein.“",
+      abwehr: "Kompensation & Arroganz – prahlt mit Statussymbolen und tritt nach unten, sobald seine eigene Unsicherheit berührt wird.",
+      wunsch: "Will ganz nach oben an die Spitze der Gesellschaft (Wunsch) – braucht aber Selbstwert ohne äußere Titel (Bedürfnis).",
+      impuls: "WER durchschaut seine Fassade mit einem einzigen beiläufigen Satz?"
+    },
+    {
+      titel: "Die rastlose Flüchterin",
+      wunde: "Musste zu früh schwere Verantwortung tragen und fühlte sich wie in einem Käfig eingesperrt.",
+      luege: "„Bindung bedeutet Verlust meiner Freiheit; sobald es ernst wird, muss ich gehen.“",
+      abwehr: "Vermeidung & Flucht – wechselt bei emotionaler Nähe sofort das Thema, macht Witze oder reist ab.",
+      wunsch: "Will ungebunden durch die Welt ziehen (Wunsch) – braucht aber einen Ort und Menschen, bei denen sie ankommen darf (Bedürfnis).",
+      impuls: "WANN merkt sie zum ersten Mal, dass Weglaufen das Problem nicht löst?"
+    },
+    {
+      titel: "Der schuldbeladene Büßer",
+      wunde: "Hat in der Vergangenheit durch Leichtsinn oder Feigheit einen schweren Schaden verursacht.",
+      luege: "„Ich habe kein Recht auf eigenes Glück, solange meine Schuld nicht gesühnt ist.“",
+      abwehr: "Selbstsabotage – zerstört kurz vor dem Ziel seinen eigenen Erfolg oder weist jede Belohnung zurück.",
+      wunsch: "Will ein unmögliches Opfer bringen, um sein Gewissen zu beruhigen (Wunsch) – braucht aber Vergebung (vor allem durch sich selbst) (Bedürfnis).",
+      impuls: "WAS geschieht, als ihm ausgerechnet die geschädigte Person die Hand reicht?"
+    },
+    {
+      titel: "Die misstrauische Wahrheitssucherin",
+      wunde: "Wurde jahrelang über ein wichtiges Familiengeheimnis belogen (Gaslighting).",
+      luege: "„Jeder verbirgt etwas – ich darf niemandem glauben, bevor ich nicht alle Beweise habe.“",
+      abwehr: "Hypervigilanz & Verhör – liest zwischen allen Zeilen, wittert überall Verschwörungen und verletzt damit Unschuldige.",
+      wunsch: "Will ein dunkles Geheimnis um jeden Preis aufdecken (Wunsch) – braucht aber die Fähigkeit, wieder an das Gute zu glauben (Bedürfnis).",
+      impuls: "WIE reagiert sie, als sie erfährt, dass die Wahrheit viel harmloser – aber menschlicher – ist als gedacht?"
+    },
+    {
+      titel: "Der charmante Blendwerk-Künstler",
+      wunde: "Fühlte sich als Kind unsichtbar und übersehen, während andere im Mittelpunkt standen.",
+      luege: "„Mein wahres Ich ist langweilig – nur wenn ich eine schillernde Rolle spiele, hört man mir zu.“",
+      abwehr: "Übertreibung & Ausweichen – erfindet Geschichten, weicht ernsten Fragen mit Charme aus und fürchtet stille Momente.",
+      wunsch: "Will Bewunderung und Applaus (Wunsch) – braucht aber einen Menschen, der ihn auch ungeschminkt und still akzeptiert (Bedürfnis).",
+      impuls: "WO verliert er plötzlich seine Maske, weil niemand mehr zuschaut?"
+    },
+    {
+      titel: "Die verbitterte Gerechtigkeitsfanatikerin",
+      wunde: "Erlebte ein schweres Unrecht, bei dem die Täter ungestraft davonkamen.",
+      luege: "„Gnade ist Schwäche; nur kompromisslose Härte hält das Chaos auf.“",
+      abwehr: "Schwarz-Weiß-Denken & Rigorosität – duldet keine Grauzonen und verurteilt auch kleine Verfehlungen gnadenlos.",
+      wunsch: "Will einen Schuldigen zur Rechenschaft ziehen (Wunsch) – braucht aber Mitgefühl für menschliche Schwächen (Bedürfnis).",
+      impuls: "WARUM gerät ihr Weltbild ins Wanken, als ein geliebter Mensch gegen ihre eigenen Regeln verstößt?"
+    },
+    {
+      titel: "Der nostalgische Bewahrer",
+      wunde: "Verlor plötzlich seine Heimat, seinen Stand oder eine goldene Lebensphase.",
+      luege: "„Früher war alles besser – jede Veränderung bringt nur neuen Verlust.“",
+      abwehr: "Verklärung & Sturheit – klammert sich an alte Rituale, Gegenstände und Regeln und blockiert jede Neuerung.",
+      wunsch: "Will den alten Zustand um jeden Preis wiederherstellen (Wunsch) – braucht aber die Offenheit für einen Neuanfang (Bedürfnis).",
+      impuls: "WAS muss er loslassen, um in der Gegenwart handlungsfähig zu bleiben?"
+    },
+    {
+      titel: "Die kühle Analytikerin",
+      wunde: "Wurde für starke Gefühlsausbrüche als „hysterisch“ oder „schwach“ beschämt.",
+      luege: "„Gefühle vernebeln den Verstand und machen mich angreifbar.“",
+      abwehr: "Abspaltung (Dissoziation) – betrachtet selbst dramatische Krisen wie ein Schachspiel und wirkt auf andere herzlos.",
+      wunsch: "Will ein Rätsel oder Problem rein logisch lösen (Wunsch) – braucht aber Zugang zu ihrer eigenen Trauer oder Wut (Bedürfnis).",
+      impuls: "WIE bricht ihre emotionale Mauer durch einen unerwarteten Sinneseindruck (Geruch, Musik, Berührung)?"
+    },
+    {
+      titel: "Der unterwürfige Mitläufer",
+      wunde: "Wurde für eigene Entscheidungen hart bestraft und hat gelernt, sich einer starken Autorität unterzuordnen.",
+      luege: "„Ich bin zu schwach, um allein zu entscheiden – ich brauche jemanden, der führt.“",
+      abwehr: "Verantwortungsabgabe – versteckt sich hinter Befehlen oder Gruppenmeinungen („Alle machen das so“).",
+      wunsch: "Will die Gunst einer mächtigen Person gewinnen (Wunsch) – braucht aber das Vertrauen in sein eigenes Gewissen (Bedürfnis).",
+      impuls: "WANN steht er vor einer Entscheidung, bei der ihm niemand mehr sagt, was er tun soll?"
+    },
+    {
+      titel: "Die stolze Einzelkämpferin",
+      wunde: "Musste erleben, dass Hilfe immer an demütigende Bedingungen geknüpft war.",
+      luege: "„Hilfe anzunehmen bedeutet, sich jemandem auszuliefern.“",
+      abwehr: "Trotz & Überforderung – schuftet bis zur Erschöpfung allein und weist ausgestreckte Hände schroff zurück.",
+      wunsch: "Will eine schwere Aufgabe völlig ohne fremde Hilfe meistern (Wunsch) – braucht aber die Erfahrung echter Solidarität (Bedürfnis).",
+      impuls: "WER schafft es, ihr zu helfen, ohne ihren Stolz zu verletzen?"
+    },
+    {
+      titel: "Der getriebene Rache-Stratege",
+      wunde: "Verlor alles, was ihm lieb war, durch die Intrige eines anderen.",
+      luege: "„Erst wenn mein Feind am Boden liegt, findet meine Seele Ruhe.“",
+      abwehr: "Obsession & Manipulation – ordnet alles seinem Vergeltungsplan unter und merkt nicht, dass er seinem Feind immer ähnlicher wird.",
+      wunsch: "Will den Widersacher öffentlich vernichten (Wunsch) – braucht aber ein neues Lebensziel jenseits des Hasses (Bedürfnis).",
+      impuls: "WOZU führt der Triumph im entscheidenden Moment – bringt er die erhoffte Erlösung oder nur Leere?"
+    }
+  ];
+
+  let aktuellerIndex = 0;
+
+  function wuerfleProfil() {
+    let neuerIndex;
+    do {
+      neuerIndex = Math.floor(Math.random() * profile.length);
+    } while (neuerIndex === aktuellerIndex && profile.length > 1);
+    
+    aktuellerIndex = neuerIndex;
+    const p = profile[aktuellerIndex];
+
+    document.getElementById("p-titel").textContent = p.titel;
+    document.getElementById("p-wunde").textContent = p.wunde;
+    document.getElementById("p-luege").textContent = p.luege;
+    document.getElementById("p-abwehr").textContent = p.abwehr;
+    document.getElementById("p-wunsch").textContent = p.wunsch;
+    document.getElementById("p-impuls").textContent = p.impuls;
+  }
+
+  function profilKopieren() {
+    const p = profile[aktuellerIndex];
+    const text = `SEELEN-PROFIL: ${p.titel}\n` +
+                 `• Innere Wunde (Ghost): ${p.wunde}\n` +
+                 `• Lebenslüge (Lie): ${p.luege}\n` +
+                 `• Abwehrmechanismus: ${p.abwehr}\n` +
+                 `• Wunsch vs. Bedürfnis: ${p.wunsch}\n` +
+                 `• 7-W-Impuls: ${p.impuls}`;
+
+    navigator.clipboard.writeText(text).then(() => {
+      const btn = document.getElementById("copy-btn");
+      const original = btn.textContent;
+      btn.textContent = "✓ Kopiert!";
+      setTimeout(() => { btn.textContent = original; }, 2000);
+    });
+  }
+
+  function switchTab(tabId, btnElement) {
+    document.querySelectorAll('.tab-content').forEach(el => el.classList.remove('active'));
+    document.querySelectorAll('.tab-btn').forEach(btn => btn.classList.remove('active'));
+    document.getElementById('tab-' + tabId).classList.add('active');
+    btnElement.classList.add('active');
+  }
+
+  function toggleAccordion(headerBtn) {
+    const item = headerBtn.parentElement;
+    item.classList.toggle('open');
+  }
+</script>
+
+</body>
+</html>

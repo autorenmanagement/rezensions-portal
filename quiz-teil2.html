@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>Quiz Teil 2 | Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+:root {
+  --bg-darkroom: #EAEFEF;
+  --card-dark: #F7FAFA;
+  --primary-sage: #2C6A72;
+  --accent-terracotta: #3D5A6C;
+  --cream-grey: #182329;
+  --line-muted: #BDCBD0;
+  --status-published: #2E5B4B;
+  --status-progress: #A86A44;
+  --btn-gradient: linear-gradient(135deg, #445E6A 0%, #1A3F49 100%);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-darkroom);
+  color: var(--cream-grey);
+  line-height: 1.7;
+}
+.network-container { max-width: 950px; margin: 0 auto; padding: 30px 20px 50px; }
+.top-nav { display: flex; justify-content: space-between; align-items: center; margin-bottom: 20px; flex-wrap: wrap; gap: 10px; }
+.back-link {
+  display: inline-block; padding: 8px 16px; border: 2px solid var(--primary-sage);
+  color: var(--primary-sage); text-decoration: none; font-size: 0.85rem;
+  font-weight: bold; letter-spacing: 0.5px; border-radius: 4px; transition: all 0.2s;
+}
+.back-link:hover { background: rgba(44, 106, 114, 0.1); }
+header { text-align: center; padding: 30px 0 35px 0; position: relative; margin-bottom: 30px; }
+header::after {
+  content: ''; position: absolute; bottom: 0; left: 25%; width: 50%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--primary-sage), transparent);
+}
+h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 4px; color: var(--cream-grey); text-transform: uppercase; }
+h1 span { font-weight: 700; color: var(--primary-sage); }
+.tagline { font-size: 0.95rem; color: var(--accent-terracotta); margin-top: 12px; letter-spacing: 1px; text-transform: uppercase; font-weight: 600; }
+.quiz-tabs { display: flex; gap: 10px; flex-wrap: wrap; margin-bottom: 25px; justify-content: center; }
+.tab-btn {
+  padding: 10px 20px; border: 1px solid var(--line-muted); background: var(--card-dark);
+  color: var(--cream-grey); border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 0.9rem;
+}
+.tab-btn.active { background: var(--btn-gradient); color: #fff; border-color: transparent; }
+.action-btn {
+  padding: 12px 26px; color: #FFFFFF; font-weight: bold; display: inline-block;
+  background: var(--btn-gradient); text-decoration: none; font-size: 0.9rem;
+  letter-spacing: 1px; text-transform: uppercase; border-radius: 4px; border: none; cursor: pointer;
+}
+footer {
+  text-align: center; margin-top: 60px; color: var(--cream-grey); font-size: 0.85rem;
+  opacity: 0.8; border-top: 1px solid var(--line-muted); padding-top: 25px;
+}
+footer a { color: var(--primary-sage); text-decoration: none; margin: 0 10px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- Zentrale Hauptnavigation für das Autoren-Multiversum -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+
+
+
+<div class="network-container">
+ <nav class="top-nav">
+  <div style="display: flex; gap: 10px; flex-wrap: wrap;">
+    <a href="index.html" class="back-link">&larr; Startseite</a>
+    <a href="quiz.html" class="back-link">&larr; Zurück zu Band I</a>
+  </div>
+  <span style="font-size: 0.8rem; color: var(--accent-terracotta); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Literarische Quiz-Werkstatt • Band II</span>
+</nav>
+
+  <header>
+    <h1>Quiz<span>Multiversum</span></h1>
+    <div class="tagline">Historische Berufe &amp; Vergessene Wörter für Autoren und Leser</div>
+  </header>
+
+  <div class="quiz-tabs">
+    <button type="button" class="tab-btn active" onclick="switchQuiz('berufe', this)">3. Historische Berufe (12 Fragen)</button>
+    <button type="button" class="tab-btn" onclick="switchQuiz('woerter', this)">4. Vergessene Wörter (12 Fragen)</button>
+  </div>
+
+  <main id="quiz-main-area">
+    <div style="background: #ffffff; border: 1px solid var(--line-muted); border-radius: 6px; padding: 14px 20px; margin-bottom: 20px; display: flex; align-items: center; justify-content: space-between; gap: 15px; flex-wrap: wrap; position: sticky; top: 10px; z-index: 10; box-shadow: 0 4px 12px rgba(0,0,0,0.06);">
+      <span id="am-quiz-progress" style="font-size: 0.9rem;"><strong>0</strong> von <strong>12</strong> beantwortet</span>
+      <div style="flex: 1; min-width: 140px; height: 8px; background: #EAEFEF; border-radius: 999px; overflow: hidden;">
+        <div id="am-quiz-fill" style="height: 100%; width: 0%; background: var(--btn-gradient); transition: width 0.3s ease;"></div>
+      </div>
+      <span id="am-quiz-score" style="font-size: 0.9rem; color: var(--primary-sage); font-weight: bold;">Punkte: 0</span>
+    </div>
+
+    <div id="am-quiz-list" style="display: flex; flex-direction: column; gap: 16px;"></div>
+
+    <div id="am-quiz-result" style="display: none; text-align: center; background: #ffffff; border: 2px solid var(--primary-sage); border-radius: 8px; padding: 30px 20px; margin-top: 25px;">
+      <div style="font-size: 0.75rem; font-weight: bold; letter-spacing: 1px; text-transform: uppercase; color: var(--accent-terracotta); margin-bottom: 6px;">Auswertung</div>
+      <h2 id="am-final-score" style="color: var(--cream-grey); font-size: 1.7rem; margin-bottom: 8px;">0 von 12 Punkten</h2>
+      <p id="am-final-msg" style="color: var(--accent-terracotta); font-size: 0.95rem; max-width: 550px; margin: 0 auto 20px;"></p>
+      <button type="button" onclick="amRenderQuiz()" class="action-btn">Quiz noch einmal starten</button>
+    </div>
+  </main>
+
+ <!-- FOOTER & LEGAL -->
+<footer>
+  <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. D · A · CH · International</p>
+  <div style="margin-top: 8px;">
+    <a href="impressum.html">Impressum</a> | 
+    <a href="datenschutz.html">Datenschutzerklärung</a>
+  </div>
+  <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+    <span>Webdesign &amp; Umsetzung:</span>
+    <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+      <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+      <span>ARTBECKO</span>
+    </a>
+  </div>
+</footer>
+
+
+</div>
+
+<script>
+const allQuizzes = {
+  berufe: [
+    { q: "Wenn in einem historischen Roman ein „Stellmacher“ (oder Wagner) auftritt – womit verdiente dieser Handwerker sein Brot?", options: ["A) Er baute Holzräder, Wagen und Kutschen", "B) Er stellte Fallen für Wildtiere auf", "C) Er vermittelte Arbeitsplätze auf dem Markt", "D) Er errichtete Weidezäune auf dem Land"], correct: 0, hint: "Ohne seine Arbeit kam früher kein Fuhrwerk und keine Kutsche vom Fleck.", exp: "Richtig! Der Stellmacher (in Süddeutschland oft Wagner) fertigte hölzerne Speichenräder, Achsen, Karren und Kutschen." },
+    { q: "Welches Handwerk übte ein „Büttner“, „Küfer“ oder „Böttcher“ aus?", options: ["A) Er stellte Fässer, Bottiche und Zuber aus Holzdauben her", "B) Er rief als Stadtbote Nachrichten auf dem Marktplatz aus", "C) Er flocht Körbe aus Weidenruten", "D) Er gegerbte Tierhäute zu Leder"], correct: 0, hint: "Winzer und Bierbrauer waren auf seine wasserdichten Gefäße angewiesen.", exp: "Richtig! Der Küfer (Böttcher/Büttner) baute hölzerne Fässer und Bottiche, die durch Eisen- oder Holzreifen zusammengehalten wurden." },
+    { q: "Was war die Aufgabe eines „Türmers“ in mittelalterlichen und frühneuzeitlichen Städten?", options: ["A) Er läutete die Kirchenglocken zu jeder Messe", "B) Er hielt vom höchsten Turm Ausschau nach Bränden und Feinden", "C) Er reparierte schadhafte Kirchturmdächer", "D) Er verwaltete das Stadtarchiv im Rathausturm"], correct: 1, hint: "Er wohnte oft mit seiner Familie hoch oben in einer kleinen Stube über den Dächern der Stadt.", exp: "Richtig! Der Türmer wachte rund um die Uhr über die Stadt, meldete aufziehende Unwetter, Feinde und vor allem gefährliche Stadtbrände." },
+    { q: "Wenn eine Figur den Beruf des „Seilers“ erlernt hat, was stellte sie in ihrer langen Werkstattbahn her?", options: ["A) Segeltuch für Handelsschiffe", "B) Taue, Stricke und Seile aus Hanf oder Flachs", "C) Angelschnüre und Fischernetze", "D) Peitschen für Kutscher"], correct: 1, hint: "Seine Arbeitsstätte (die Reeperbahn oder Seilerbahn) musste oft Dutzende Meter lang sein.", exp: "Richtig! Seiler verdrillten Naturfasern wie Hanf auf langen Bahnen zu reißfesten Seilen und Schiffstauen." },
+    { q: "Womit beschäftigte sich ein „Köhler“ tief draußen in den Wäldern?", options: ["A) Er sammelte Harz für die Pechherstellung", "B) Er verschwelte Holz in Meilern zu Holzkohle", "C) Er fällte Bauholz für Fachwerkhäuser", "D) Er jagte Wildschweine für den Gutsherrn"], correct: 1, hint: "Schmiede und Glashütten brauchten sein Produkt, um extrem hohe Temperaturen zu erreichen.", exp: "Richtig! Der Köhler schichtete Holz zu einem Meiler auf, deckte ihn mit Erde ab und ließ es tagelang unter Luftabschluss zu Holzkohle schwelen." },
+    { q: "Wer im 18. oder 19. Jahrhundert einen „Lumpensammler“ rief, wollte ihm alte Textilien verkaufen. Wofür wurden diese Lumpen dringend benötigt?", options: ["A) Als Dämmmaterial für Fachwerkwände", "B) Als Rohstoff für die Papierherstellung", "C) Als Füllung für Matratzen und Kissen", "D) Als Putzlappen für Dampfmaschinen"], correct: 1, hint: "Bevor Papier aus Holzstoff gewonnen wurde, bestand jedes Buchblatt aus diesem Material.", exp: "Richtig! Papiermühlen stellten aus zerkleinerten Leinen- und Baumwollhadern (Lumpen) hochwertiges Büttenpapier her." },
+{ q: "Was machte ein „Kesselflicker“, der als fahrender Handwerker von Dorf zu Dorf zog?", options: ["A) Er reinigte verrußte Schornsteine", "B) Er reparierte löchrige Kupfertöpfe und Pfannen", "C) Er schärfte stumpfe Messer und Scheren", "D) Er wartete die ersten Dampfkessel in Fabriken"], correct: 1, hint: "Metallgeschirr war teuer und wurde nicht weggeworfen, sondern mit Nieten und Zinn abgedichtet.", exp: "Richtig! Der Kesselflicker dichtete beschädigte Metalltöpfe, Kessel und Pfannen mit Flickblechen und Nieten wieder ab." },
+{ q: "Welche Tätigkeit übte ein „Bader“ im Mittelalter neben dem Betrieb eines Badehauses noch aus?", options: ["A) Er braute Heilbiere aus Kräutern", "B) Er schnitt Haare, rasierte, zog Zähne und ließ zur Ader", "C) Er wusch und bügelte die Wäsche der Ratsherren", "D) Er mixte Parfüms und Seifen"], correct: 1, hint: "Er übernahm viele Aufgaben, für die wir heute zum Friseur, Zahnarzt oder Chirurgen gehen.", exp: "Richtig! Der Bader war für Körperpflege und einfache medizinische Eingriffe wie Aderlass, Schröpfen, Zähneziehen und Wundversorgung zuständig." },
+{ q: "Wofür war ein „Nachtwächter“ in alten Städten verantwortlich?", options: ["A) Er bewachte die Stadttore vor Schmugglern", "B) Er zog nachts durch die Gassen, rief die Stunden aus und achtete auf Ruhe und Feuer", "C) Er löschte morgens die Gaslaternen", "D) Er kontrollierte die Sperrstunde in den Wirtshäusern"], correct: 1, hint: "Zu seiner typischen Ausrüstung gehörten Hellebarde, Horn und Laterne.", exp: "Richtig! Der Nachtwächter patrouillierte nachts durch die Straßen, warnte vor Bränden und Dieben und sang zur vollen Stunde sein Stundenlied." },
+{ q: "Was fertigte ein „Posamentierer“ in seiner Werkstatt an?", options: ["A) Feine Uhrengehäuse und Spieluhren", "B) Borten, Quasten, Fransen und Zierbänder", "C) Verzierungen aus Stuck für Decken", "D) Vergoldete Bilderrahmen"], correct: 1, hint: "Vorhänge, Uniformen und prachtvolle Kleider erhielten durch seine Arbeit den letzten Schliff.", exp: "Richtig! Posamentierer stellten kunstvolle textile Ziergegenstände wie Kordeln, Borten, Spitzen und Quasten her." },
+{ q: "Wenn eine Romanfigur als „Flößer“ arbeitete, wie sah ihr Arbeitsalltag aus?", options: ["A) Sie steuerte schwere Lastkähne mit Rudern", "B) Sie verband Baumstämme zu großen Floßen und lenkte sie flussabwärts", "C) Sie baute hölzerne Brücken über Flüsse", "D) Sie fischte mit Reusen in großen Strömen"], correct: 1, hint: "Auf diesem Weg gelangte Holz aus dem Schwarzwald bis nach Holland.", exp: "Richtig! Flößer banden gefällte Baumstämme zusammen und steuerten die riesigen Floße auf Flüssen wie Rhein, Kinzig oder Main zu den Sägewerken." },
+{ q: "Was war die Aufgabe eines „Schriftsetzers“ in einer klassischen Druckerei?", options: ["A) Er entwarf neue Schriftarten am Zeichenbrett", "B) Er setzte Texte spiegelverkehrt aus einzelnen Bleilettern zusammen", "C) Er korrigierte Rechtschreibfehler in Manuskripten", "D) Er band die gedruckten Seiten zu Büchern"], correct: 1, hint: "Aus seiner Arbeit stammt die Redewendung, dass der „Fehlerteufel“ zugeschlagen hat.", exp: "Richtig! Der Schriftsetzer griff einzelne bewegliche Lettern aus dem Setzkasten und fügte sie im Winkelhaken spiegelverkehrt zu Zeilen und Seiten zusammen." }
+],
+  woerter: [
+    { q: "Wenn in einem älteren Buch jemand ein „Kleinod“ hütet, was genau besitzt diese Person?", options: ["A) Ein kleines, abgelegenes Waldstück", "B) Einen kostbaren Schmuckgegenstand oder ein wertvolles Einzelstück", "C) Ein geheimes Tagebuch", "D) Eine kleine Kammer unter dem Dach"], correct: 1, hint: "Das Wort stammt vom mittelhochdeutschen „kleinōt“ für etwas Feines, Zierliches.", exp: "Richtig! Ein Kleinod ist ein kostbares Schmuckstück, ein Juwel oder im übertragenen Sinne ein besonders wertvoller, liebevoll gepflegter Ort." },
+    { q: "Was bedeutet es, wenn eine Romanfigur einer anderen „hold“ ist?", options: ["A) Sie schuldet ihr noch Geld", "B) Sie ist ihr wohlgesonnen, treu oder zugeneigt", "C) Sie ist ihr an Rang unterstellt", "D) Sie misstraut ihr zutiefst"], correct: 1, hint: "Aus demselben Wortstamm bildete sich auch das Wort „Huldigung“.", exp: "Richtig! Jemandem „hold“ zu sein bedeutet, ihm freundlich, geneigt oder liebevoll zugetan zu sein." },
+    { q: "Wenn in einer Geschichte von einem „Flausenmacher“ die Rede ist – was zeichnet diese Figur aus?", options: ["A) Sie spinnt feine Schafwolle zu Garn", "B) Sie hat unvernünftige Einfälle, Ausreden oder Flausen im Kopf", "C) Sie schneidert warme Wintermäntel", "D) Sie erzählt gruselige Schauermärchen"], correct: 1, hint: "Ursprünglich bezeichnete „Flause“ eine herumfliegende Wollflocke ohne festen Halt.", exp: "Richtig! Flausen sind luftige, unbeständige Einfälle, Ausflüchte oder alberne Gedanken – genau wie lose Wollflocken." },
+    { q: "Welches Möbelstück oder Behältnis verbirgt sich hinter dem alten Wort „Schrein“?", options: ["A) Ein schmaler Hausaltar in der Ecke", "B) Eine kunstvoll gearbeitete Truhe oder ein verschließbarer Schrank", "C) Ein hölzerner Schemel am Kamin", "D) Ein Bücherregal aus Eichenholz"], correct: 1, hint: "Der Handwerker, der solche Möbel herstellte, trägt diesen Begriff heute noch in seiner Berufsbezeichnung.", exp: "Richtig! Ein Schrein (von lateinisch „scrinium“) war ursprünglich ein Kasten oder eine Truhe für Kostbarkeiten – daher auch der Beruf des Schreiners." },
+    { q: "Wenn eine Figur in einer Erzählung „blümerant“ wird, wie fühlt sie sich in diesem Moment?", options: ["A) Beschwingt und frühlingshaft verliebt", "B) Schwindelig, flau im Magen und kurz vor einer Ohnmacht", "C) Wütend mit hochrotem Kopf", "D) Übermütig nach einem Glas Wein"], correct: 1, hint: "Der Begriff leitet sich vom französischen „bleu mourant“ (sterbendes Blau) ab.", exp: "Richtig! Wem „blümerant“ wird, dem wird flau und schwindelig zumute – ursprünglich beschrieb „bleu mourant“ ein blasses, mattes Blau." },
+    { q: "Was tut jemand, der in einem Text etwas „vergeudet“ oder als „Tand“ abtut – was genau ist „Tand“?", options: ["A) Wertloser Plunder, nutzloser Zierrat oder Spielerei", "B) Gestohlenes Diebesgut", "C) Schweres Eisenwerkzeug", "D) Veraltetes Papiergeld"], correct: 0, hint: "Theodor Fontane dichtete einst: „Tand, Tand ist das Gebilde von Menschenhand.“", exp: "Richtig! Tand bezeichnet hübschen, aber wertlosen Plunder, Kitsch oder nutzlosen Zierrat." },
+    { q: "Wenn ein Wanderer in einem historischen Text in einer „Kaschemme“ einkehrt, was für ein Lokal betritt er?", options: ["A) Ein vornehmes Kaffeehaus am Marktplatz", "B) Eine verrufene, schäbige Kneipe oder Spelunke", "C) Eine Klosterbrauerei mit Ausschank", "D) Eine Poststation an der Landstraße"], correct: 1, hint: "Das Wort stammt aus dem Rotwelschen (der historischen Gaunersprache).", exp: "Richtig! Eine Kaschemme ist ein zwielichtiges, heruntergekommenes Wirtshaus – abgeleitet vom rotwelschen Wort „Katschomme“ (Wirtshaus)." },
+    { q: "Was versteht man unter dem alten Wort „Müßiggang“?", options: ["A) Ein gemütlicher Abendspaziergang", "B) Das Untätigsein, Faulenzen oder Verbringen freier Zeit ohne Arbeit", "C) Ein geheimer Fluchtweg aus einer Burg", "D) Ein schleppender, müder Gang"], correct: 1, hint: "Ein bekanntes Sprichwort behauptet, er sei „aller Laster Anfang“.", exp: "Richtig! Müßiggang beschreibt das bewusste Nichtstun und die freie Zeit (Muße) ohne berufliche Pflichten." },
+    { q: "Wenn eine Person in einer Geschichte als „Hagestolz“ bezeichnet wird, was trifft auf sie zu?", options: ["A) Ein hochmütiger Gutsherr", "B) Ein eingefleischter, älterer Junggeselle", "C) Ein streitsüchtiger Nachbar", "D) Ein stolzer Jäger"], correct: 1, hint: "Ursprünglich bezeichnete das Wort einen jüngeren Sohn, der nur ein kleines umzäuntes Grundstück („Hag“) erbte und daher keine Familie gründen konnte.", exp: "Richtig! Ein Hagestolz ist ein unverheirateter, meist älterer Junggeselle, der sich an sein eigenbrötlerisches Leben gewöhnt hat." },
+    { q: "Was meint man, wenn man von einer „Gazette“ spricht?", options: ["A) Eine kleine venezianische Silbermünze oder eine frühe Zeitung", "B) Ein feines Seidentuch für Damen", "C) Ein kleines Gartenhäuschen", "D) Eine Kutsche für zwei Personen"], correct: 0, hint: "Im 16. Jahrhundert kostete das erste gedruckte Nachrichtenblatt in Venedig genau eine solche Münze.", exp: "Richtig! Die Gazette war eine frühe Zeitung – benannt nach der venezianischen Münze „Gazzetta“, für die man das Blatt kaufen konnte." },
+    { q: "Wenn jemand in einem Roman „schmollt“ oder als „Griesgram“ gilt – woher stammt das Wort „Griesgram“?", options: ["A) Vom Zähneknirschen aus Ärger und Missmut", "B) Vom Mahlen von grobem Getreidegrieß", "C) Von grauen Haaren im Alter", "D) Vom Grollen eines Gewitters"], correct: 0, hint: "Im Mittelhochdeutschen bedeutete „grisgramen“ so viel wie mit den Zähnen knirschen.", exp: "Richtig! Ein Griesgram ist ein mürrischer, verdrießlicher Mensch – abgeleitet vom alten Verb für „mit den Zähnen knirschen“." },
+    { q: "Was ist ein „Brevier“, das ein Geistlicher oder Gelehrter bei sich trägt?", options: ["A) Ein vertraulicher Briefumschlag", "B) Ein kurzes Gebetbuch oder eine handliche Textsammlung", "C) Ein kleines Vergrößerungsglas", "D) Ein Reisekoffer für Bücher"], correct: 1, hint: "Das Wort geht auf das lateinische „brevis“ (kurz) zurück.", exp: "Richtig! Ein Brevier ist ein handliches Gebetbuch der katholischen Kirche – im weiteren Sinne auch eine kompakte Sammlung wichtiger Texte." }
+  ]
+};
+
+let currentMode = 'berufe';
+let amQuizData = allQuizzes.berufe;
+let amAnswered = 0, amScore = 0;
+
+function switchQuiz(mode, btn) {
+  document.querySelectorAll('.tab-btn').forEach(function(b) { b.classList.remove('active'); });
+  btn.classList.add('active');
+  currentMode = mode;
+  amQuizData = allQuizzes[mode];
+  amRenderQuiz();
+}
+
+function amRenderQuiz() {
+  const list = document.getElementById("am-quiz-list");
+  list.innerHTML = "";
+  amAnswered = 0;
+  amScore = 0;
+  amUpdateProgress();
+  document.getElementById("am-quiz-result").style.display = "none";
+
+  amQuizData.forEach(function(item, qIdx) {
+    const card = document.createElement("div");
+    card.style.cssText = "background: #ffffff; border: 1px solid #BDCBD0; border-left: 4px solid #2C6A72; border-radius: 6px; padding: 18px 20px;";
+    let buttonsHtml = "";
+    item.options.forEach(function(opt, oIdx) {
+      buttonsHtml += '<button type="button" onclick="amChoose(' + qIdx + ', ' + oIdx + ')" style="text-align: left; background: #F7FAFA; border: 1px solid #BDCBD0; border-radius: 4px; padding: 11px 14px; font-size: 0.92rem; color: #182329; cursor: pointer;">' + opt + '</button>';
+    });
+    card.innerHTML =
+      '<div style="display: flex; justify-content: space-between; align-items: center; margin-bottom: 8px; gap: 10px; flex-wrap: wrap;">' +
+        '<span style="font-size: 0.8rem; font-weight: bold; text-transform: uppercase; letter-spacing: 0.8px; color: #2C6A72;">Frage ' + (qIdx + 1) + ' von ' + amQuizData.length + '</span>' +
+        '<button type="button" onclick="amToggleHint(' + qIdx + ')" style="background: rgba(44, 106, 114, 0.08); border: 1px solid #BDCBD0; color: #2C6A72; padding: 4px 10px; border-radius: 4px; font-size: 0.8rem; cursor: pointer; font-weight: 600;">Kleiner Hinweis</button>' +
+      '</div>' +
+      '<div id="am-hint-' + qIdx + '" style="display: none; background: #f0f4f8; border-left: 3px solid #3D5A6C; padding: 8px 12px; margin-bottom: 12px; font-size: 0.88rem; color: #3D5A6C;">' + item.hint + '</div>' +
+      '<p style="font-weight: 600; color: #182329; font-size: 1rem; margin-bottom: 14px; line-height: 1.5;">' + item.q + '</p>' +
+      '<div id="am-opts-' + qIdx + '" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 10px;">' + buttonsHtml + '</div>' +
+      '<div id="am-exp-' + qIdx + '" style="display: none; margin-top: 12px; padding: 10px 14px; border-radius: 4px; font-size: 0.9rem;"></div>';
+    list.appendChild(card);
+  });
+}
+
+function amToggleHint(qIdx) {
+  const h = document.getElementById("am-hint-" + qIdx);
+  h.style.display = h.style.display === "block" ? "none" : "block";
+}
+
+function amChoose(qIdx, chosenIdx) {
+  const item = amQuizData[qIdx];
+  const btns = document.getElementById("am-opts-" + qIdx).querySelectorAll("button");
+  const exp = document.getElementById("am-exp-" + qIdx);
+  btns.forEach(function(b, idx) {
+    b.disabled = true;
+    b.style.cursor = "default";
+    if (idx === item.correct) {
+      b.style.background = "#e6f4ea";
+      b.style.borderColor = "#2E5B4B";
+      b.style.color = "#1b4d38";
+      b.style.fontWeight = "bold";
+    } else if (idx === chosenIdx) {
+      b.style.background = "#fdf2f2";
+      b.style.borderColor = "#A86A44";
+      b.style.color = "#7a3b1e";
+    }
+  });
+  exp.style.display = "block";
+  if (chosenIdx === item.correct) {
+    amScore++;
+    exp.style.background = "#e6f4ea";
+    exp.style.borderLeft = "3px solid #2E5B4B";
+    exp.style.color = "#1b4d38";
+    exp.textContent = "✓ " + item.exp;
+  } else {
+    exp.style.background = "#fffaf0";
+    exp.style.borderLeft = "3px solid #A86A44";
+    exp.style.color = "#7a3b1e";
+    exp.textContent = "✗ Leider daneben. " + item.exp;
+  }
+  amAnswered++;
+  amUpdateProgress();
+if (amAnswered === amQuizData.length) {
+document.getElementById("am-final-score").textContent = amScore + " von " + amQuizData.length + " Punkten";
+if (currentMode === 'berufe') {
+document.getElementById("am-final-msg").textContent = amScore >= 10
+? "Hervorragend! Sie kennen die alten Zünfte und Handwerke wie ein echter Chronist."
+: (amScore >= 6
+? "Sehr stark! Viele dieser historischen Berufe sind Ihnen bestens vertraut."
+: "Schön mitgerätselt! Manche dieser Handwerke sind heute fast vergessen.");
+} else {
+document.getElementById("am-final-msg").textContent = amScore >= 10
+? "Hervorragend! Ihr Wortschatz glänzt wie ein echtes literarisches Kleinod."
+: (amScore >= 6
+? "Sehr stark! Viele dieser klangvollen alten Begriffe sind Ihnen bestens vertraut."
+: "Schön mitgerätselt! Manche dieser historischen Wörter findet man heute nur noch in alten Büchern.");
+}
+document.getElementById("am-quiz-result").style.display = "block";
+}
+}
+function amUpdateProgress() {
+document.getElementById("am-quiz-progress").innerHTML = "" + amAnswered + " von " + amQuizData.length + " beantwortet";
+document.getElementById("am-quiz-score").textContent = "Punkte: " + amScore;
+document.getElementById("am-quiz-fill").style.width = ((amAnswered / amQuizData.length) * 100) + "%";
+}
+amRenderQuiz();
+
+</script>
+
+</body>
+</html>
