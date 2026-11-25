@@ -1,0 +1,336 @@
+
+<!DOCTYPE html>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <!-- Titel im Browser-Tab & bei Google -->
+    <title>Agenturangebot | Engine am KPB ±³ – Das literarische Netzwerk</title>
+    
+    <!-- Suchmaschinen-Input (SEO) -->
+    <meta name="description" content="Das Autoren-Multiversum von Engine am KPB ±³: Ein generationenübergreifendes Netzwerk für Autorinnen, Schreibwerkstatt, kreative Tools, Wettbewerbe und Bücher.">
+    <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+    <meta name="robots" content="index, follow">
+
+    <!-- Vorschau beim Teilen auf WhatsApp, Facebook, LinkedIn -->
+    <meta property="og:type" content="website">
+    <meta property="og:title" content="Autoren-Multiversum | Engine am KPB ±³">
+    <meta property="og:description" content="Entdecke unser literarisches Netzwerk, Schreibwerkzeuge, Quizze und Bücher.">
+    <meta property="og:image" content="favicon.png">
+    <meta property="og:locale" content="de_DE">
+
+    <!-- Favicon im Browser-Tab -->
+    <link rel="icon" type="image/png" href="favicon.png">
+
+<style>
+:root {
+  --bg-darkroom: #EAEFEF;
+  --card-dark: #F7FAFA;
+  --primary-sage: #2C6A72;
+  --accent-terracotta: #3D5A6C;
+  --cream-grey: #182329;
+  --line-muted: #BDCBD0;
+  --status-published: #2E5B4B;
+  --status-progress: #A86A44;
+  --btn-gradient: linear-gradient(135deg, #445E6A 0%, #1A3F49 100%);
+}
+* { box-sizing: border-box; margin: 0; padding: 0; }
+body {
+  font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+  background-color: var(--bg-darkroom);
+  color: var(--cream-grey);
+  line-height: 1.7;
+}
+.network-container { max-width: 950px; margin: 0 auto; padding: 30px 20px 50px; }
+
+/* Top-Navigation */
+.top-nav {
+  display: flex; justify-content: space-between; align-items: center;
+  margin-bottom: 20px; flex-wrap: wrap; gap: 10px;
+}
+.back-link {
+  display: inline-block; padding: 8px 16px; border: 2px solid var(--primary-sage);
+  color: var(--primary-sage); text-decoration: none; font-size: 0.85rem;
+  font-weight: bold; letter-spacing: 0.5px; border-radius: 4px; transition: all 0.2s;
+}
+.back-link:hover { background: rgba(44, 106, 114, 0.1); }
+
+/* Header */
+header { text-align: center; padding: 30px 0 35px 0; position: relative; margin-bottom: 30px; }
+header::after {
+  content: ''; position: absolute; bottom: 0; left: 25%; width: 50%; height: 1px;
+  background: linear-gradient(to right, transparent, var(--primary-sage), transparent);
+}
+h1 { font-size: 2.2rem; font-weight: 300; letter-spacing: 4px; color: var(--cream-grey); text-transform: uppercase; }
+h1 span { font-weight: 700; color: var(--primary-sage); }
+.tagline {
+  font-size: 0.95rem; color: var(--accent-terracotta); margin-top: 12px;
+  letter-spacing: 1px; text-transform: uppercase; font-weight: 600;
+}
+
+/* 1. Übersicht der 5 Buch-Bestandteile */
+.sub-grid {
+  display: grid; grid-template-columns: repeat(auto-fit, minmax(155px, 1fr));
+  gap: 14px; width: 100%; margin-bottom: 28px;
+}
+.book-part-card {
+  display: flex; flex-direction: column; justify-content: center; align-items: center;
+  padding: 16px 12px; background-color: #ffffff;
+  border: 1px solid var(--line-muted); border-top: 3px solid var(--primary-sage);
+  border-radius: 6px; text-align: center; box-shadow: 0 3px 10px rgba(0,0,0,0.03);
+}
+.book-part-card .annum {
+  font-size: 0.78rem; font-weight: 700; letter-spacing: 1px;
+  color: var(--primary-sage); margin-bottom: 4px; text-transform: uppercase;
+}
+.book-part-card .titel-text {
+  color: var(--cream-grey); font-size: 0.92rem; font-weight: 600;
+}
+
+/* 2. Info-Kasten */
+.info-aufruf {
+  background-color: var(--card-dark); border: 1px solid var(--line-muted);
+  border-left: 4px solid var(--accent-terracotta); padding: 22px 26px;
+  border-radius: 6px; margin-bottom: 28px;
+}
+.info-aufruf h2 {
+  font-size: 1.1rem; color: var(--accent-terracotta); margin-bottom: 8px;
+}
+.info-aufruf p {
+  font-size: 0.95rem; color: var(--cream-grey); line-height: 1.6;
+}
+
+/* 3. Briefing-Formular */
+.form-section {
+  background-color: #ffffff; border: 1px solid var(--line-muted);
+  border-left: 4px solid var(--primary-sage); padding: 30px 28px;
+  border-radius: 6px; box-shadow: 0 4px 12px rgba(0,0,0,0.04);
+}
+.form-section h3 {
+  color: var(--primary-sage); font-size: 1.2rem; text-transform: uppercase;
+  letter-spacing: 1px; margin-bottom: 24px; padding-bottom: 10px;
+  border-bottom: 1px solid var(--line-muted);
+}
+.form-group { margin-bottom: 22px; }
+label {
+  display: block; font-weight: 600; color: var(--cream-grey);
+  margin-bottom: 4px; font-size: 0.95rem;
+}
+.help-text {
+  font-size: 0.85rem; color: var(--accent-terracotta);
+  margin-bottom: 8px;
+}
+input[type="text"], textarea {
+  width: 100%; padding: 12px 14px; background-color: var(--card-dark);
+  border: 1px solid var(--line-muted); color: var(--cream-grey);
+  font-family: inherit; font-size: 0.95rem; border-radius: 4px;
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+input[type="text"]:focus, textarea:focus {
+  outline: none; border-color: var(--primary-sage);
+  background-color: #ffffff; box-shadow: 0 0 0 3px rgba(44, 106, 114, 0.12);
+}
+textarea { height: 120px; resize: vertical; }
+
+input[type="file"] {
+  color: var(--cream-grey); font-size: 0.9rem; background: var(--card-dark);
+  padding: 12px; border: 1px dashed var(--primary-sage);
+  border-radius: 4px; width: 100%; cursor: pointer;
+}
+
+.action-btn {
+  width: 100%; background: var(--btn-gradient); color: #ffffff;
+  padding: 15px 24px; font-size: 0.98rem; font-weight: bold;
+  border: none; border-radius: 4px; cursor: pointer;
+  text-transform: uppercase; letter-spacing: 1px; transition: opacity 0.2s;
+  margin-top: 8px;
+}
+.action-btn:hover { opacity: 0.92; }
+
+/* Footer */
+footer {
+  text-align: center; margin-top: 60px; color: var(--cream-grey); font-size: 0.85rem;
+  opacity: 0.8; border-top: 1px solid var(--line-muted); padding-top: 25px;
+}
+footer a { color: var(--primary-sage); text-decoration: none; margin: 0 10px; font-weight: 600; }
+</style>
+</head>
+<body>
+
+<!-- Zentrale Hauptnavigation für das Autoren-Multiversum -->
+<nav style="position: sticky; top: 0; width: 100%; background: rgba(247, 250, 250, 0.97); backdrop-filter: blur(8px); -webkit-backdrop-filter: blur(8px); border-bottom: 1px solid #BDCBD0; padding: 12px 16px; z-index: 1000; box-shadow: 0 2px 10px rgba(0, 0, 0, 0.04); font-family: 'Segoe UI', Roboto, Arial, sans-serif;">
+  <div style="max-width: 1050px; margin: 0 auto; display: flex; justify-content: center; align-items: center; flex-wrap: wrap; gap: 8px 18px;">
+    
+    <a href="index.html" style="color: #182329; text-decoration: none; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px;">Startseite</a>
+
+    <!-- Menüpunkt 1: Gemeinschaft -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #2C6A72; font-weight: 700; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Gemeinschaft &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 245px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="autorinnen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Unsere Autorinnen (Übersicht)</a>
+        <a href="schreibstaffel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Die Schreibstaffel (Mitmachen)</a>
+        <a href="steckbrief.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Profil-Steckbrief einreichen</a>
+        <a href="admissio-codex.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Admissio Codex (Bewerbung)</a>
+        <a href="rezensionen.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Rezensions-Service &amp; Kooperation</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 2: Schreib- & Rätselwerkstatt -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Werkstatt &amp; Quiz &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 255px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="7w-text-spiegel.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">7-W-Text-Spiegel (Szenen-Check)</a>
+        <a href="wort-apotheke.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Klang- &amp; Wort-Apotheke</a>
+        <a href="ideenbrueter.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Ideenbrüter &amp; 16-Punkte-Plan</a>
+        <a href="figuren-generator.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Historischer Figuren-Generator</a>
+        <a href="wettbewerb.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Schreibwettbewerb (3 Aufgaben)</a>
+        <a href="quiz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band I</a>
+        <a href="quiz-teil2.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Literatur-Quiz Band II</a>
+        <a href="hyperfantasie.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Hyperfantasie-Test (VVIQ)</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 3: Bücher & Archiv -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #182329; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Bücher &amp; Archiv &#9662;</summary>
+      <div style="position: absolute; top: 100%; left: 0; min-width: 235px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="trolligatorterrier.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Der Trolligatorterrier (Fabel)</a>
+        <a href="archiv.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Bibliotheca Universalis (Archiv)</a>
+        <a href="agenturangebot.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Buch-Konfigurator &amp; Gestaltung</a>
+      </div>
+    </details>
+
+    <!-- Menüpunkt 4: Presse & Rechtliches -->
+    <details style="position: relative; display: inline-block;">
+      <summary style="list-style: none; cursor: pointer; color: #3D5A6C; font-weight: 600; font-size: 0.82rem; text-transform: uppercase; letter-spacing: 0.8px; padding: 5px 8px; user-select: none;">Info &amp; Rechtliches &#9662;</summary>
+      <div style="position: absolute; top: 100%; right: 0; min-width: 205px; background: #ffffff; border: 1px solid #BDCBD0; border-top: 3px solid #2C6A72; border-radius: 0 0 6px 6px; box-shadow: 0 8px 20px rgba(24,35,41,0.12); padding: 6px 0; z-index: 1001;">
+        <a href="presse.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Presseportal &amp; Medien</a>
+        <a href="impressum.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Impressum</a>
+        <a href="datenschutz.html" style="display: block; padding: 9px 16px; color: #182329; text-decoration: none; font-size: 0.86rem;">Datenschutz </a>
+      </div>
+    </details>
+
+  </div>
+</nav>
+
+
+
+
+<div class="network-container">
+  <nav class="top-nav">
+    <a href="index.html" class="back-link">&larr; Zurück zum Autoren-Multiversum</a>
+    <span style="font-size: 0.8rem; color: var(--accent-terracotta); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Engine am KPB &plusmn;&sup3;  Buch-Konfigurator</span>
+  </nav>
+
+  <header>
+    <h1>Agentur<span>angebot</span></h1>
+    <div class="tagline">Engine am KPB &plusmn;&sup3; Autoren-Multiversum  Buchgestaltung</div>
+  </header>
+
+  <main>
+    <!-- 1. Die 5 Buch-Bestandteile -->
+    <div class="sub-grid">
+      <div class="book-part-card">
+        <span class="annum">Teil 1</span>
+        <span class="titel-text">Vorderdeckel</span>
+      </div>
+      <div class="book-part-card">
+        <span class="annum">Teil 2</span>
+        <span class="titel-text">Vorderer Vorsatz</span>
+      </div>
+      <div class="book-part-card">
+        <span class="annum">Teil 3</span>
+        <span class="titel-text">Buchrücken</span>
+      </div>
+      <div class="book-part-card">
+        <span class="annum">Teil 4</span>
+        <span class="titel-text">Hinterdeckel</span>
+      </div>
+      <div class="book-part-card">
+        <span class="annum">Teil 5</span>
+        <span class="titel-text">Hinterer Vorsatz</span>
+      </div>
+    </div>
+
+    <!-- 2. Hilfestellung -->
+    <section class="info-aufruf">
+      <h2>Sie kommen mit der Gestaltung nicht weiter?</h2>
+      <p>
+        Kein Problem! Sie müssen kein Computer-Experte sein. Füllen Sie einfach die Felder unten aus und laden Sie Ihr Foto hoch. Klicken Sie danach auf den Absende-Button – ich übernehme die komplette professionelle Entwicklung und CI-Erstellung für Ihr Buch!
+      </p>
+    </section>
+
+    <!-- 3. Das Briefing-Formular -->
+          <!-- 3. Das Briefing-Formular -->
+      <form class="form-section" name="buch-konfigurator-v1" method="POST" action="/danke.html" data-netlify="true" netlify-honeypot="vorgarten" enctype="multipart/form-data">
+        <p style="display: none;">
+          <label>Bitte dieses Feld leer lassen: <input name="vorgarten"></label>
+        </p>
+        <h3>Buch-Inhalte einfach eintragen</h3>
+
+
+      <div class="form-group">
+        <label for="autor">Ihr Name / Pseudonym:</label>
+        <div class="help-text">Wie soll Ihr Name auf dem Buch stehen?</div>
+        <input type="text" id="autor" name="Autor_Name" placeholder="Z.B. Helmut U. Becker" required>
+      </div>
+
+      <div class="form-group">
+        <label for="titel">Der Buchtitel &amp; Untertitel:</label>
+        <div class="help-text">Kommt groß auf den Vorderdeckel (Teil 1)</div>
+        <input type="text" id="titel" name="Buch_Titel" placeholder="Z.B. Das Geheimnis des Multiversums" required>
+      </div>
+
+      <div class="form-group">
+        <label for="ruecken">Text für den Buchrücken (Teil 3):</label>
+        <div class="help-text">Z.B. Kurzform des Titels oder Verlagsname (VOG³HUB)</div>
+        <input type="text" id="ruecken" name="Buchruecken_Text" placeholder="Z.B. VOG³HUB / Titelelement">
+      </div>
+
+      <div class="form-group">
+        <label for="hinterdeckel">Klappentext &amp; Genre (Teil 4):</label>
+        <div class="help-text">Schreiben Sie hier einfach den Werbetext für die Rückseite Ihres Buches rein.</div>
+        <textarea id="hinterdeckel" name="Hinterdeckel_Klappentext" placeholder="Hier einfach losschreiben... Ein packender Kriminalroman aus dem Multiversum..." required></textarea>
+      </div>
+
+      <div class="form-group">
+        <label for="foto">Ihr Autorenfoto (Für den Hinterdeckel):</label>
+        <div class="help-text">Klicken Sie unten auf das Feld, um Ihr Porträtbild vom Computer auszuwählen.</div>
+        <input type="file" id="foto" name="Autoren_Foto" accept="image/*">
+      </div>
+
+      <div class="form-group">
+        <label for="wuensche">Besondere Wünsche oder Notizen:</label>
+        <div class="help-text">Hier können Sie alles reinschreiben, was Ihnen sonst noch wichtig ist.</div>
+        <textarea id="wuensche" name="Zusatz_Notizen" placeholder="Z.B. Ich wünsche mir eine Landkarte im vorderen Vorsatz..."></textarea>
+      </div>
+
+      <button type="submit" class="action-btn">Buch-Briefing jetzt absenden</button>
+    </form>
+  </main>
+
+<!-- FOOTER & LEGAL -->
+<footer>
+  <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationenübergreifendes Netzwerk. D · A · CH · International</p>
+  <div style="margin-top: 8px;">
+    <a href="impressum.html">Impressum</a> | 
+    <a href="datenschutz.html">Datenschutzerklärung</a>
+  </div>
+  <div style="margin-top: 16px; padding-top: 12px; border-top: 1px solid rgba(189, 203, 208, 0.4); display: inline-flex; align-items: center; gap: 8px; font-size: 0.78rem;">
+    <span>Webdesign &amp; Umsetzung:</span>
+    <a href="agenturangebot.html" style="display: inline-flex; align-items: center; gap: 6px; text-decoration: none; color: inherit; font-weight: 600;">
+      <img src="img/logo_artbecko_jey_bee.jpg" alt="Author Engine ARTBECKO" style="height: 22px; width: auto; vertical-align: middle;">
+      <span>ARTBECKO</span>
+    </a>
+  </div>
+</footer>
+
+
+</div>
+
+</body>
+</html>
+
+
+
