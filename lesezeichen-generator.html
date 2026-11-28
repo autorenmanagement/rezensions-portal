@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="de">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Autoren-Multiversum-Werkstatt Teil II | Engine am KPB ±³</title>
+  <meta name="description" content="Dieses Werkzeug gehört zur Autoren-Multiversum-Werkstatt Teil II auf www.autoren-multiversum.de.">
+  <meta name="author" content="Joanna Elisabeth Beck – Engine am KPB ±³">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/png" href="favicon.png">
+
+  <style>
+    :root {
+      --bg-darkroom: #EAEFEF;
+      --card-dark: #F7FAFA;
+      --primary-sage: #2C6A72;
+      --accent-terracotta: #3D5A6C;
+      --cream-grey: #182329;
+      --line-muted: #BDCBD0;
+      --status-progress: #A86A44;
+      --btn-gradient: linear-gradient(135deg, #445E6A 0%, #1A3F49 100%);
+    }
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      font-family: 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+      background-color: var(--bg-darkroom);
+      color: var(--cream-grey);
+      line-height: 1.75;
+      min-height: 100vh;
+      display: flex;
+      flex-direction: column;
+    }
+    .network-container {
+      max-width: 820px;
+      width: 100%;
+      margin: 0 auto;
+      padding: 35px 20px 50px;
+      flex: 1;
+    }
+
+    .top-nav {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      margin-bottom: 24px;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    .back-link {
+      display: inline-block;
+      padding: 8px 16px;
+      border: 2px solid var(--primary-sage);
+      color: var(--primary-sage);
+      text-decoration: none;
+      font-size: 0.85rem;
+      font-weight: bold;
+      letter-spacing: 0.5px;
+      border-radius: 4px;
+      transition: all 0.2s;
+    }
+    .back-link:hover { background: rgba(44, 106, 114, 0.1); }
+
+    .info-card {
+      background: #ffffff;
+      border: 1px solid var(--line-muted);
+      border-top: 5px solid var(--primary-sage);
+      border-radius: 10px;
+      padding: 46px 32px;
+      text-align: center;
+      box-shadow: 0 8px 24px rgba(24, 35, 41, 0.06);
+    }
+    .badge {
+      display: inline-block;
+      background: rgba(44, 106, 114, 0.12);
+      color: var(--primary-sage);
+      font-size: 0.78rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 1.2px;
+      padding: 5px 14px;
+      border-radius: 99px;
+      margin-bottom: 18px;
+    }
+    h1 {
+      font-size: 1.9rem;
+      font-weight: 300;
+      letter-spacing: 2px;
+      color: var(--cream-grey);
+      text-transform: uppercase;
+      margin-bottom: 18px;
+    }
+    h1 span {
+      font-weight: 700;
+      color: var(--primary-sage);
+    }
+    .highlight-box {
+      background: var(--card-dark);
+      border: 1px solid var(--line-muted);
+      border-left: 4px solid var(--status-progress);
+      border-radius: 6px;
+      padding: 20px 24px;
+      max-width: 540px;
+      margin: 0 auto 30px auto;
+      font-size: 1rem;
+      color: var(--cream-grey);
+      line-height: 1.7;
+    }
+    .cta-btn {
+      display: inline-block;
+      padding: 15px 30px;
+      background: var(--btn-gradient);
+      color: #ffffff;
+      font-size: 0.95rem;
+      font-weight: bold;
+      letter-spacing: 0.8px;
+      text-transform: uppercase;
+      text-decoration: none;
+      border-radius: 6px;
+      box-shadow: 0 6px 16px rgba(26, 63, 73, 0.22);
+      transition: transform 0.2s, opacity 0.2s;
+    }
+    .cta-btn:hover {
+      opacity: 0.93;
+      transform: translateY(-2px);
+    }
+    .domain-hint {
+      display: block;
+      margin-top: 12px;
+      font-size: 0.88rem;
+      color: var(--accent-terracotta);
+      font-weight: 600;
+    }
+
+    footer {
+      text-align: center;
+      margin-top: 50px;
+      color: var(--cream-grey);
+      font-size: 0.85rem;
+      opacity: 0.85;
+      border-top: 1px solid var(--line-muted);
+      padding-top: 22px;
+    }
+    footer a {
+      color: var(--primary-sage);
+      text-decoration: none;
+      margin: 0 10px;
+      font-weight: 600;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="network-container">
+    <nav class="top-nav">
+      <a href="index.html" class="back-link">&larr; Zurück zur Hauptseite</a>
+      <span style="font-size: 0.8rem; color: var(--accent-terracotta); text-transform: uppercase; letter-spacing: 1px; font-weight: 600;">Autoren-Multiversum-Werkstatt</span>
+    </nav>
+
+    <main>
+      <section class="info-card">
+        <div class="badge">Exklusiv-Werkzeug</div>
+        <h1>Autoren-Multiversum-<span>Werkstatt Teil II</span></h1>
+
+        <div class="highlight-box">
+          Dieses Werkzeug gehört ab sofort zur <strong>Autoren-Multiversum-Werkstatt Teil II</strong> und ist auf unserer Werkstatt-Adresse verfügbar.
+        </div>
+
+        <a href="https://autoren-multiversum.de" target="_blank" class="cta-btn">Zur Autoren-Multiversum-Werkstatt &rarr;</a>
+        <span class="domain-hint">www.autoren-multiversum.de</span>
+      </section>
+    </main>
+
+    <footer>
+      <p>&copy; Engine am KPB &plusmn;&sup3; Autoren-Multiversum | Ein generationen&uuml;bergreifendes Netzwerk. D &middot; A &middot; CH &middot; International</p>
+      <div style="margin-top: 10px;">
+        <a href="index.html">Startseite</a> |
+        <a href="impressum.html">Impressum</a> |
+        <a href="datenschutz.html">Datenschutzerkl&auml;rung</a>
+      </div>
+    </footer>
+  </div>
+
+</body>
+</html>
